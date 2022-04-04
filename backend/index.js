@@ -5,11 +5,12 @@ const mongoose = require('mongoose'); // includes mongoose
 const bcrypt = require('bcryptjs');
 const cors = require('cors');
 const config = require('./config.json');
+// const { response } = require('express');
+
 const Post = require('./models/post.js');
 const User = require('./models/user.js');
+const Comment = require('./models/comments.js')
 const port = 5000;
-
-const { response } = require('express');
 
 
 app.use((req,res,next)=>{
@@ -33,18 +34,19 @@ app.listen(port,()=>console.log(`My fullstack application is listening on port $
 
 
 
-
 // Adding a post to the Database
 
 app.post('/addPost',(req,res)=>{
   const dbPost = new Post({
     _id: new mongoose.Types.ObjectId,
+    image_url: req.body.image_url,
+    location: req.body.location,
     name: req.body.name,
-    price: req.body.price,
-    image_url: req.body.image_url
-  });
-  // save to database and to notify the user
-  dbPost.save().then(result=>{
+    species: req.body.species,
+    description: req.body.description 
+  }); 
+  
+  dbPost.save().then(result=>{ // save to database and to notify the user
     res.send(result);
   }).catch(err=>res.send(err));
 })
@@ -55,11 +57,13 @@ app.post('/addPost',(req,res)=>{
 
 app.patch('/updatePost/:id',(req,res)=>{
   const idParam = req.params.id;
-  Product.findById(idParam,(err,post)=>{
+  Post.findById(idParam,(err, post)=>{
       const updatedPost = {
-        name : req.body.name,
-        price : req.body.price,
-        image_url:req.body.image_url
+        image_url: req.body.image_url,
+        location: req.body.location,
+        name: req.body.name,
+        species: req.body.species,
+        description: req.body.description
       }
       Post.updateOne({_id:idParam}, updatedPost).
       then(result=>{
@@ -75,8 +79,8 @@ app.patch('/updatePost/:id',(req,res)=>{
 app.delete('/deletePost/:id',(req,res)=>{
   const idParam = req.params.id;
   Post.findOne({_id:idParam}, (err,post)=>{
-    if(product){
-      Product.deleteOne({_id:idParam},err=>{
+    if(post){
+      Post.deleteOne({_id:idParam},err=>{
         console.log('deleted on backend request');
       });
     } else {
@@ -89,9 +93,8 @@ app.delete('/deletePost/:id',(req,res)=>{
 
 // Create Account
 
-app.post('/registerUser',(req, res)=>{
-  // Checking if user is in the DB already
-
+app.post('/registerUser',(req, res)=>{ // Checking if user is in the DB already
+  
   User.findOne({username:req.body.username}, (err, userResult)=>{
 
     if(userResult){
@@ -101,11 +104,11 @@ app.post('/registerUser',(req, res)=>{
       const user = new User({
         _id: new mongoose.Types.ObjectId,
         username: req.body.username,
-        // email: req.body.email,
-        password: hash
+        password: hash,
+        profile_img: req.body.profile_img
       });
-      // Save to database and notify userResult
-      user.save().then(result=>{
+      
+      user.save().then(result=>{ // Save to database and notify userResult
         res.send(result);
       }).catch(err=>res.send(err));
     } // Else
@@ -117,7 +120,6 @@ app.post('/registerUser',(req, res)=>{
 // Log in User
 
 app.post('/loginUser', (req, res)=>{
-
   User.findOne({username:req.body.username}, (err, userResult)=>{
     if (userResult){
       if(bcrypt.compareSync(req.body.password, userResult.password)){
@@ -133,26 +135,48 @@ app.post('/loginUser', (req, res)=>{
 
 
 
-// Get all Products for the Database
-app.get('/allProductsFromDB',(req,res)=>{
-  Product.find().then(result=>{
+// Get all Posts for the Database
+
+app.get('/allPostsFromDB',(req,res)=>{
+  Post.find().then(result=>{
     res.send(result);
   })
 })
 
 
 
-// Comment
 
-// Creating a comment
+
+
+// Comments
+
+
+// Get Comment
+
+app.get('/seeComments/:id', (req, res) => {
+
+  const id = req.params.id;
+  Post.findById(id, function(err, post){
+
+    if(err){
+      console.log(err);
+    }else{
+      console.log("Result : ", post.comment);
+      res.send(post.comment);
+    }
+  });
+});
+
+
+
+// Creating a comment (Have to be logged in)
 
 app.post('/createComment', (req, res)=>{
 
   const newComment = new Comment({
-
     _id: new mongoose.Types.ObjectId,
     text: req.body.text,
-    time: new Date(),
+    // time: new Date(),
     user_id: req.body.user_id,
     post_id: req.body.post_id
   }); // End of Const
@@ -198,3 +222,6 @@ app.delete('/deleteComments/:id', (req, res) =>{
     }
   });
 });
+
+
+
