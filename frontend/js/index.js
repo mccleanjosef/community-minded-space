@@ -5,17 +5,20 @@ $(document).ready(function() {
 
   // ============ Masonry Layout - Magic Grid Starts ============
   let magicGrid = new MagicGrid({
-    container: '.container',
+    container: '#postContainer',
     animate: true,
     gutter: 30,
-    static: true,
-    useMin: true
+    // static: true,
+    // useMin: true,
+    items: 13
   });
 
   magicGrid.listen();
   // ============ Masonry Layout - Magic Grid Ends ============
 
 
+
+  // ============ API Starts ============
   let url; //declare url as a variable in es6
   $.ajax({
     url: 'config.json',
@@ -25,11 +28,28 @@ $(document).ready(function() {
       console.log(configData.SERVER_URL, configData.SERVER_PORT);
       url = `${configData.SERVER_URL}:${configData.SERVER_PORT}`;
       console.log(url);
+
+      let testId = [101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113];
+
+      // View all posts when document is ready
+      let i;
+      document.getElementById('postContainer').innerHTML = '';
+      for(i=0; i<testId.length; i++){
+        document.getElementById('postContainer').innerHTML +=
+        // Adding post elements here
+        `
+        <div class="post" id="${testId[i]}">
+          <h3>Hi ${testId[i]}</h3>
+        </div>
+        `;
+      } //end of for loop
+
     },
     error: function(error) {
       console.log(error);
     }
   })
+  // ============ API Ends ============
 
   
 

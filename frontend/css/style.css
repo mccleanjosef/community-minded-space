@@ -43,6 +43,7 @@ ul {
   height: 100vh;
   width: 100vw;
 }
+
 .landing-section--top {
   height: 60%;
   width: 100%;
@@ -51,6 +52,7 @@ ul {
   align-items: flex-end;
   padding-bottom: 15%;
 }
+
 .landing-section--topSecond {
   height: 60%;
   width: 100%;
@@ -425,6 +427,7 @@ ul {
   justify-content: center;
   align-items: center;
 }
+
 .updatePostModal-footer--btn {
   border: none;
   color: white;
@@ -550,13 +553,25 @@ ul {
   font-weight: 500;
   letter-spacing: 0.06rem;
 }
+  
+.posts-wrap {
+  width: 100%;
+  height: 90vh;
+  background: orangered;
+  overflow: scroll;
+}
 
-.container div {
-  width: 280px;
-  height: 500px;
+.posts-container div {
+  width: 293px;
+  min-height: 200px;
   background-color: antiquewhite;
+}
+
+.add-post-ctn {
+  background: blueviolet;
+  width: 100%;
+  height: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 8px;
 }
