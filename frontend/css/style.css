@@ -5,12 +5,14 @@
   text-decoration: none;
 }
 
-body {
-  overflow-x: hidden;
-}
-
 html {
   scroll-behavior: smooth;
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  overflow-x: hidden;
 }
 
 ul {
@@ -547,4 +549,14 @@ ul {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   letter-spacing: 0.06rem;
+}
+
+.container div {
+  width: 280px;
+  height: 500px;
+  background-color: antiquewhite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
 }
