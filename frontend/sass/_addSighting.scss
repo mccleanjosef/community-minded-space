@@ -1,0 +1,123 @@
+
+.addSighting-container{
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(26,168,120,1) 0%, rgba(120,201,72,1) 100%);
+}
+
+.addSighting-backSection{
+    height: 8%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 6%;
+    padding-top: 5%;
+
+    &--arrowIMG{
+        height: 1rem;
+    }
+
+    &--back{
+        color: white;
+        font-size: 15px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        padding-left: 0.8rem;
+        padding-top: 1.1rem;
+    }
+}
+
+.addSighting-titleSection{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2%;
+
+    &--title{
+        color: white;
+        font-size: 20px;
+        font-family: 'Laila', sans-serif;
+        letter-spacing: 0.1rem;
+    }
+}
+
+.addSighting-sightingForm{
+    height: 60%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 16%;
+
+    &--label{
+        color: white;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        letter-spacing: 0.06rem;
+        padding-bottom: 0.3rem;
+        padding-left: 0.4rem;
+    }
+
+    &--input{
+        border: none;
+        border-radius: 2rem;
+        padding: 0.6rem;
+        width: 16rem;
+        letter-spacing: 0.06rem;
+        font-size: 14px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        margin-bottom: 1rem;
+        text-align: left;
+        padding-left: 1rem;
+    }
+
+    &--input:focus{
+        border-color: #1AA878;
+      }
+
+    &--inputDescription{
+        border: none;
+        border-radius: 1.4rem;
+        padding: 3rem;
+        width: 16rem;
+        letter-spacing: 0.06rem;
+        font-size: 14px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        margin-bottom: 1rem;
+        text-align: left;
+        padding-left: 1rem;
+    }
+}
+
+.addSighting-addPost{
+    height: 22%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1rem;
+
+    &--btn{
+        border: none;
+        font-size: 16px;
+        background: white;
+        color: black;
+        border-radius: 2rem;
+        padding: 0.6rem;
+        padding-left: 2.8rem;
+        padding-right: 2.8rem;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        letter-spacing: 0.06rem;
+    }
+}
+
+
+
