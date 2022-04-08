@@ -2,7 +2,7 @@
 .signIn-container{
     height: 100vh;
     width: 100vw;
-    background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(26,168,120,1) 0%, rgba(120,201,72,1) 100%);
+    background: linear-gradient(12.04deg, #1AA878 0%, #78C948 100%);
 }
 
 .signIn-logo{
@@ -13,7 +13,7 @@
     align-items: center;
 
     &--img{
-        height: 6rem;
+        height: 10.5rem;
     }
 }
 
@@ -32,25 +32,25 @@
     }
 
     &--label{
-        color: white;
+        color: $white;
         padding-bottom: 0.6rem;
         padding-left: 0.4rem;
         letter-spacing: 0.06rem;
-        font-size: 16px;
-        font-family: 'Roboto', sans-serif;
-        font-weight: 400;
+        font-size: 1.6rem;
+        font-family: $body-font;
+        font-weight: $regular;
     }
 
     &--input{
         border: none;
-        border-radius: 0.6rem;
-        padding: 1rem;
-        width: 16rem;
+        border-radius: 0.8rem;
+        padding: 1em 1.5em;
+        width: 27.1rem;
         margin-bottom: 1.6rem;
         letter-spacing: 0.06rem;
-        font-size: 14px;
-        font-family: 'Roboto', sans-serif;
-        font-weight: 400;
+        font-size: 1.6rem;
+        font-family: $body-font;
+        font-weight: $regular;
     }
 }
 
@@ -64,39 +64,31 @@
     padding-bottom: 4rem;
 
     &--signIn{
-        border: none;
-        border-radius: 2rem;
-        color: white;
-        background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(26,168,120,1) 0%, rgba(120,201,72,1) 100%);
-        width: 16rem;
-        padding: 0.8rem;
-        font-size: 20px;
-        font-family: 'Roboto', sans-serif;
-        font-weight: 400;
-        letter-spacing: 0.02rem;
-        text-align: center;
-        filter: drop-shadow(-3px 4px 4px rgba(0, 0, 0, 0.36));
+        @include gradient-rounded-button;
+        width: 27.1rem;
+        padding: 0.65em;
     }
 
     &--createAccount{
-        border: none;
-        border-radius: 0.6rem;
-        padding: 0.8rem;
-        width: 16rem;
-        color: #1AA878;
-        font-size: 20px;
-        font-family: 'Roboto', sans-serif;
-        font-weight: 400;
-        letter-spacing: 0.02rem;
-        text-align: center;
+        @include white-rounded-button;
+        font-size: 2rem;
+        border-radius: 0.8rem;
+        width: 27.1rem;
+        padding: 0.65em;
+        color: $dark-green;
+        margin-bottom: 0;
+    }
+
+    &--guest-link{
+        text-decoration: none;
     }
 
     &--guest{
-        color: white;
-        font-size: 16px;
-        font-family: 'Roboto', sans-serif;
-        font-weight: 300;
-        letter-spacing: 0.02rem;
+        color: $white;
+        font-size: 1.6rem;
+        font-family: $body-font;
+        font-weight: $regular;
+        letter-spacing: 0.05rem;
     }
 }
 

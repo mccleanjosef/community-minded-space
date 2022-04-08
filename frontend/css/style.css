@@ -5,12 +5,13 @@
   text-decoration: none;
 }
 
-body {
-  overflow-x: hidden;
-}
-
 html {
   scroll-behavior: smooth;
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
 }
 
 ul {
@@ -73,17 +74,15 @@ ul {
 }
 .landing-section--button {
   border: none;
-  font-size: 16px;
-  background: white;
-  color: black;
-  border-radius: 2rem;
-  padding: 0.6rem;
-  padding-left: 2.8rem;
-  padding-right: 2.8rem;
-  margin-bottom: 4rem;
+  font-size: 1.6rem;
+  background: #ffffff;
+  color: #000000;
+  border-radius: 3.4rem;
+  padding: 1.25rem 5.5rem;
+  margin-bottom: 4.8rem;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
-  letter-spacing: 0.06rem;
+  letter-spacing: 0.04rem;
 }
 .landing-section--navigation-circles {
   height: 10%;
@@ -92,44 +91,44 @@ ul {
   justify-content: center;
 }
 .landing-section--navigation-circles__circle1 {
-  height: 1rem;
-  width: 1rem;
+  height: 1.8rem;
+  width: 1.8rem;
   background: #78C948;
   border-radius: 1rem;
   margin-right: 4%;
   margin-left: 4%;
 }
 .landing-section--navigation-circles__circle2 {
-  height: 1rem;
-  width: 1rem;
-  background: white;
+  height: 1.8rem;
+  width: 1.8rem;
+  background: #ffffff;
   border-radius: 1rem;
   margin-left: 4%;
   margin-right: 4%;
 }
 .landing-section--h1 {
-  font-size: 32px;
-  color: white;
+  font-size: 3.2rem;
+  color: #ffffff;
   max-width: 15ch;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.05rem;
   padding-bottom: 4%;
   font-family: "Laila", sans-serif;
   line-height: 150%;
 }
 .landing-section--p {
-  font-size: 20px;
-  color: white;
+  font-size: 1.9rem;
+  color: #ffffff;
   max-width: 22ch;
   font-family: "Roboto", sans-serif;
-  font-weight: 400;
+  font-weight: 700;
   line-height: 120%;
-  letter-spacing: 0.02rem;
+  letter-spacing: 0.1rem;
 }
 
 .signIn-container {
   height: 100vh;
   width: 100vw;
-  background: linear-gradient(45deg, rgb(2, 0, 36) 0%, rgb(26, 168, 120) 0%, rgb(120, 201, 72) 100%);
+  background: linear-gradient(12.04deg, #1AA878 0%, #78C948 100%);
 }
 
 .signIn-logo {
@@ -140,7 +139,7 @@ ul {
   align-items: center;
 }
 .signIn-logo--img {
-  height: 6rem;
+  height: 10.5rem;
 }
 
 .signIn-middle {
@@ -157,22 +156,22 @@ ul {
   height: 7rem;
 }
 .signIn-middle--label {
-  color: white;
+  color: #ffffff;
   padding-bottom: 0.6rem;
   padding-left: 0.4rem;
   letter-spacing: 0.06rem;
-  font-size: 16px;
+  font-size: 1.6rem;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 .signIn-middle--input {
   border: none;
-  border-radius: 0.6rem;
-  padding: 1rem;
-  width: 16rem;
+  border-radius: 0.8rem;
+  padding: 1em 1.5em;
+  width: 27.1rem;
   margin-bottom: 1.6rem;
   letter-spacing: 0.06rem;
-  font-size: 14px;
+  font-size: 1.6rem;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
@@ -187,37 +186,46 @@ ul {
   padding-bottom: 4rem;
 }
 .signIn-bottom--signIn {
+  color: #ffffff;
   border: none;
-  border-radius: 2rem;
-  color: white;
-  background: linear-gradient(45deg, rgb(2, 0, 36) 0%, rgb(26, 168, 120) 0%, rgb(120, 201, 72) 100%);
-  width: 16rem;
-  padding: 0.8rem;
-  font-size: 20px;
+  border-radius: 2.8rem;
+  background: linear-gradient(87.62deg, #1AA878 0.64%, #78C948 99.43%);
+  font-size: 2rem;
   font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  letter-spacing: 0.02rem;
+  font-weight: 500;
+  letter-spacing: 0.09rem;
   text-align: center;
   filter: drop-shadow(-3px 4px 4px rgba(0, 0, 0, 0.36));
+  width: 27.1rem;
+  padding: 0.65em;
 }
 .signIn-bottom--createAccount {
   border: none;
-  border-radius: 0.6rem;
-  padding: 0.8rem;
-  width: 16rem;
-  color: #1AA878;
-  font-size: 20px;
+  font-size: 1.6rem;
+  background: #ffffff;
+  color: #000000;
+  border-radius: 3.4rem;
+  padding: 1.25rem 5.5rem;
+  margin-bottom: 4.8rem;
   font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  letter-spacing: 0.02rem;
-  text-align: center;
+  font-weight: 500;
+  letter-spacing: 0.04rem;
+  font-size: 2rem;
+  border-radius: 0.8rem;
+  width: 27.1rem;
+  padding: 0.65em;
+  color: #1AA878;
+  margin-bottom: 0;
+}
+.signIn-bottom--guest-link {
+  text-decoration: none;
 }
 .signIn-bottom--guest {
-  color: white;
-  font-size: 16px;
+  color: #ffffff;
+  font-size: 1.6rem;
   font-family: "Roboto", sans-serif;
-  font-weight: 300;
-  letter-spacing: 0.02rem;
+  font-weight: 400;
+  letter-spacing: 0.05rem;
 }
 
 .modal-content {
@@ -547,4 +555,83 @@ ul {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   letter-spacing: 0.06rem;
+}
+
+.posts-wrap {
+  width: 100%;
+  height: 77.3vh;
+  overflow: scroll;
+}
+
+.posts-container div {
+  width: 341px;
+  min-height: 200px;
+  background-color: antiquewhite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+
+#mainFeedBody {
+  background: linear-gradient(12.04deg, #1AA878 0%, #78C948 100%);
+}
+
+.header {
+  width: 100%;
+  height: 12.6vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.1rem;
+}
+.header__logo {
+  height: 5.6rem;
+}
+.header__account-dropdown {
+  color: #ffffff;
+  font-size: 2.2rem;
+}
+.header__account-dropdown:hover {
+  color: #ffffff;
+}
+.header__profile-icon {
+  height: 3.7rem;
+  filter: invert(100%);
+  margin-right: 0.5rem;
+}
+.header__dropdown-menu {
+  font-size: 1.6rem;
+  font-family: "Roboto", sans-serif;
+  color: #000000;
+  background-color: #ffffff;
+  border-radius: 1.9rem;
+  text-align: center;
+  border: none;
+  filter: drop-shadow(-3px 3px 7px rgba(0, 0, 0, 0.3));
+}
+.header__dropdown-item {
+  padding: 1em 1.5em;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.add-post {
+  width: 100%;
+  height: 10.1vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.add-post__button {
+  width: 4.6rem;
+  height: 4.6rem;
+  color: #ffffff;
+  background: linear-gradient(39.42deg, #1AA878 13.22%, #78C948 86.19%);
+  border-radius: 50%;
+  border: none;
+  font-size: 2rem;
+  filter: drop-shadow(-1px 2px 4px rgba(0, 0, 0, 0.49));
 }

@@ -43,7 +43,8 @@ $('#index-btn').click(function(){
 </div>
     `
     );
-});
+  });
+  // ============ Appending Intro into App Ends ============
 
 
   // Appending Intro next page on App finished

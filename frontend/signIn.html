@@ -1,35 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In - Sanctuary</title>
 
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="../frontend/node_modules/bootstrap/dist/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="../frontend/node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="icon" href="./img/logo.png">
+  <!-- favicon link -->
+  <link rel="icon" href="./img/logo.png">
 
+  <!-- Google Fonts Roboto and Laila Bold -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Laila:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
-    <!-- Google Fonts Roboto Regular and Medium -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-
-
-    <!-- Google Fonts Laila Bold -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Laila:wght@700&display=swap" rel="stylesheet">
-
-
+  <!-- style css -->
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
 
 
-    <!-- Sign In -->
+  <!-- Sign In -->
 
     <div class="signIn-container">
         <div class="signIn-logo">
@@ -50,14 +45,28 @@
         </div>
     </div>
 
-    
+    <div class="signIn-middle">
+      <label class="signIn-middle--label" for="">Username</label>
+      <input class="signIn-middle--input" id="" type="text" name="username" placeholder="Username">
+      <label class="signIn-middle--label" for="">Password</label>
+      <input class="signIn-middle--input" id="" type="text" name="password" placeholder="Password">
+    </div>
+
+    <div class="signIn-bottom">
+      <button class="signIn-bottom--signIn" data-bs-toggle="modal" data-bs-target="#deletePostModal">Sign In</button>
+      <button class="signIn-bottom--createAccount" data-bs-toggle="modal" data-bs-target="#createAccountModal">Create Account</button>
+      <a class="signIn-bottom--guest-link" href="./main-feed.html"><p class="signIn-bottom--guest" data-bs-toggle="modal" data-bs-target="#updatePostModal">Continue as guest</p></a>
+    </div>
+  </div>
+
+  
 
 
 
     <!-- Create Account modal -->
 
-    <!-- Modal -->
-<div class="modal fade" id="createAccountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- Modal -->
+  <div class="modal fade" id="createAccountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="createAccountModal-header">
@@ -148,12 +157,6 @@
 
 
 
-        </div>
-      </div>
-    </div>
-
-
-
 
 
 
@@ -163,13 +166,14 @@
 
 </body>
 
-<!-- BOOTSTRAP -->
-<script src="../frontend/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- JQUERY -->
+<!-- jQuery js -->
 <script src="../frontend/node_modules/jquery/dist/jquery.min.js"></script>
 
+<!-- bootstrap js -->
+<script src="../frontend/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
+<!-- frontend index js -->
 <script src="./js/index.js"></script>
 
 </html>
