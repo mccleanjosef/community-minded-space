@@ -5,7 +5,6 @@ const postSchema = new mongoose.Schema({
   image_url: String,
   location: String,
   name: String,
-  species: String,
   description: String,
   comment: [],
   // comment: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}],
