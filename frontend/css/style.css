@@ -583,7 +583,9 @@ a {
   width: 100vw;
   min-height: 100vh;
 }
-.get-involved__header {
+
+
+header {
   top: 0;
   width: 100vw;
   height: 100%;
