@@ -33,10 +33,10 @@
             <i class="fa-solid fa-chevron-up header__up-icon"></i>
           </button>
           <ul class="dropdown-menu dropdown-menu-end header__dropdown-menu">
-            <li><button class="dropdown-item header__dropdown-item" type="button">Sign In</button></li>
-            <li><button class="dropdown-item header__dropdown-item" type="button">Display Mode</button></li>
-            <li><button class="dropdown-item header__dropdown-item" type="button">Get Involved</button></li>
-            <li><button class="dropdown-item header__dropdown-item" type="button">Create Account</button></li>
+            <a href="./signIn.html"><li><button class="dropdown-item header__dropdown-item" type="button">Sign In</button></li></a>
+            <a href=""></a><li><button class="dropdown-item header__dropdown-item" type="button">Display Mode</button></li>
+            <a href="./get-involved.html"><li><button class="dropdown-item header__dropdown-item" type="button">Get Involved</button></li></a>
+            <li><button class="dropdown-item header__dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#createAccountModal">Create Account</button></li>
           </ul>
         </div>
     </header>
@@ -50,6 +50,30 @@
         <button class="add-post__button">
             <i class="fa-solid fa-plus"></i>
         </button>
+    </div>
+
+
+    <!-- Create Account modal -->
+    <div class="modal fade" id="createAccountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="createAccountModal-header">
+            <h5 class="createAccountModal-header--title">Create Account</h5>
+            <button type="button" class="btn-close close-icon" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="createAccountModal-body">
+              <label class="createAccountModal-body--label" for="">Username</label>
+              <input class="createAccountModal-body--input" id="c-username" type="text" name="c-username" placeholder="Username">
+              <label class="createAccountModal-body--label" for="">Password</label>
+              <input class="createAccountModal-body--input" id="c-password" type="password" name="c-password" placeholder="Password">
+              <label class="createAccountModal-body--label" for="">Profile image url</label>
+              <input class="createAccountModal-body--input" id="c-profile_img" type="text" name="c-profile_img" placeholder="https://unsplash.com/photos/">
+          </div>
+          <div class="createAccountModal-footer">
+            <button id="createAccount" class="createAccountModal-footer--btn">Create</button>
+          </div>
+        </div>
+      </div>
     </div>
 
 
