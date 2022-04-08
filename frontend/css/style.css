@@ -18,10 +18,6 @@ ul {
   list-style: none;
 }
 
-a {
-  text-decoration: none;
-}
-
 .landing-background {
   height: 100vh;
   width: 100vw;

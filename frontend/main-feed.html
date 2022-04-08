@@ -33,9 +33,7 @@
             <i class="fa-solid fa-chevron-up header__up-icon"></i>
           </button>
           <ul class="dropdown-menu dropdown-menu-end header__dropdown-menu">
-            <a href="./signIn.html">
-              <li><button class="dropdown-item header__dropdown-item" type="button">Sign In</button></li>
-            </a>
+            <li><button class="dropdown-item header__dropdown-item" type="button">Sign In</button></li>
             <li><button class="dropdown-item header__dropdown-item" type="button">Display Mode</button></li>
             <li><button class="dropdown-item header__dropdown-item" type="button">Get Involved</button></li>
             <li><button class="dropdown-item header__dropdown-item" type="button">Create Account</button></li>
@@ -48,83 +46,10 @@
         <div class="posts-container" id="postContainer"></div>
     </div>
 
-    <!-- Add Post button -->
     <div class="add-post">
-        <a href="./addSighting.html">
-          <button class="add-post__button">
+        <button class="add-post__button">
             <i class="fa-solid fa-plus"></i>
-          </button>
-        </a>
-    </div>
-
-
-
-
-    <!-- Delete Post Modal -->
-
-    <!-- Delete Modal Target (Put inside button you want to trigger) -->
-    <!-- data-bs-toggle="modal" data-bs-target="#deletePostModal" -->
-
-    <!-- Modal -->
-    <div class="modal fade" id="deletePostModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="deletePostModal-header">
-            <h5 class="deletePostModal-header--title">Delete</h5>
-            <button type="button" class="btn-close close-icon-delete" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="deletePostModal-body">
-            <p class="deletePostModal-body--text">Are you sure you want to delete?</p>
-          </div>
-          <div class="deletePostModal-footer">
-            <button class="deletePostModal-footer--btn">Yes</button>
-            <button class="deletePostModal-footer--btn" data-bs-dismiss="modal" aria-label="Close">No</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- Update Post Modal -->
-
-    <!-- Modal -->
-    <div class="modal fade" id="updatePostModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-
-
-          <div class="updatePostModal-header">
-            <h5 class="updatePostModal-header--title">Update</h5>
-            <button type="button" class="btn-close close-icon-delete" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-
-
-          <div class="updatePostModal-body">
-
-            <label class="updatePostModal-body--label" for="">Image url</label>
-            <input class="updatePostModal-body--input" id="1" type="text" name="imageURL" placeholder="Image.png...">
-
-            <label class="updatePostModal-body--label" for="">Location</label>
-            <input class="updatePostModal-body--input" id="2" type="text" name="location" placeholder="Wellington...">
-
-
-            <label class="updatePostModal-body-label" for="">Name</label>
-            <input class="updatePostModal-body--input" id="3" type="text" name="name" placeholder="Pīwakawaka...">
-
-
-            <label class="updatePostModal-body--label" for="">Description</label>
-            <input class="updatePostModal-body--inputDescription" id="4" type="text" name="description" placeholder="Found this little fella on my hike..">
-
-
-          </div>
-
-
-          <div class="updatePostModal-footer">
-            <button class="updatePostModal-footer--btn">Update</button>
-          </div>
-        </div>
-      </div>
+        </button>
     </div>
 
 
