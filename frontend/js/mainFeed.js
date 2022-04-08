@@ -36,8 +36,41 @@ $(document).ready(function() {
         document.getElementById('postContainer').innerHTML +=
         // Adding post elements here
         `
-        <div class="post" id="${testId[i]}">
-            <h3>Hi ${testId[i]}</h3>
+        <div id="cardContainer" class="container">
+            <div class="card">
+                <div class="card__top">
+                    <div class="card__user-tools">
+                        <div class="dropdown">
+                            <button class="card__user-tools--btn" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-ellipsis-vertical ellipsis"></i>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#">Update post</a></li>
+                            <li><a class="dropdown-item" href="#">Delete post</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <img class="card__image" src="./img/tui.jpg" alt="User posted picture">
+                </div>
+
+                <div class="card__bottom">
+                    <div class="card__bottom-upper">
+                        <p class="card__text">Kahurangi National Park</p>
+                        <p id="cardText" class="card__text">Kea</p>
+                    </div>
+
+                    <div class="card__bottom-lower">
+                        <p class="card__caption">Check out this curious fella!</p>
+                    </div>
+
+                    <div class="card__comments-master">
+                        <div class="card__comments">
+                            <p class="card__comments-details">view details</p>
+                            <i class="fa-solid fa-comment card__speech"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         `;
         } //end of for loop
