@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Laila:wght@400;500&family=Roboto:wght@300;400;500&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -7,6 +8,7 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 62.5%;
 }
 
 body {
@@ -576,57 +578,14 @@ a {
   border-radius: 8px;
 }
 
-#mainFeedBody {
-  background: linear-gradient(12.04deg, #1AA878 0%, #78C948 100%);
+body {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(45deg, rgb(2, 0, 36) 0%, rgb(26, 168, 120) 0%, rgb(120, 201, 72) 100%);
 }
 
-.header {
-  width: 100%;
-  height: 12.6vh;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 2.1rem;
-}
-.header__logo {
-  height: 5.6rem;
-}
-.header__account-dropdown {
-  color: #ffffff;
-  font-size: 2.2rem;
-}
-.header__account-dropdown:hover {
-  color: #ffffff;
-}
-.header__profile-icon {
-  height: 3.7rem;
-  filter: invert(100%);
-  margin-right: 0.5rem;
-}
-.header__dropdown-menu {
-  font-size: 1.6rem;
-  font-family: "Roboto", sans-serif;
-  color: #000000;
-  background-color: #ffffff;
-  border-radius: 1.9rem;
-  text-align: center;
-  border: none;
-  filter: drop-shadow(-3px 3px 7px rgba(0, 0, 0, 0.3));
-}
-.header__dropdown-item {
-  padding: 1em 1.5em;
-}
-
-.dropdown-toggle::after {
-  display: none;
-}
-
-.add-post {
-  width: 100%;
-  height: 10.1vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+html body {
+  width: 100vw;
+  min-height: 100vh;
 }
 
 header {
@@ -788,7 +747,59 @@ footer {
   .arrow-back {
     display: show;
   }
+}
+#mainFeedBody {
+  background: linear-gradient(12.04deg, #1AA878 0%, #78C948 100%);
+}
 
+.header {
+  width: 100%;
+  height: 12.6vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.1rem;
+}
+.header__logo {
+  height: 5.6rem;
+}
+.header__account-dropdown {
+  color: #ffffff;
+  font-size: 2.2rem;
+}
+.header__account-dropdown:hover {
+  color: #ffffff;
+}
+.header__profile-icon {
+  height: 3.7rem;
+  filter: invert(100%);
+  margin-right: 0.5rem;
+}
+.header__dropdown-menu {
+  font-size: 1.6rem;
+  font-family: "Roboto", sans-serif;
+  color: #000000;
+  background-color: #ffffff;
+  border-radius: 1.9rem;
+  text-align: center;
+  border: none;
+  filter: drop-shadow(-3px 3px 7px rgba(0, 0, 0, 0.3));
+}
+.header__dropdown-item {
+  padding: 1em 1.5em;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.add-post {
+  width: 100%;
+  height: 10.1vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .add-post__button {
   width: 4.6rem;
   height: 4.6rem;
