@@ -1,25 +1,15 @@
 .posts-wrap{
   width: 100%;
-  height: 90vh;
-  background: orangered;
+  height: 77.3vh;
   overflow: scroll;
 }
 
 .posts-container div {
-  width: 293px;
+  width: 341px;
   min-height: 200px;
   background-color: antiquewhite;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 8px;
-}
-
-.add-post-ctn{
-  background: blueviolet;
-  width: 100%;
-  height: 10vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
