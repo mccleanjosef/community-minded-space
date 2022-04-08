@@ -41,7 +41,6 @@ $(document).ready(function() {
         </div>
         `;
         } //end of for loop
-
     },
     error: function(error) {
         console.log(error);
@@ -50,11 +49,17 @@ $(document).ready(function() {
     // ============ API Ends ============
 
     // ============ Account dropdown arrow Starts ============
-    // hide and showing arrow icons on click of account dropdown
+    // hide and showing arrow icons based on if dropdown menu is visible
     $('.header__up-icon').hide();
-    $('.header__account-dropdown').click(function(){
-        $('.header__up-icon').toggle();
-        $('.header__down-icon').toggle();
+    $(window).click(function(){
+        if($('.header__dropdown-menu').is(':visible')){
+            $('.header__down-icon').hide();
+            $('.header__up-icon').show();
+
+        } else{
+            $('.header__down-icon').show();
+            $('.header__up-icon').hide();
+        }
     });
     // ============ Account dropdown arrow Ends ============
 
