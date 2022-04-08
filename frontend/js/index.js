@@ -3,86 +3,30 @@ console.log(sessionStorage);
 
 $(document).ready(function() {
 
-  // ============ Masonry Layout - Magic Grid Starts ============
-  let magicGrid = new MagicGrid({
-    container: '#postContainer',
-    animate: true,
-    gutter: 30,
-    // static: true,
-    // useMin: true,
-    items: 13
-  });
+  // ============ Appending Intro into App Starts ============
+  $('#index-btn').click(function(){
 
-  magicGrid.listen();
-  // ============ Masonry Layout - Magic Grid Ends ============
-
-
-
-  // ============ API Starts ============
-  let url; //declare url as a variable in es6
-  $.ajax({
-    url: 'config.json',
-    type: 'GET',
-    dataType: 'json',
-    success: function(configData) {
-      console.log(configData.SERVER_URL, configData.SERVER_PORT);
-      url = `${configData.SERVER_URL}:${configData.SERVER_PORT}`;
-      console.log(url);
-
-      let testId = [101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113];
-
-      // View all posts when document is ready
-      let i;
-      document.getElementById('postContainer').innerHTML = '';
-      for(i=0; i<testId.length; i++){
-        document.getElementById('postContainer').innerHTML +=
-        // Adding post elements here
-        `
-        <div class="post" id="${testId[i]}">
-          <h3>Hi ${testId[i]}</h3>
+    $('#landing-page').empty().append(
+      `
+      <div class="landing-background-second">
+        <div class="landing-section">
+          <div class="landing-section--topSecond">
+            <h1 class="landing-section--h1">Discover a new world of wildlife</h1>
+            <p class="landing-section--p">Join the community documenting wildlife observations that support the research and conservation worldwide</p>
+          </div>
+          <div class="landing-section--bottom">
+            <a href="signIn.html"><button id="index-btn" class="landing-section--button">Get Started</button></a>
+            <div class="landing-section--navigation-circles">
+              <div class="landing-section--navigation-circles__circle2"></div>
+              <div class="landing-section--navigation-circles__circle1"></div>
+            </div>
+          </div>
         </div>
-        `;
-      } //end of for loop
-
-    },
-    error: function(error) {
-      console.log(error);
-    }
-  })
-  // ============ API Ends ============
-
-  
+      </div>
+      `
+    );
+  });
+  // ============ Appending Intro into App Ends ============
 
 
 }); //document.ready
-
-
-
-
-
-// Appending Intro into App
-
-$('#index-btn').click(function(){
-
-  $('#landing-page').empty().append(
-    `
-    <div class="landing-background-second">
-    <div class="landing-section">
-    <div class="landing-section--topSecond">
-    <h1 class="landing-section--h1">Discover a new world of wildlife</h1>
-    <p class="landing-section--p">Join the community documenting wildlife observations that support the research and conservation worldwide</p>
-</div>
-<div class="landing-section--bottom">
-<a href="signIn.html"><button id="index-btn" class="landing-section--button">Get Started</button></a>
-    <div class="landing-section--navigation-circles">
-        <div class="landing-section--navigation-circles__circle2"></div>
-        <div class="landing-section--navigation-circles__circle1"></div>
-    </div>
-</div>
-</div>
-</div>
-
-    `
-    );
-});
-
