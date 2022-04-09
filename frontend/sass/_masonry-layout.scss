@@ -139,6 +139,7 @@
   &__comments-master{
       display: flex;
       width: 100%;
+      min-height: 30px;
       justify-content: flex-end !important;
       align-items: flex-end;
   }
@@ -152,10 +153,13 @@
   }
 
   &__comments-details{
-      margin-left: 0.5rem;
       font-family: 'Roboto', sans-serif;
       color: #7E7E7E;
       cursor: pointer;
+      outline: none;
+      border: none;
+      background: transparent;
+      margin-bottom: 1rem;
   }
 
   &__speech{

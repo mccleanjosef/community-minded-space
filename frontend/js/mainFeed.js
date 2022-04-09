@@ -65,7 +65,7 @@ $(document).ready(function() {
 
                     <div class="card__comments-master">
                         <div class="card__comments">
-                            <p class="card__comments-details">view details</p>
+                            <button class="card__comments-details" data-bs-toggle="modal" data-bs-target="#exampleModal">view details</button>
                             <i class="fa-solid fa-comment card__speech"></i>
                         </div>
                     </div>
