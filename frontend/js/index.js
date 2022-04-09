@@ -130,6 +130,10 @@ $('#index-btn').click(function(){
               sessionStorage.setItem('userID', user['_id']);
               sessionStorage.setItem('userName', user['username']);
               console.log(sessionStorage);
+              let button = document.getElementById("signInBtn");
+                button.addEventListener("click", function(){
+                    document.location.href = "/main-feed.html";
+                });
               alert('Welcome back! :)')
             } // end of ifs
           }, //success
