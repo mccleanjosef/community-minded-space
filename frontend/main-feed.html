@@ -26,7 +26,7 @@
 <body id="mainFeedBody">
 
   <!-- Update Post Modal -->
-  <div class="modal fade" id="updatePostModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade main-feed-update-post-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="updatePostModal-header">
@@ -35,11 +35,11 @@
         </div>
         <div class="updatePostModal-body">
           <label class="updatePostModal-body--label" for="">Image url</label>
-          <input class="updatePostModal-body--input" id="" type="text" name="imageURL" placeholder="https://unsplash.com/photos/...">
+          <input class="updatePostModal-body--input" type="text" name="imageURL" placeholder="https://unsplash.com/photos/...">
           <label class="updatePostModal-body--label" for="">Location</label>
-          <input class="updatePostModal-body--input" id="" type="text" name="location" placeholder="Wellington">
+          <input class="updatePostModal-body--input" type="text" name="location" placeholder="Wellington">
           <label class="updatePostModal-body-label" for="">Name</label>
-          <input class="updatePostModal-body--input" id="" type="text" name="name" placeholder="Pīwakawaka">
+          <input class="updatePostModal-body--input" type="text" name="name" placeholder="Pīwakawaka">
           <label class="updatePostModal-body--label" for="">Description</label>
           <textarea class="updatePostModal-body--inputDescription" type="text" name="description" placeholder="Found this little fella on my hike"></textarea>
         </div>
@@ -50,9 +50,8 @@
     </div>
   </div>
 
-
   <!-- Delete Post Modal -->
-  <div class="modal fade" id="deletePostModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade main-feed-delete-post-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="deletePostModal-header">
@@ -71,7 +70,7 @@
   </div>
 
   <!-- Create Account modal -->
-  <div class="modal fade" id="createAccountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade main-feed-create-account-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="createAccountModal-header">
@@ -106,7 +105,7 @@
           <a href="./signIn.html"><li><button class="dropdown-item header__dropdown-item" type="button">Sign In</button></li></a>
           <a href=""></a><li><button class="dropdown-item header__dropdown-item" type="button">Display Mode</button></li>
           <a href="./get-involved.html"><li><button class="dropdown-item header__dropdown-item" type="button">Get Involved</button></li></a>
-          <li><button class="dropdown-item header__dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#createAccountModal">Create Account</button></li>
+          <li><button class="dropdown-item header__dropdown-item" type="button" data-bs-toggle="modal" data-bs-target=".main-feed-create-account-modal">Create Account</button></li>
         </ul>
       </div>
   </header>

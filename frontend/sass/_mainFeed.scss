@@ -45,22 +45,41 @@
 .post{
     width: 341px;
     min-height: 200px;
-    background-color: antiquewhite;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-    position: relative;
+
+    &__top{
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        border-radius: 2.6rem 2.6rem 0 0;
+    }
+
+    &__author-img-wrap{
+        width: 3.8rem;
+        height: 3.8rem;
+        border-radius: 50%;
+        position: absolute;
+        top: 7%;
+        left: 5%;
+        overflow: hidden;
+        z-index: 10;
+    }
+
+    &__author-image{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
 
     &__btn-ctn{
         position: absolute;
         top: 8%;
-        right: 5%;
+        right: 4%;
         z-index: 10;
     }
 
     &__dropdown-icon{
-        height: 3rem;
+        height: 2.5rem;
     }
 
     &__dropdown-menu{
@@ -69,6 +88,73 @@
 
     &__dropdown-item{
         @include dropdown-item;
+    }
+
+    &__image{
+        width: 100%;
+    }
+
+    &__bottom{
+        width: 100%;
+        background-color: $white;
+        display: flex;
+        flex-flow: row wrap;
+        border-radius: 0 0 2.6rem 2.6rem;
+    }
+
+    &__bottom-upper{
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        padding-top: 1.2rem;
+    }
+
+    &__text{
+        font-family: $body-font;
+        font-weight: $medium;
+        color: $white;
+        font-size: 1.2rem;
+        letter-spacing: 0.1rem;
+        background: linear-gradient(268.51deg, #78C948 0%, #1AA878 96.71%);
+        border-radius: 3rem;
+        padding: 0.4em 1em;
+        margin-left: 1.5rem;
+    }
+
+    &__bottom-lower{
+        width: 100%;
+        display: flex;
+        overflow: hidden;
+        padding-left: 2rem;
+    }
+
+    &__caption{
+        font-family: $body-font;
+        font-weight: $regular;
+        color: $black;
+        font-size: 1.2rem;
+        letter-spacing: 0.03rem;
+    }
+
+    &__comments{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        position: relative;
+    }
+
+    &__comments-details{
+        font-family: $body-font;
+        font-weight: $regular;
+        font-size: 1.2rem;
+        color: $medium-grey;
+    }
+
+    &__speech{
+        position: absolute;
+        bottom: 50%;
+        right: 5%;
+        width: 1.9rem;
     }
 }
 

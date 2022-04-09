@@ -37,15 +37,35 @@ $(document).ready(function() {
         // Adding post elements here
         `
         <div class="post" id="${testId[i]}">
-            <h3>Hi ${testId[i]}</h3>
-            <div class="post__btn-ctn">
-              <button type="button" class="btn dropdown-toggle post__post-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                <img class="post__dropdown-icon" src="./img/post-dropdown-icon.svg" alt="post dropdown icon">
-              </button>
-              <ul class="dropdown-menu dropdown-menu-end post__dropdown-menu">
-                <li><button class="dropdown-item post__dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#updatePostModal">Update</button></li>
-                <li><button class="dropdown-item post__dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#deletePostModal">Delete</button></li>
-              </ul>
+            <div class="post__top">
+                <div class="post__author-img-wrap">
+                    <img class="post__author-image" src="https://images.unsplash.com/photo-1482046187924-50f27dc64333?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Author profile image">
+                </div>
+                <div class="post__btn-ctn">
+                    <button type="button" class="btn dropdown-toggle post__post-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img class="post__dropdown-icon" src="./img/post-dropdown-icon.svg" alt="post dropdown icon">
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end post__dropdown-menu">
+                        <li><button class="dropdown-item post__dropdown-item" type="button" data-bs-toggle="modal" data-bs-target=".main-feed-update-post-modal">Update</button></li>
+                        <li><button class="dropdown-item post__dropdown-item" type="button" data-bs-toggle="modal" data-bs-target=".main-feed-delete-post-modal">Delete</button></li>
+                    </ul>
+                </div>
+                <img class="post__image" src="./img/tui.jpg" alt="User posted picture">
+            </div>
+            <div class="post__bottom">
+                <div class="post__bottom-upper">
+                    <p class="post__text">Kahurangi National Park</p>
+                    <p class="post__text">Kea</p>
+                </div>
+
+                <div class="post__bottom-lower">
+                    <p class="post__caption">Check out this curious fella!</p>
+                </div>
+
+                <div class="post__comments">
+                    <p class="post__comments-details">view details</p>
+                    <img class="post__speech" src="./img/comments-icon.svg" alt="comments icon">
+                </div>
             </div>
         </div>
         `;
