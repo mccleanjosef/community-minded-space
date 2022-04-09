@@ -570,7 +570,7 @@ footer {
 
 .post {
   width: 341px;
-  min-height: 200px;
+  min-height: 350px;
 }
 .post__top {
   width: 100%;
@@ -914,6 +914,8 @@ footer {
   letter-spacing: 0.09rem;
   text-align: center;
   padding: 0.28em 1.72em;
+}
+
 .post-modal__header {
   border: none;
 }
