@@ -38,6 +38,15 @@ $(document).ready(function() {
         `
         <div class="post" id="${testId[i]}">
             <h3>Hi ${testId[i]}</h3>
+            <div class="post__btn-ctn">
+              <button type="button" class="btn dropdown-toggle post__post-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <img class="post__dropdown-icon" src="./img/post-dropdown-icon.svg" alt="post dropdown icon">
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end post__dropdown-menu">
+                <li><button class="dropdown-item post__dropdown-item" type="button">Update</button></li>
+                <li><button class="dropdown-item post__dropdown-item" type="button">Delete</button></li>
+              </ul>
+            </div>
         </div>
         `;
         } //end of for loop
