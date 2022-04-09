@@ -36,39 +36,35 @@ $(document).ready(function() {
         document.getElementById('postContainer').innerHTML +=
         // Adding post elements here
         `
-        <div id="cardContainer" class="container">
-            <div class="card">
-                <div class="card__top">
-                    <div class="card__user-tools">
-                        <div class="dropdown">
-                            <button class="card__user-tools--btn" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-ellipsis-vertical ellipsis"></i>
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#">Update post</a></li>
-                            <li><a class="dropdown-item" href="#">Delete post</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <img class="card__image" src="./img/tui.jpg" alt="User posted picture">
+        <div class="post" id="${testId[i]}">
+            <div class="post__top">
+                <div class="post__author-img-wrap">
+                    <img class="post__author-image" src="https://images.unsplash.com/photo-1482046187924-50f27dc64333?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Author profile image">
+                </div>
+                <div class="post__btn-ctn">
+                    <button type="button" class="btn dropdown-toggle post__post-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img class="post__dropdown-icon" src="./img/post-dropdown-icon.svg" alt="post dropdown icon">
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end post__dropdown-menu">
+                        <li><button class="dropdown-item post__dropdown-item" type="button" data-bs-toggle="modal" data-bs-target=".main-feed-update-post-modal">Update</button></li>
+                        <li><button class="dropdown-item post__dropdown-item" type="button" data-bs-toggle="modal" data-bs-target=".main-feed-delete-post-modal">Delete</button></li>
+                    </ul>
+                </div>
+                <img class="post__image" src="./img/tui.jpg" alt="User posted picture">
+            </div>
+            <div class="post__bottom">
+                <div class="post__bottom-upper">
+                    <p class="post__text">Kahurangi National Park</p>
+                    <p class="post__text">Kea</p>
                 </div>
 
-                <div class="card__bottom">
-                    <div class="card__bottom-upper">
-                        <p class="card__text">Kahurangi National Park</p>
-                        <p id="cardText" class="card__text">Kea</p>
-                    </div>
+                <div class="post__bottom-lower">
+                    <p class="post__caption">Check out this curious fella!</p>
+                </div>
 
-                    <div class="card__bottom-lower">
-                        <p class="card__caption">Check out this curious fella!</p>
-                    </div>
-
-                    <div class="card__comments-master">
-                        <div class="card__comments">
-                            <p class="card__comments-details">view details</p>
-                            <i class="fa-solid fa-comment card__speech"></i>
-                        </div>
-                    </div>
+                <div class="post__comments">
+                    <p class="post__comments-details">view details</p>
+                    <img class="post__speech" src="./img/comments-icon.svg" alt="comments icon">
                 </div>
             </div>
         </div>

@@ -24,73 +24,121 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body id="mainFeedBody">
-    <header class="header">
-        <a href="./main-feed.html"><img class="header__logo" src="./img/sanctuary-logo-right-heavy.svg" alt="Sanctuary Logo"></a>
-        <div class="btn-group">
-          <button type="button" class="btn dropdown-toggle header__account-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-            <img class="header__profile-icon" src="./img/profile-icon.svg" alt="Signed Out Profile Icon">
-            <i class="fa-solid fa-chevron-down header__down-icon"></i>
-            <i class="fa-solid fa-chevron-up header__up-icon"></i>
-          </button>
-          <ul class="dropdown-menu dropdown-menu-end header__dropdown-menu">
-            <a href="./signIn.html"><li><button class="dropdown-item header__dropdown-item" type="button">Sign In</button></li></a>
-            <a href=""></a><li><button class="dropdown-item header__dropdown-item" type="button">Display Mode</button></li>
-            <a href="./get-involved.html"><li><button class="dropdown-item header__dropdown-item" type="button">Get Involved</button></li></a>
-            <li><button class="dropdown-item header__dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#createAccountModal">Create Account</button></li>
-          </ul>
+
+  <!-- Update Post Modal -->
+  <div class="modal fade main-feed-update-post-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="updatePostModal-header">
+          <h5 class="updatePostModal-header--title">Update</h5>
+          <button type="button" class="btn-close close-icon" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-    </header>
-
-    <!-- Magic Grid - Masonry Grid -->
-    <div class="posts-wrap">
-        <div class="posts-container" id="postContainer"></div>
-    </div>
-
-    <div class="add-post">
-        <button class="add-post__button">
-            <i class="fa-solid fa-plus"></i>
-        </button>
-    </div>
-
-
-
-    <!-- Create Account modal -->
-    <div class="modal fade" id="createAccountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="createAccountModal-header">
-            <h5 class="createAccountModal-header--title">Create Account</h5>
-            <button type="button" class="btn-close close-icon" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="createAccountModal-body">
-              <label class="createAccountModal-body--label" for="">Username</label>
-              <input class="createAccountModal-body--input" id="c-username" type="text" name="c-username" placeholder="Username">
-              <label class="createAccountModal-body--label" for="">Password</label>
-              <input class="createAccountModal-body--input" id="c-password" type="password" name="c-password" placeholder="Password">
-              <label class="createAccountModal-body--label" for="">Profile image url</label>
-              <input class="createAccountModal-body--input" id="c-profile_img" type="text" name="c-profile_img" placeholder="https://unsplash.com/photos/">
-          </div>
-          <div class="createAccountModal-footer">
-            <button id="createAccount" class="createAccountModal-footer--btn">Create</button>
-          </div>
+        <div class="updatePostModal-body">
+          <label class="updatePostModal-body--label" for="">Image url</label>
+          <input class="updatePostModal-body--input" type="text" name="imageURL" placeholder="https://unsplash.com/photos/...">
+          <label class="updatePostModal-body--label" for="">Location</label>
+          <input class="updatePostModal-body--input" type="text" name="location" placeholder="Wellington">
+          <label class="updatePostModal-body-label" for="">Name</label>
+          <input class="updatePostModal-body--input" type="text" name="name" placeholder="Pīwakawaka">
+          <label class="updatePostModal-body--label" for="">Description</label>
+          <textarea class="updatePostModal-body--inputDescription" type="text" name="description" placeholder="Found this little fella on my hike"></textarea>
+        </div>
+        <div class="updatePostModal-footer">
+          <button class="updatePostModal-footer--btn">Update</button>
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- Delete Post Modal -->
+  <div class="modal fade main-feed-delete-post-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="deletePostModal-header">
+          <h5 class="deletePostModal-header--title">Delete</h5>
+          <button type="button" class="btn-close close-icon" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="deletePostModal-body">
+          <p class="deletePostModal-body--text">Are you sure you want to delete?</p>
+        </div>
+        <div class="deletePostModal-footer">
+          <button class="deletePostModal-footer--btn">Yes</button>
+          <button class="deletePostModal-footer--btn" data-bs-dismiss="modal" aria-label="Close">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Create Account modal -->
+  <div class="modal fade main-feed-create-account-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="createAccountModal-header">
+          <h5 class="createAccountModal-header--title">Create Account</h5>
+          <button type="button" class="btn-close close-icon" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="createAccountModal-body">
+            <label class="createAccountModal-body--label" for="">Username</label>
+            <input class="createAccountModal-body--input" id="c-username" type="text" name="c-username" placeholder="Username">
+            <label class="createAccountModal-body--label" for="">Password</label>
+            <input class="createAccountModal-body--input" id="c-password" type="password" name="c-password" placeholder="Password">
+            <label class="createAccountModal-body--label" for="">Profile image url</label>
+            <input class="createAccountModal-body--input" id="c-profile_img" type="text" name="c-profile_img" placeholder="https://unsplash.com/photos/">
+        </div>
+        <div class="createAccountModal-footer">
+          <button id="createAccount" class="createAccountModal-footer--btn">Create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <header class="header">
+      <a href="./main-feed.html"><img class="header__logo" src="./img/sanctuary-logo-right-heavy.svg" alt="Sanctuary Logo"></a>
+      <div class="btn-group">
+        <button type="button" class="btn dropdown-toggle header__account-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          <img class="header__profile-icon" src="./img/profile-icon.svg" alt="Signed Out Profile Icon">
+          <i class="fa-solid fa-chevron-down header__down-icon"></i>
+          <i class="fa-solid fa-chevron-up header__up-icon"></i>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end header__dropdown-menu">
+          <a href="./signIn.html"><li><button class="dropdown-item header__dropdown-item" type="button">Sign In</button></li></a>
+          <a href=""></a><li><button class="dropdown-item header__dropdown-item" type="button">Display Mode</button></li>
+          <a href="./get-involved.html"><li><button class="dropdown-item header__dropdown-item" type="button">Get Involved</button></li></a>
+          <li><button class="dropdown-item header__dropdown-item" type="button" data-bs-toggle="modal" data-bs-target=".main-feed-create-account-modal">Create Account</button></li>
+        </ul>
+      </div>
+  </header>
+
+  <!-- Magic Grid - Masonry Grid -->
+  <div class="posts-wrap">
+      <div class="posts-container" id="postContainer"></div>
+  </div>
+
+  <div class="add-post">
+      <button class="add-post__button">
+          <i class="fa-solid fa-plus"></i>
+      </button>
+  </div>
 
 
-    <!-- jQuery js -->
-    <script src="../frontend/node_modules/jquery/dist/jquery.min.js"></script>
+  
+  
 
-    <!-- bootstrap js -->
-    <script src="../frontend/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- popper js -->
-    <script src="./node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
+  <!-- jQuery js -->
+  <script src="../frontend/node_modules/jquery/dist/jquery.min.js"></script>
 
-    <!-- Magic Grid -->
-    <script src="./node_modules/magic-grid/dist/magic-grid.min.js"></script>
+  <!-- bootstrap js -->
+  <script src="../frontend/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- frontend mainFeed js -->
-    <script src="./js/mainFeed.js"></script>
+  <!-- popper js -->
+  <script src="./node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
+
+  <!-- Magic Grid -->
+  <script src="./node_modules/magic-grid/dist/magic-grid.min.js"></script>
+
+  <!-- frontend mainFeed js -->
+  <script src="./js/mainFeed.js"></script>
 </body>
 </html>
