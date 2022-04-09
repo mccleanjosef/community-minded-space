@@ -43,8 +43,8 @@ $(document).ready(function() {
                 <img class="post__dropdown-icon" src="./img/post-dropdown-icon.svg" alt="post dropdown icon">
               </button>
               <ul class="dropdown-menu dropdown-menu-end post__dropdown-menu">
-                <li><button class="dropdown-item post__dropdown-item" type="button">Update</button></li>
-                <li><button class="dropdown-item post__dropdown-item" type="button">Delete</button></li>
+                <li><button class="dropdown-item post__dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#updatePostModal">Update</button></li>
+                <li><button class="dropdown-item post__dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#deletePostModal">Delete</button></li>
               </ul>
             </div>
         </div>
