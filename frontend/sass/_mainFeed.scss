@@ -29,18 +29,11 @@
     }
 
     &__dropdown-menu{
-        font-size: 1.6rem;
-        font-family: $body-font;
-        color: $black;
-        background-color: $white;
-        border-radius: 1.9rem;
-        text-align: center;
-        border: none;
-        filter: drop-shadow(-3px 3px 7px rgba(0, 0, 0, 0.3));
+        @include dropdown-menu;
     }
 
     &__dropdown-item{
-        padding: 1em 1.5em;
+        @include dropdown-item;
     }
 }
 
@@ -71,18 +64,11 @@
     }
 
     &__dropdown-menu{
-        font-size: 1.6rem;
-        font-family: $body-font;
-        color: $black;
-        background-color: $white;
-        border-radius: 1.9rem;
-        text-align: center;
-        border: none;
-        filter: drop-shadow(-3px 3px 7px rgba(0, 0, 0, 0.3));
+        @include dropdown-menu;
     }
 
     &__dropdown-item{
-        padding: 1em 1.5em;
+        @include dropdown-item;
     }
 }
 
