@@ -49,6 +49,43 @@
     display: none;
 }
 
+.post{
+    width: 341px;
+    min-height: 200px;
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    position: relative;
+
+    &__btn-ctn{
+        position: absolute;
+        top: 8%;
+        right: 5%;
+        z-index: 10;
+    }
+
+    &__dropdown-icon{
+        height: 3rem;
+    }
+
+    &__dropdown-menu{
+        font-size: 1.6rem;
+        font-family: $body-font;
+        color: $black;
+        background-color: $white;
+        border-radius: 1.9rem;
+        text-align: center;
+        border: none;
+        filter: drop-shadow(-3px 3px 7px rgba(0, 0, 0, 0.3));
+    }
+
+    &__dropdown-item{
+        padding: 1em 1.5em;
+    }
+}
+
 
 .add-post{
     width: 100%;
