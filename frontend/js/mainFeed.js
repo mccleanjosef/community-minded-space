@@ -31,6 +31,7 @@ $(document).ready(function() {
         console.log(configData.SERVER_URL, configData.SERVER_PORT);
         url = `${configData.SERVER_URL}:${configData.SERVER_PORT}`;
         console.log(url);
+        viewProjects(); //called here to use url in allProjectsFromDB on page load
 
         let testId = [101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113];
 
@@ -101,5 +102,55 @@ $(document).ready(function() {
         }
     });
     // ============ Account dropdown arrow Ends ============
+
+
+
+    //============ Posts Starts ============
+  
+    // View all cards when document is ready
+    function viewProjects(){
+        $.ajax({
+            url: `http://${url}/allProjectsFromDB`,
+            type: 'GET',
+            datatype: 'json',
+            success: function(projectsFromMongo){
+                // console.log(projectsFromMongo);
+                
+                let i;
+                document.getElementById('result').innerHTML = '';
+                for(i=0; i<projectsFromMongo.length; i++){
+                    document.getElementById('result').innerHTML +=
+                    // Adding project-card elements here
+                    `
+                    <div id="${projectsFromMongo[i]._id}" class="projects__card">
+                        <button class="projects__project-options"></button>
+                        <div class="projects__dropdown-content">
+                            <a class="updateBtn">Update</a>
+                            <a class="deleteBtn">Delete</a>
+                        </div>
+                        <a class="projects__portfolio-link" href="${projectsFromMongo[i].project_url}"  target="blank">
+                            <div class="projects__image-wrap">
+                                <img class="projects__img" src="${projectsFromMongo[i].image_url}" alt="project image">
+                            </div>
+                        </a>
+                        <h1 class="projects__heading hide">${projectsFromMongo[i].name}</h1>
+                        <a class="projects__small-screen-link hide" href="${projectsFromMongo[i].project_url}"  target="blank">Go to project<img class="projects__link-icon" src="../frontend/assets/click-screen-link-icon.svg" alt="project link icon"></a>
+                        <h3 class="projects__author hide">${projectsFromMongo[i].username}</h3>
+                        <div class="projects__description-wrap hide">
+                            <p class="projects__description" id="123${projectsFromMongo[i]._id}">${projectsFromMongo[i].description}</p>
+                        </div>
+                    </div>
+                    `;
+                } //end of for loop
+
+                // following runs in success function so elements can be selected afterwards
+
+            },
+            error:function(){
+              alert('unable to get projects');
+            }
+        }) //ajax
+    }
+    //------- project cards ends ---------
 
 }); //document.ready
