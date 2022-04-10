@@ -1,7 +1,7 @@
+console.log('main script is linked'); //testing if script.js is working
+console.log(sessionStorage);
+
 $(document).ready(function(){
-
-
-    console.log('main script is linked'); //testing if script.js is working
 
     // ============ Masonry Layout - Magic Grid Starts ============
     let magicGrid = new MagicGrid({
@@ -15,6 +15,14 @@ $(document).ready(function(){
 
     magicGrid.listen();
     // ============ Masonry Layout - Magic Grid Ends ============
+
+
+
+    // Session Storage for Profile IMG Finished
+
+
+    // Session Storage for Profile IMG Finished 
+
 
 
 
@@ -33,7 +41,6 @@ $(document).ready(function(){
         }
     })
 
-
     function allPosts(url){
         $.ajax({
             url: `http://${url}/allPostsFromDB`,
@@ -50,7 +57,6 @@ $(document).ready(function(){
                     <div class="card">
                         <div class="card__top">
                             <div class="card__user-tools">
-                            <img id="profilePicture" class="" src="" alt="User posted picture">
                                 <div class="dropdown">
                                     <button class="card__user-tools--btn" dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fa-solid fa-ellipsis-vertical ellipsis"></i>
@@ -73,14 +79,60 @@ $(document).ready(function(){
                             </div>
                             <div class="card__comments-master">
                                 <div class="card__comments">
-                                    <button class="card__comments-details" data-bs-toggle="modal" data-bs-target="#exampleModal">view details</button>
+                                    <button id="${postsFromMongo[i]._id}"  class="card__comments-details" data-bs-toggle="modal" data-bs-target="#postModal">View Details</button>
                                     <i class="fa-solid fa-comment card__speech"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                    `  
+                    `
+
+
+                // View Post Modal
+
+                document.querySelectorAll('.container').forEach(function(card){
+                    card.addEventListener('click', function(e) {
+                        console.log(e.target.id);
+                        let id = e.target.id;
+                        
+                        $.ajax({
+                            url: `http://${url}/allPostsFromDB/${id}`,
+                            type: 'GET',
+                            dataType: 'json',
+                            success:function(singleProject){
+                                console.log(singleProject.name);
+                                $('#post-modal-content').empty().append(
+
+                                `
+                                <div class="post-modal__img-container" style="background: url('${singleProject.image_url}'); background-size: cover; background-position: center;">
+                            </div>
+              
+                            <div class="post-modal__location-container">
+                                <p class="card__text">${singleProject.location}</p>
+                                <p id="cardText" class="card__text">${singleProject.name}</p>
+                            </div>
+              
+                            <div class="post-modal__description-container">
+                                <p class="post-modal__description">${singleProject.description}</p>
+                            </div>
+              
+                            <div class="post-modal__comments-container">
+                                <div class="post-modal__comments-top">
+                                </div>
+              
+                                <div class="post-modal__comments-bottom">
+                                    <input placeholder="Comment here..." class="post-modal__comments-input" type="text">
+                                    <button class="post-modal__comment-btn">
+                                    </button>
+                                </div>
+                            </div>
+                                `
+                                );
+                            }
+                            })
+                    });
+                })
                 }
             },//success
             error:function(){

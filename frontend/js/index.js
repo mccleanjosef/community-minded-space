@@ -130,6 +130,7 @@ $('#index-btn').click(function(){
               sessionStorage.setItem('userID', user['_id']);
               sessionStorage.setItem('userName', user['username']);
               console.log(sessionStorage);
+              document.location.href = 'main-feed.html';
               alert('Welcome back! :)')
             } // end of ifs
           }, //success
@@ -185,7 +186,7 @@ $('#index-btn').click(function(){
         },
         success: function(post) {
           console.log(post);
-          alert('post added');
+          alert('Post Added');
         },
         error: function() {
           console.log('error: cannot call api');
@@ -196,22 +197,10 @@ $('#index-btn').click(function(){
 
 
 
-
   // Add Sighting Finished
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+  
     // Log Out Function
 
     // $('#logoutClassName').click(function() {

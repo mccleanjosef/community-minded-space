@@ -239,3 +239,16 @@ app.delete('/deleteComments/:id', (req, res) =>{
 
 
 
+// Get for modal
+app.get('/allPostsFromDB/:id', (req, res) => {
+  const id= req.params.id;
+  Post.findById(id, function (err, post) {
+  if (err){
+    console.log(err);
+  }
+  else{
+    console.log("Result : ", post);
+    res.send(post);
+     }
+   });
+})
