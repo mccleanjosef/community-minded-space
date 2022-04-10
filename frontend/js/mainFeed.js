@@ -1,19 +1,24 @@
 $(document).ready(function() {
     console.log('main script is linked'); //testing if script.js is working
 
-    // ============ Masonry Layout - Magic Grid Starts ============
-    let magicGrid = new MagicGrid({
-    container: '#postContainer',
-    animate: true,
-    gutter: 30,
-    // static: true,
-    // useMin: true,
-    items: 13
+    // ============ Masonry Layout - Masonry init Starts ============
+    // init Masonry
+    $('.grid').masonry({
+        // options
+        itemSelector: ".grid-item",
+        columnWidth: ".grid-item",
+        gutter: 10,
+        horizontalOrder: true,
+        fitWidth: true
     });
 
-    magicGrid.listen();
-    // ============ Masonry Layout - Magic Grid Ends ============
+    // layout Masonry after each image loads
+    $('.grid').imagesLoaded().progress(function() {
+        $('.grid').masonry("layout");
+    });
+    // ============ Masonry Layout - Masonry init Ends ============
 
+    
 
 
     // ============ API Starts ============
@@ -32,6 +37,7 @@ $(document).ready(function() {
         // Generate all posts when document is ready
         let i;
         document.getElementById('postContainer').innerHTML = '';
+
         for(i=0; i<testId.length; i++){
         document.getElementById('postContainer').innerHTML +=
         // Adding post elements here
@@ -70,12 +76,16 @@ $(document).ready(function() {
         </div>
         `;
         } //end of for loop
+
+        
     },
     error: function(error) {
         console.log(error);
     }
     })
     // ============ API Ends ============
+
+    
 
     // ============ Account dropdown arrow Starts ============
     // hide and showing arrow icons based on if dropdown menu is visible

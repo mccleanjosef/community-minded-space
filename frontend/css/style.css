@@ -348,7 +348,21 @@ a {
 .posts-wrap {
   width: 100%;
   height: 77.3vh;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.grid {
+  margin: 1rem auto;
+}
+.grid-item {
+  width: 341px;
+  height: auto;
+  margin-bottom: 10px;
+}
+.grid-item img {
+  width: 100%;
+  height: 100%;
 }
 
 .get-involved {
