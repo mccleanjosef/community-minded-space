@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../frontend/node_modules/bootstrap/dist/css/bootstrap.min.css">
 
     <!-- font-awesome cdn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
     <!-- Google Fonts Roboto and Laila Bold -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,14 +33,18 @@
             <i class="fa-solid fa-chevron-up header__up-icon"></i>
           </button>
           <ul class="dropdown-menu dropdown-menu-end header__dropdown-menu">
-            <li><button class="dropdown-item header__dropdown-item" type="button">Sign In</button></li>
+            <a href="signIn.html"><li><button class="dropdown-item header__dropdown-item" type="button">Sign In</button></li></a>
             <li><button class="dropdown-item header__dropdown-item" type="button">Display Mode</button></li>
             <li><button class="dropdown-item header__dropdown-item" type="button">Get Involved</button></li>
-            <li><button class="dropdown-item header__dropdown-item" type="button">Create Account</button></li>
+
+            <a href="signIn.html"><li><button class="dropdown-item header__dropdown-item" type="button">Create Account</button></li></a>
+
           </ul>
         </div>
     </header>
 
+
+    
     <!-- Magic Grid - Masonry Grid -->
     <div class="posts-wrap">
         <div class="posts-container" id="postContainer"></div>
@@ -48,9 +52,13 @@
 
     <div class="add-post">
         <button class="add-post__button">
-            <i class="fa-solid fa-plus"></i>
+            <a href="addSighting.html"><i class="fa-solid fa-plus"></i></a>
         </button>
     </div>
+
+
+
+
 
 
     <!-- jQuery js -->

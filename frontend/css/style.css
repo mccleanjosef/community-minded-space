@@ -18,6 +18,11 @@ ul {
   list-style: none;
 }
 
+a, a:link, a:after, a:visited, a:hover, a:active {
+  color: white;
+  text-decoration: none;
+}
+
 .landing-background {
   height: 100vh;
   width: 100vw;
@@ -147,10 +152,8 @@ ul {
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
-  padding-left: 15%;
-  padding-bottom: 12%;
 }
 .signIn-middle--img {
   height: 7rem;
@@ -163,6 +166,7 @@ ul {
   font-size: 1.6rem;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
+  margin-right: 18rem;
 }
 .signIn-middle--input {
   border: none;
@@ -228,223 +232,6 @@ ul {
   letter-spacing: 0.05rem;
 }
 
-.modal-content {
-  border-radius: 2rem !important;
-}
-
-.close-icon {
-  margin-left: 3.6rem;
-  margin-right: 1rem;
-  margin-bottom: 3rem;
-}
-
-.createAccountModal-header {
-  height: 15vh;
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-.createAccountModal-header--title {
-  color: #1AA878;
-  font-size: 20px;
-  font-family: "Laila", sans-serif;
-  letter-spacing: 0.05rem;
-}
-
-.createAccountModal-body {
-  height: 45vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
-  padding-left: 15%;
-}
-.createAccountModal-body--label {
-  color: black;
-  padding-bottom: 0.6rem;
-  letter-spacing: 0.06rem;
-  font-size: 16px;
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-}
-.createAccountModal-body--input {
-  outline: 0;
-  border-width: 0 0 2px;
-  border-color: rgb(0, 0, 0);
-  margin-bottom: 2rem;
-  padding: 0.4rem;
-  width: 16rem;
-  letter-spacing: 0.06rem;
-  font-size: 14px;
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-}
-.createAccountModal-body input:focus {
-  border-color: #1AA878;
-}
-
-.createAccountModal-footer {
-  height: 15vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.createAccountModal-footer--btn {
-  border: none;
-  color: white;
-  background: linear-gradient(45deg, rgb(2, 0, 36) 0%, rgb(26, 168, 120) 0%, rgb(120, 201, 72) 100%);
-  border-radius: 2rem;
-  width: 10rem;
-  padding: 0.6rem;
-  font-size: 20px;
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  letter-spacing: 0.02rem;
-  text-align: center;
-}
-
-.deletePostModal-header {
-  height: 15vh;
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-.deletePostModal-header--title {
-  color: #1AA878;
-  font-size: 20px;
-  font-family: "Laila", sans-serif;
-  letter-spacing: 0.05rem;
-}
-
-.close-icon-delete {
-  margin-left: 6.6rem;
-  margin-right: 1rem;
-  margin-bottom: 1.6rem;
-}
-
-.deletePostModal-body {
-  height: 5vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-.deletePostModal-body--text {
-  font-size: 16px;
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  color: black;
-  text-align: center;
-}
-
-.deletePostModal-footer {
-  height: 20vh;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding-bottom: 2rem;
-}
-.deletePostModal-footer--btn {
-  border: none;
-  color: white;
-  background: linear-gradient(45deg, rgb(2, 0, 36) 0%, rgb(26, 168, 120) 0%, rgb(120, 201, 72) 100%);
-  border-radius: 2rem;
-  width: 8rem;
-  padding: 0.6rem;
-  font-size: 20px;
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  letter-spacing: 0.02rem;
-  text-align: center;
-}
-
-.updatePostModal-header {
-  height: 15vh;
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-.updatePostModal-header--title {
-  color: #1AA878;
-  font-size: 20px;
-  font-family: "Laila", sans-serif;
-  letter-spacing: 0.05rem;
-}
-
-.updatePostModal-body {
-  height: 60vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
-  padding-left: 15%;
-}
-.updatePostModal-body--label {
-  color: black;
-  padding-bottom: 0.6rem;
-  letter-spacing: 0.06rem;
-  font-size: 16px;
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-}
-.updatePostModal-body--input {
-  outline: 0;
-  border-width: 0 0 2px;
-  border-color: rgb(0, 0, 0);
-  margin-bottom: 2rem;
-  padding: 0.4rem;
-  width: 16rem;
-  letter-spacing: 0.06rem;
-  font-size: 14px;
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-}
-.updatePostModal-body--inputDescription {
-  outline: 0;
-  border-width: 0 2px 2px 0;
-  border-color: rgb(0, 0, 0);
-  margin-bottom: 2rem;
-  padding: 0.4rem;
-  padding-bottom: 5rem;
-  width: 16rem;
-  letter-spacing: 0.06rem;
-  font-size: 14px;
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-}
-.updatePostModal-body input:focus {
-  border-color: #1AA878;
-}
-
-.updatePostModal-footer {
-  height: 15vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.updatePostModal-footer--btn {
-  border: none;
-  color: white;
-  background: linear-gradient(45deg, rgb(2, 0, 36) 0%, rgb(26, 168, 120) 0%, rgb(120, 201, 72) 100%);
-  border-radius: 2rem;
-  width: 8rem;
-  padding: 0.6rem;
-  font-size: 20px;
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  letter-spacing: 0.02rem;
-  text-align: center;
-}
-
 .addSighting-container {
   height: 100vh;
   width: 100vw;
@@ -461,15 +248,15 @@ ul {
   padding-top: 5%;
 }
 .addSighting-backSection--arrowIMG {
-  height: 1rem;
+  height: 1.8rem;
 }
 .addSighting-backSection--back {
   color: white;
   font-size: 15px;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  padding-left: 0.8rem;
-  padding-top: 1.1rem;
+  padding-left: 1.5rem;
+  padding-top: 1.5rem;
 }
 
 .addSighting-titleSection {
@@ -493,8 +280,7 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  padding-left: 16%;
+  align-items: center;
 }
 .addSighting-sightingForm--label {
   color: white;
@@ -502,37 +288,64 @@ ul {
   font-weight: 400;
   font-size: 16px;
   letter-spacing: 0.06rem;
-  padding-bottom: 0.3rem;
-  padding-left: 0.4rem;
+  padding-bottom: 0.6rem;
+  padding-left: 0.8rem;
+  margin-right: 19rem;
+}
+.addSighting-sightingForm--label2 {
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0.06rem;
+  padding-bottom: 0.6rem;
+  padding-left: 0.8rem;
+  margin-right: 19.5rem;
+}
+.addSighting-sightingForm--label3 {
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0.06rem;
+  padding-bottom: 0.6rem;
+  padding-left: 0.8rem;
+  margin-right: 22rem;
+}
+.addSighting-sightingForm--label4 {
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0.06rem;
+  padding-bottom: 0.6rem;
+  padding-left: 0.8rem;
+  margin-right: 18rem;
 }
 .addSighting-sightingForm--input {
   border: none;
   border-radius: 2rem;
-  padding: 0.6rem;
-  width: 16rem;
+  padding: 1rem;
+  width: 27rem;
   letter-spacing: 0.06rem;
   font-size: 14px;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   text-align: left;
-  padding-left: 1rem;
-}
-.addSighting-sightingForm--input:focus {
-  border-color: #1AA878;
+  padding-left: 2rem;
 }
 .addSighting-sightingForm--inputDescription {
   border: none;
   border-radius: 1.4rem;
-  padding: 3rem;
-  width: 16rem;
+  width: 27rem;
+  height: 12rem;
   letter-spacing: 0.06rem;
   font-size: 14px;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  margin-bottom: 1rem;
   text-align: left;
-  padding-left: 1rem;
+  padding-left: 2rem;
 }
 
 .addSighting-addPost {
@@ -634,4 +447,277 @@ ul {
   border: none;
   font-size: 2rem;
   filter: drop-shadow(-1px 2px 4px rgba(0, 0, 0, 0.49));
+}
+
+.updatePostModal-header {
+  height: 15vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column-reverse;
+}
+.updatePostModal-header--closeBtn {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 2rem;
+}
+.updatePostModal-header--title {
+  color: #1AA878;
+  font-size: 20px;
+  font-family: "Laila", sans-serif;
+  letter-spacing: 0.05rem;
+  text-align: center;
+}
+
+.updatePostModal-body {
+  height: 60vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.updatePostModal-body--label {
+  color: black;
+  padding-bottom: 1rem;
+  letter-spacing: 0.06rem;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  margin-right: 18.5rem;
+}
+.updatePostModal-body--label2 {
+  color: black;
+  padding-bottom: 1rem;
+  letter-spacing: 0.06rem;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  margin-right: 18.8rem;
+}
+.updatePostModal-body--label3 {
+  color: black;
+  padding-bottom: 1rem;
+  letter-spacing: 0.06rem;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  margin-right: 21rem;
+}
+.updatePostModal-body--label4 {
+  color: black;
+  padding-bottom: 1rem;
+  letter-spacing: 0.06rem;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  margin-right: 16.6rem;
+}
+.updatePostModal-body--input {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: rgb(0, 0, 0);
+  margin-bottom: 4rem;
+  padding: 0.4rem;
+  width: 25rem;
+  letter-spacing: 0.06rem;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+.updatePostModal-body--inputDescription {
+  outline: 0;
+  border-width: 0 2px 2px 0;
+  border-color: rgb(0, 0, 0);
+  margin-bottom: 4rem;
+  padding: 0.4rem;
+  padding-bottom: 5rem;
+  width: 25rem;
+  letter-spacing: 0.06rem;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+.updatePostModal-body input:focus {
+  border-color: #1AA878;
+}
+
+.updatePostModal-footer {
+  height: 15vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.updatePostModal-footer--btn {
+  border: none;
+  color: white;
+  background: linear-gradient(45deg, rgb(2, 0, 36) 0%, rgb(26, 168, 120) 0%, rgb(120, 201, 72) 100%);
+  border-radius: 2rem;
+  width: 14rem;
+  padding: 0.6rem;
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.02rem;
+  text-align: center;
+}
+
+.deletePostModal-header {
+  height: 15vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column-reverse;
+}
+.deletePostModal-header--closeBtn {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 2rem;
+}
+.deletePostModal-header--title {
+  color: #1AA878;
+  font-size: 20px;
+  font-family: "Laila", sans-serif;
+  letter-spacing: 0.05rem;
+  text-align: center;
+}
+
+.deletePostModal-body {
+  height: 5vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.deletePostModal-body--text {
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: black;
+  text-align: center;
+}
+
+.deletePostModal-footer {
+  height: 20vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2rem;
+  padding-left: 20%;
+  padding-right: 20%;
+}
+.deletePostModal-footer--btn {
+  border: none;
+  color: white;
+  background: linear-gradient(45deg, rgb(2, 0, 36) 0%, rgb(26, 168, 120) 0%, rgb(120, 201, 72) 100%);
+  border-radius: 2rem;
+  width: 8rem;
+  padding: 0.6rem;
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.02rem;
+  text-align: center;
+}
+
+.modal-content {
+  border-radius: 2rem !important;
+}
+
+.createAccountModal-header {
+  height: 15vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column-reverse;
+}
+.createAccountModal-header--closeBtn {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 2rem;
+}
+.createAccountModal-header--title {
+  color: #1AA878;
+  font-size: 20px;
+  font-family: "Laila", sans-serif;
+  letter-spacing: 0.05rem;
+  text-align: center;
+}
+
+.createAccountModal-body {
+  height: 45vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.createAccountModal-body--label {
+  color: black;
+  padding-bottom: 1rem;
+  letter-spacing: 0.06rem;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  margin-right: 18rem;
+}
+.createAccountModal-body--label3 {
+  color: black;
+  padding-bottom: 1rem;
+  letter-spacing: 0.06rem;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  margin-right: 13rem;
+}
+.createAccountModal-body--input {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: rgb(0, 0, 0);
+  margin-bottom: 4rem;
+  padding: 0.4rem;
+  width: 25rem;
+  letter-spacing: 0.06rem;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+.createAccountModal-body input:focus {
+  border-color: #1AA878;
+}
+
+.createAccountModal-footer {
+  height: 15vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.createAccountModal-footer--btn {
+  border: none;
+  color: white;
+  background: linear-gradient(45deg, rgb(2, 0, 36) 0%, rgb(26, 168, 120) 0%, rgb(120, 201, 72) 100%);
+  border-radius: 2rem;
+  width: 14rem;
+  padding: 0.6rem;
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.02rem;
+  text-align: center;
 }

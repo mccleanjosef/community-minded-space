@@ -32,32 +32,20 @@
         </div>
         <div class="signIn-middle">
             <label class="signIn-middle--label" for="">Username</label>
-            <input class="signIn-middle--input" name="s-username" id="s-username" type="text" name="username" placeholder="Username">
+            <input class="signIn-middle--input" name="s-username" id="s-username" type="text" name="s-username" placeholder="Username">
+
             <label class="signIn-middle--label" for="">Password</label>
             <input class="signIn-middle--input" name="s-password" id="s-password" type="password" name="s-password" placeholder="Password">
         </div>
         <div class="signIn-bottom">
             <button id="signInBtn" class="signIn-bottom--signIn">Sign In</button>
             <button class="signIn-bottom--createAccount" data-bs-toggle="modal" data-bs-target="#createAccountModal">Create Account</button>
-            <p class="signIn-bottom--guest" data-bs-toggle="modal" data-bs-target="#updatePostModal">Continue as guest</p>
 
-            <a href="addSighting.html"><button>add Sighting</button></a>
+            <a href="main-feed.html"><p class="signIn-bottom--guest">Continue as guest</p></a>
+
         </div>
     </div>
 
-    <div class="signIn-middle">
-      <label class="signIn-middle--label" for="">Username</label>
-      <input class="signIn-middle--input" id="" type="text" name="username" placeholder="Username">
-      <label class="signIn-middle--label" for="">Password</label>
-      <input class="signIn-middle--input" id="" type="text" name="password" placeholder="Password">
-    </div>
-
-    <div class="signIn-bottom">
-      <button class="signIn-bottom--signIn" data-bs-toggle="modal" data-bs-target="#deletePostModal">Sign In</button>
-      <button class="signIn-bottom--createAccount" data-bs-toggle="modal" data-bs-target="#createAccountModal">Create Account</button>
-      <a class="signIn-bottom--guest-link" href="./main-feed.html"><p class="signIn-bottom--guest" data-bs-toggle="modal" data-bs-target="#updatePostModal">Continue as guest</p></a>
-    </div>
-  </div>
 
   
 
@@ -69,16 +57,22 @@
   <div class="modal fade" id="createAccountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
+
         <div class="createAccountModal-header">
+          <div>
           <h5 class="createAccountModal-header--title">Create Account</h5>
-          <button type="button" class="btn-close close-icon" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <div class="createAccountModal-header--closeBtn">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        </div>
+
         <div class="createAccountModal-body">
             <label class="createAccountModal-body--label" for="">Username</label>
             <input class="createAccountModal-body--input" id="c-username" type="text" name="c-username" placeholder="Username">
             <label class="createAccountModal-body--label" for="">Password</label>
             <input class="createAccountModal-body--input" id="c-password" type="password" name="c-password" placeholder="Password">
-            <label class="createAccountModal-body--label" for="">Profile image url</label>
+            <label class="createAccountModal-body--label3" for="">Profile image url</label>
             <input class="createAccountModal-body--input" id="c-profile_img" type="text" name="c-profile_img" placeholder="https://unsplash.com/photos/">
         </div>
         <div class="createAccountModal-footer">
@@ -96,13 +90,18 @@
       <!-- Delete Modal Target (Put inside button you want to trigger) -->
       <!-- data-bs-toggle="modal" data-bs-target="#deletePostModal" -->
 
-    <!-- Modal -->
+
+  <!-- Modal -->
+
 <div class="modal fade" id="deletePostModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
+
       <div class="deletePostModal-header">
         <h5 class="deletePostModal-header--title">Delete</h5>
-        <button type="button" class="btn-close close-icon-delete" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="deletePostModal-header--closeBtn">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
       </div>
       <div class="deletePostModal-body">
         <p class="deletePostModal-body--text">Are you sure you want to delete?</p>
@@ -116,7 +115,15 @@
 </div>
 
 
+
+
+
+
+
       <!-- Update Post Modal -->
+
+      <!-- Update Modal Target (Put inside button you want to trigger) -->
+      <!-- data-bs-toggle="modal" data-bs-target="#updatePostModal" -->
 
     <!-- Modal -->
     <div class="modal fade" id="updatePostModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -127,7 +134,12 @@
 
           <div class="updatePostModal-header">
             <h5 class="updatePostModal-header--title">Update</h5>
-            <button type="button" class="btn-close close-icon-delete" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="updatePostModal-header--closeBtn">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+
+
           </div>
 
 
@@ -136,15 +148,15 @@
             <label class="updatePostModal-body--label" for="">Image url</label>
             <input class="updatePostModal-body--input" id="1" type="text" name="imageURL" placeholder="Image.png...">
 
-            <label class="updatePostModal-body--label" for="">Location</label>
+            <label class="updatePostModal-body--label2" for="">Location</label>
             <input class="updatePostModal-body--input" id="2" type="text" name="location" placeholder="Wellington...">
 
 
-            <label class="updatePostModal-body-label" for="">Name</label>
+            <label class="updatePostModal-body--label3" for="">Name</label>
             <input class="updatePostModal-body--input" id="3" type="text" name="name" placeholder="Pīwakawaka...">
 
 
-            <label class="updatePostModal-body--label" for="">Description</label>
+            <label class="updatePostModal-body--label4" for="">Description</label>
             <input class="updatePostModal-body--inputDescription" id="4" type="text" name="description" placeholder="Found this little fella on my hike..">
 
 

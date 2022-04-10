@@ -75,12 +75,13 @@ $('#index-btn').click(function(){
         },
         success: function(user) {
           console.log(user); //remove when development is finished
-          if (user !== 'username taken already. Please try another name') {
+
+          if (user !== 'username taken already. Please try another name'){
             alert('Thank you for registering. Please login');
 
           } else {
             alert('username taken already. Please try another name');
-            $('#r-username').val('');
+            $('#c-username').val('');
             $('#c-password').val('');
             $('#c-profile_img').val('');
           } //else
@@ -94,8 +95,7 @@ $('#index-btn').click(function(){
   }) //r-submit click
 
 
-    // User Registration Finished
-
+  // User Registration Finished
 
 
 
@@ -108,7 +108,7 @@ $('#index-btn').click(function(){
       console.log(username, password);
   
       if (username == '' || password == '') {
-        alert('Please enter all details');
+        alert('Please enter Username and Password');
       } else {
         $.ajax({
           url: `http://${url}/loginUser`,
@@ -148,15 +148,6 @@ $('#index-btn').click(function(){
 
 
 
-
-
-
-
-
-
-
-
-
   // Add Sighting Start
 
 
@@ -173,9 +164,16 @@ $('#index-btn').click(function(){
 
     console.log(userid);
     console.log(image_url, location, name, description);
-    if (image_url == '' || location == '' || name == '' || description == '' || !userid){
-      alert('Please login and enter all details');
-    } else {
+
+    if (!userid){
+      alert('Please log in to use this feature');
+    }
+
+    else if (image_url == '' || location == '' || name == '' || description == ''){
+      alert('Please enter all details');
+    }
+    
+    else{
       $.ajax({
         url: `http://${url}/addPost`,
         type: 'POST',
