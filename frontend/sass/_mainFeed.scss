@@ -44,7 +44,9 @@
 
 .post{
     width: 341px;
-    min-height: 350px;
+    height: auto;
+    float: left;
+    margin-bottom: 1.5rem;
 
     &__top{
         width: 100%;
@@ -118,14 +120,14 @@
         background: linear-gradient(268.51deg, #78C948 0%, #1AA878 96.71%);
         border-radius: 3rem;
         padding: 0.4em 1em;
-        margin-left: 1.5rem;
+        margin-left: 1rem;
     }
 
     &__bottom-lower{
         width: 100%;
         display: flex;
         overflow: hidden;
-        padding-left: 2rem;
+        padding: 0 2rem;
     }
 
     &__caption{
