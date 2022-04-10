@@ -353,16 +353,14 @@ a {
 }
 
 .grid {
-  margin: 1rem auto;
+  margin: 0 auto;
 }
-.grid-item {
-  width: 341px;
-  height: auto;
-  margin-bottom: 10px;
-}
-.grid-item img {
-  width: 100%;
-  height: 100%;
+
+/* clearfix */
+.grid:after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
 .get-involved {
@@ -584,7 +582,9 @@ footer {
 
 .post {
   width: 341px;
-  min-height: 350px;
+  height: auto;
+  float: left;
+  margin-bottom: 1.5rem;
 }
 .post__top {
   width: 100%;
@@ -660,13 +660,13 @@ footer {
   background: linear-gradient(268.51deg, #78C948 0%, #1AA878 96.71%);
   border-radius: 3rem;
   padding: 0.4em 1em;
-  margin-left: 1.5rem;
+  margin-left: 1rem;
 }
 .post__bottom-lower {
   width: 100%;
   display: flex;
   overflow: hidden;
-  padding-left: 2rem;
+  padding: 0 2rem;
 }
 .post__caption {
   font-family: "Roboto", sans-serif;
