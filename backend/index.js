@@ -5,7 +5,7 @@ const mongoose = require('mongoose'); // includes mongoose
 const bcrypt = require('bcryptjs');
 const cors = require('cors');
 const config = require('./config.json');
-// const { response } = require('express');
+// const {response} = require('express');
 
 const Post = require('./models/post.js');
 const User = require('./models/user.js');
@@ -31,6 +31,20 @@ mongoose.connect(`mongodb+srv://${config.MONGO_USER}:${config.MONGO_PASSWORD}@zi
 });
 
 app.listen(port,()=>console.log(`My fullstack application is listening on port ${port}`));
+
+
+
+
+
+
+// Get all Posts for the Database
+
+app.get('/allPostsFromDB', (req, res) => {
+  Post.find().then(result => {
+    res.send(result);
+  })
+});
+
 
 
 
@@ -224,3 +238,16 @@ app.delete('/deleteComments/:id', (req, res) =>{
 
 
 
+// Get for modal
+app.get('/allPostsFromDB/:id', (req, res) => {
+  const id= req.params.id;
+  Post.findById(id, function (err, post) {
+  if (err){
+    console.log(err);
+  }
+  else{
+    console.log("Result : ", post);
+    res.send(post);
+     }
+   });
+})

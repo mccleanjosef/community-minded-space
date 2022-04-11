@@ -33,7 +33,7 @@ $(document).ready(function() {
     success: function(configData) {
         console.log(configData.SERVER_URL, configData.SERVER_PORT);
         url = `${configData.SERVER_URL}:${configData.SERVER_PORT}`;
-        console.log(url);
+        // console.log(url);
         allPosts(url);
     },
     error: function(error) {
@@ -118,7 +118,7 @@ $(document).ready(function() {
                     
                     document.getElementById('postContainer').innerHTML +=
                     `
-                    <div class="post" id="${postsFromMongo[i]._id}">
+                    <div class="post" id="${postsFromMongo[i]._id}" data-bs-toggle="modal" data-bs-target="#postModal">
                         <div class="post__top">
                             <div class="post__author-img-wrap">
                                 <img class="post__author-image" src="https://images.unsplash.com/photo-1482046187924-50f27dc64333?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Author profile image">
@@ -169,6 +169,53 @@ $(document).ready(function() {
                     $('.grid').masonry("layout");
                 });
                 // Masonry init destory and reinit for ajax posts Ends
+
+                
+                // View Post Modal
+                $('.post').click(function () {
+                    let id = this.id;
+                    console.log(id);
+
+                    $.ajax({
+                        url: `http://${url}/allPostsFromDB/${id}`,
+                        type: 'GET',
+                        dataType: 'json',
+                        success:function(singleProject){
+                            console.log(singleProject.name);
+                            $('#post-modal-content').empty().append(
+
+                            `
+                            <div class="post-modal__img-container" style="background: url('${singleProject.image_url}'); background-size: cover; background-position: center;">
+                            </div>
+                
+                            <div class="post-modal__location-container">
+                                <p class="card__text">${singleProject.location}</p>
+                                <p id="cardText" class="card__text">${singleProject.name}</p>
+                            </div>
+                
+                            <div class="post-modal__description-container">
+                                <p class="post-modal__description">${singleProject.description}</p>
+                            </div>
+                
+                            <div class="post-modal__comments-container">
+                                <div class="post-modal__comments-top">
+                                </div>
+                
+                                <div class="post-modal__comments-bottom">
+                                    <input placeholder="Comment here..." class="post-modal__comments-input" type="text">
+                                    <button class="post-modal__comment-btn">
+                                    </button>
+                                </div>
+                            </div>
+                            `
+                            );
+                        },
+                        error:function(){
+                            alert('Unable to get posts');
+                        }//error
+                    })
+                })
+
 
             },//success
             error:function(){

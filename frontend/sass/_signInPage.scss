@@ -21,10 +21,8 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
-    padding-left: 15%;
-    padding-bottom: 12%;
 
     &--img{
         height: 7rem;
@@ -38,6 +36,8 @@
         font-size: 1.6rem;
         font-family: $body-font;
         font-weight: $regular;
+
+        margin-right: 18rem;
     }
 
     &--input{
