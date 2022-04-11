@@ -18,7 +18,8 @@ ul {
   list-style: none;
 }
 
-a {
+a, a:link, a:after, a:visited, a:hover, a:active {
+  color: white;
   text-decoration: none;
 }
 
@@ -587,6 +588,7 @@ footer {
   height: auto;
   float: left;
   margin-bottom: 1.5rem;
+  z-index: 0;
 }
 .post__top {
   width: 100%;
