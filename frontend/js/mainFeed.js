@@ -1,5 +1,6 @@
 $(document).ready(function() {
     console.log('main script is linked'); //testing if script.js is working
+    console.log(sessionStorage);
 
     // ============ Masonry Layout - Masonry init Starts ============
     // init Masonry
@@ -59,6 +60,49 @@ $(document).ready(function() {
     // ============ Account dropdown arrow Ends ============
 
 
+    // ============ Update Post Starts ============
+    $('#updatePostSubmitBtn').click(function() {
+        event.preventDefault();
+        console.log("yes");
+
+        let id = $('#updatePostId').val();
+        let imgUrl = $('#updatePostImage').val();
+        let location = $('#updatePostLocation').val();
+        let name = $('#updatePostName').val();
+        let description = $('#updatePostDescription').val();
+
+        console.log(id, imgUrl, location, name, description);
+
+        if(id == "") {
+            alert("please enter project ID");
+        } else {
+            $.ajax({
+                url: `http://${url}/updatePost/${id}`,
+                type: 'PATCH',
+                data: {
+                    image_url: imgUrl,
+                    location: location,
+                    name: name,
+                    description: description
+                },
+                success: function(data) {
+                    console.log(data);
+
+                    $('#updatePostId').val('');
+                    $('#updatePostImage').val('');
+                    $('#updatePostLocation').val('');
+                    $('#updatePostName').val('');
+                    $('#updatePostDescription').val('');
+                },
+                error: function() {
+                    console.log('error: cannot update');
+                }
+            }); // end of ajax
+        } // end of if statement
+    });
+    // ============ Update Post Ends ============
+
+
 
     //============ All Posts Starts ============
     // Getting all posts once main-feed is ready
@@ -68,13 +112,13 @@ $(document).ready(function() {
             type: 'GET',
             dataType: 'json',
             success:function(postsFromMongo){
-    
+                console.log(postsFromMongo);
                 document.getElementById('postContainer').innerHTML = '';
                 for(i = 0; i < postsFromMongo.length; i++){
                     
                     document.getElementById('postContainer').innerHTML +=
                     `
-                    <div class="post">
+                    <div class="post" id="${postsFromMongo[i]._id}">
                         <div class="post__top">
                             <div class="post__author-img-wrap">
                                 <img class="post__author-image" src="https://images.unsplash.com/photo-1482046187924-50f27dc64333?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Author profile image">
@@ -107,6 +151,7 @@ $(document).ready(function() {
                     `
                 }
 
+                // Masonry init destory and reinit for ajax posts Starts
                 $('.grid').masonry('destroy'); 
                 $( function() {
                     $('.grid').masonry({
@@ -123,6 +168,8 @@ $(document).ready(function() {
                 $('.grid').imagesLoaded().progress(function() {
                     $('.grid').masonry("layout");
                 });
+                // Masonry init destory and reinit for ajax posts Ends
+
             },//success
             error:function(){
                 alert('Unable to get posts');

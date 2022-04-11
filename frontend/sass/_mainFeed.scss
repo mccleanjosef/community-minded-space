@@ -50,18 +50,20 @@
 
     &__top{
         width: 100%;
+        min-height: 170px;
         overflow: hidden;
         position: relative;
         border-radius: 2.6rem 2.6rem 0 0;
+        background: $medium-grey;
     }
 
     &__author-img-wrap{
-        width: 3.8rem;
-        height: 3.8rem;
+        width: 4rem;
+        height: 4rem;
         border-radius: 50%;
         position: absolute;
-        top: 7%;
-        left: 5%;
+        top: 2rem;
+        left: 2rem;
         overflow: hidden;
         z-index: 10;
     }
@@ -75,8 +77,8 @@
 
     &__btn-ctn{
         position: absolute;
-        top: 8%;
-        right: 4%;
+        top: 2rem;
+        right: 2rem;
         z-index: 10;
     }
 
