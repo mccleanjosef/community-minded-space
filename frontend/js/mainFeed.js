@@ -118,7 +118,7 @@ $(document).ready(function() {
                     
                     document.getElementById('postContainer').innerHTML +=
                     `
-                    <div class="post" id="${postsFromMongo[i]._id}" data-bs-toggle="modal" data-bs-target="#postModal">
+                    <div class="post" id="${postsFromMongo[i]._id}">
                         <div class="post__top">
                             <div class="post__author-img-wrap">
                                 <img class="post__author-image" src="https://images.unsplash.com/photo-1482046187924-50f27dc64333?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Author profile image">
@@ -134,7 +134,7 @@ $(document).ready(function() {
                             </div>
                             <img class="post__image" src="${postsFromMongo[i].image_url}" alt="User posted picture">
                         </div>
-                        <div class="post__bottom">
+                        <div class="post__bottom" data-bs-toggle="modal" data-bs-target="#postModal">
                             <div class="post__bottom-upper">
                                 <p class="post__text">${postsFromMongo[i].location}</p>
                                 <p class="post__text">${postsFromMongo[i].name}</p>
@@ -172,8 +172,8 @@ $(document).ready(function() {
 
                 
                 // View Post Modal
-                $('.post').click(function () {
-                    let id = this.id;
+                $('.post__bottom').click(function () {
+                    let id = $(this).parent().attr('id');
                     console.log(id);
 
                     $.ajax({
