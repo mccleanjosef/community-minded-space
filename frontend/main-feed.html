@@ -26,25 +26,27 @@
 <body id="mainFeedBody">
 
   <!-- Update Post Modal -->
-  <div class="modal fade main-feed-update-post-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade main-feed-update-post-modal" id="updatePostModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="updatePostModal-header">
           <h5 class="updatePostModal-header--title">Update</h5>
           <button type="button" class="btn-close close-icon" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="updatePostModal-body">
+        <form class="updatePostModal-body">
+          <label class="updatePostModal-body--label" for="">Post Id</label>
+          <input class="updatePostModal-body--input" id="updatePostId" type="text" name="imageURL" placeholder="Post Id">
           <label class="updatePostModal-body--label" for="">Image url</label>
-          <input class="updatePostModal-body--input" type="text" name="imageURL" placeholder="https://unsplash.com/photos/...">
+          <input class="updatePostModal-body--input" id="updatePostImage" type="text" name="imageURL" placeholder="https://unsplash.com/photos/...">
           <label class="updatePostModal-body--label" for="">Location</label>
-          <input class="updatePostModal-body--input" type="text" name="location" placeholder="Wellington">
+          <input class="updatePostModal-body--input" id="updatePostLocation" type="text" name="location" placeholder="Wellington">
           <label class="updatePostModal-body-label" for="">Name</label>
-          <input class="updatePostModal-body--input" type="text" name="name" placeholder="Pīwakawaka">
+          <input class="updatePostModal-body--input" id="updatePostName" type="text" name="name" placeholder="Pīwakawaka">
           <label class="updatePostModal-body--label" for="">Description</label>
-          <textarea class="updatePostModal-body--inputDescription" type="text" name="description" placeholder="Found this little fella on my hike"></textarea>
-        </div>
+          <textarea class="updatePostModal-body--inputDescription" id="updatePostDescription" type="text" name="description" placeholder="Found this little fella on my hike"></textarea>
+        </form>
         <div class="updatePostModal-footer">
-          <button class="updatePostModal-footer--btn">Update</button>
+          <button class="updatePostModal-footer--btn" id="updatePostSubmitBtn">Update</button>
         </div>
       </div>
     </div>
@@ -121,9 +123,11 @@
   
 
   <div class="add-post">
-      <button class="add-post__button">
+      <a href="./addSighting.html">
+        <button class="add-post__button">
           <i class="fa-solid fa-plus"></i>
-      </button>
+        </button>
+      </a>
   </div>
 
 

@@ -45,77 +45,37 @@
 }
 
 .addSighting-sightingForm{
-    height: 60%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding-left: 16%;
+    @include modal-body-layout;
+    height: 70vh;
 
     &--label{
-        color: white;
-        font-family: 'Roboto', sans-serif;
-        font-weight: 400;
-        font-size: 16px;
-        letter-spacing: 0.06rem;
-        padding-bottom: 0.3rem;
-        padding-left: 0.4rem;
+        @include modal-form-label;
+        color: $white; 
     }
 
     &--input{
+        @include modal-form-input;
         border: none;
         border-radius: 2rem;
-        padding: 0.6rem;
-        width: 16rem;
-        letter-spacing: 0.06rem;
-        font-size: 14px;
-        font-family: 'Roboto', sans-serif;
-        font-weight: 400;
-        margin-bottom: 1rem;
-        text-align: left;
-        padding-left: 1rem;
+        padding: 0.6em 1em;
+        
     }
 
-    &--input:focus{
-        border-color: #1AA878;
-      }
-
     &--inputDescription{
+        @include modal-form-description;
         border: none;
-        border-radius: 1.4rem;
-        padding: 3rem;
-        width: 16rem;
-        letter-spacing: 0.06rem;
-        font-size: 14px;
-        font-family: 'Roboto', sans-serif;
-        font-weight: 400;
-        margin-bottom: 1rem;
-        text-align: left;
-        padding-left: 1rem;
+        border-radius: 2rem;
+        padding: 1em
+        
     }
 }
 
 .addSighting-addPost{
-    height: 22%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 1rem;
+    @include modal-footer-layout;
+    padding: 0;
 
     &--btn{
-        border: none;
-        font-size: 16px;
-        background: white;
-        color: black;
-        border-radius: 2rem;
-        padding: 0.6rem;
-        padding-left: 2.8rem;
-        padding-right: 2.8rem;
-        font-family: 'Roboto', sans-serif;
-        font-weight: 500;
-        letter-spacing: 0.06rem;
+        @include white-rounded-button;
     }
 }
 
