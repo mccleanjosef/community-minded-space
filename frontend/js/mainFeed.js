@@ -185,27 +185,37 @@ $(document).ready(function() {
                             $('#post-modal-content').empty().append(
 
                             `
-                            <div class="post-modal__img-container" style="background: url('${singleProject.image_url}'); background-size: cover; background-position: center;">
-                            </div>
-                
-                            <div class="post-modal__location-container">
-                                <p class="card__text">${singleProject.location}</p>
-                                <p id="cardText" class="card__text">${singleProject.name}</p>
-                            </div>
-                
-                            <div class="post-modal__description-container">
-                                <p class="post-modal__description">${singleProject.description}</p>
-                            </div>
-                
-                            <div class="post-modal__comments-container">
-                                <div class="post-modal__comments-top">
+                            <div class= "modal-post__master">
+                                <div class= "modal-post__header">
+                                    <img class="modal-post__profile" src="#" alt="User posted picture">
+                                    <button type="button" class="btn-close modal-post__close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                
-                                <div class="post-modal__comments-bottom">
-                                    <input placeholder="Comment here..." class="post-modal__comments-input" type="text">
-                                    <button class="post-modal__comment-btn">
-                                    </button>
+
+                                <div class="modal-post__img-container">
+                                    <img class="modal-post__image" src="${singleProject.image_url}" alt="User posted picture">
                                 </div>
+
+                                <div class="modal-post__locationName-container">
+                                    <p class="modal-post__text">${singleProject.location}</p>
+                                    <p class="modal-post__text">${singleProject.name}</p>
+                                </div>
+
+                                <div class="modal-post__description-container">
+                                    <p class="modal-post__text">${singleProject.description}</p>
+                                </div>
+
+                                <div class="modal-post__comments-container">
+                                    <div class="modal-post__comments>
+                                        <div class="modal-post__comments-top>
+                                        
+                                        </div>
+
+                                        <div class="modal-post__comments-bottom>
+                                        
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                             `
                             );
