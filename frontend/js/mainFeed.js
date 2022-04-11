@@ -202,32 +202,31 @@ $(document).ready(function() {
 
                     console.log(id, imgUrl, location, name, description);
 
-                    if(id == "") {
-                        alert("please enter project ID");
-                    } else {
-                        $.ajax({
-                            url: `http://${url}/updatePost/${id}`,
-                            type: 'PATCH',
-                            data: {
-                                image_url: imgUrl,
-                                location: location,
-                                name: name,
-                                description: description
-                            },
-                            success: function(data) {
-                                console.log(data);
+                    $.ajax({
+                        url: `http://${url}/updatePost/${id}`,
+                        type: 'PATCH',
+                        data: {
+                            image_url: imgUrl,
+                            location: location,
+                            name: name,
+                            description: description
+                        },
+                        success: function(data) {
+                            console.log(data);
 
-                                $('#updatePostId').val('');
-                                $('#updatePostImage').val('');
-                                $('#updatePostLocation').val('');
-                                $('#updatePostName').val('');
-                                $('#updatePostDescription').val('');
-                            },
-                            error: function() {
-                                console.log('error: cannot update');
-                            }
-                        }); // end of ajax
-                    } // end of if statement
+                            $('#updatePostId').val('');
+                            $('#updatePostImage').val('');
+                            $('#updatePostLocation').val('');
+                            $('#updatePostName').val('');
+                            $('#updatePostDescription').val('');
+
+                            $('.grid').masonry('reloadItems'); // NOT WORKING HERE
+                        },
+                        error: function() {
+                            console.log('error: cannot update');
+                        }
+                    }); // end of ajax
+                    
                 });
                 // ============ Update Post Ends ============
 
