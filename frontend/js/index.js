@@ -1,7 +1,7 @@
 console.log('script'); //testing if script.js is working
 console.log(sessionStorage);
 
-$(document).ready(function(){
+$(document).ready(function() {
 
     let url; //declare url as a variable in es6
     $.ajax({
@@ -45,7 +45,6 @@ $(document).ready(function(){
     );
   });
   // ============ Appending Intro into App Ends ============
-
 
   // Appending Intro next page on App finished
 
@@ -112,7 +111,7 @@ $(document).ready(function(){
 
           } else {
             alert('username taken already. Please try another name');
-            $('#c-username').val('');
+            $('#r-username').val('');
             $('#c-password').val('');
             $('#c-profile_img').val('');
           } //else
@@ -126,67 +125,62 @@ $(document).ready(function(){
     } //if
   }) //r-submit click
 
-
   // User Registration Finished
 
 
 
-    // Login User Starts
 
-    $('#signInBtn').click(function(){
-      event.preventDefault();
-      let username = $('#s-username').val();
-      let password = $('#s-password').val();
-      console.log(username, password);
-  
-      if (username == '' || password == '') {
-        alert('Please enter Username and Password');
-      } else {
-        $.ajax({
-          url: `http://${url}/loginUser`,
-          type: 'POST',
-          data: {
-            username: username,
-            password: password
-          },
-          success: function(user) {
-            console.log(user);
-  
-            if (user == 'user not found. Please register') {
-              alert('User not found. Please Register');
-            } else if (user == 'not authorized') {
-              alert('Please try with correct details');
-              $('#s-username').val('');
-              $('#s-password').val('');
-            } else {
-              sessionStorage.setItem('userID', user['_id']);
-              sessionStorage.setItem('userName', user['username']);
-              sessionStorage.setItem('profileImg', user['profile_img']);
-              console.log(sessionStorage);
-              document.location.href = 'main-feed.html';
-              // alert('Welcome back! :)')
-            } // end of ifs
-          }, //success
-          error: function() {
-            console.log('error: cannot call api');
-            alert('Unable to login - unable to call api');
-          } //error
-        }) //end of ajax
-      } //end of else
-    }); //end of login click function
-  
+  // Login User Starts
 
-    // Login User Finished
+  $('#signInBtn').click(function(){
+    event.preventDefault();
+    let username = $('#s-username').val();
+    let password = $('#s-password').val();
+    console.log(username, password);
+
+    if (username == '' || password == '') {
+      alert('Please enter all details');
+    } else {
+      $.ajax({
+        url: `http://${url}/loginUser`,
+        type: 'POST',
+        data: {
+          username: username,
+          password: password
+        },
+        success: function(user) {
+          console.log(user);
+
+          if (user == 'user not found. Please register') {
+            alert('User not found. Please Register');
+          } else if (user == 'not authorized') {
+            alert('Please try with correct details');
+            $('#s-username').val('');
+            $('#s-password').val('');
+          } else {
+            sessionStorage.setItem('userID', user['_id']);
+            sessionStorage.setItem('userName', user['username']);
+            sessionStorage.setItem('profileImg', user['profile_img']);
+            console.log(sessionStorage);
+            document.location.href = 'main-feed.html';
+            // alert('Welcome back! :)')
+          } // end of ifs
+        }, //success
+        error: function() {
+          console.log('error: cannot call api');
+          alert('Unable to login - unable to call api');
+        } //error
+      }) //end of ajax
+    } //end of else
+  }); //end of login click function
+  
+  // Login User Finished
     
 
-
+  
 
 
   // Add Sighting Start
-
-
-
-  // Add a product
 
   $('#add-sighting-btn').click(function(){
     event.preventDefault();
@@ -198,16 +192,9 @@ $(document).ready(function(){
 
     console.log(userid);
     console.log(image_url, location, name, description);
-
-    if (!userid){
-      alert('Please log in to use this feature');
-    }
-
-    else if (image_url == '' || location == '' || name == '' || description == ''){
-      alert('Please enter all details');
-    }
-    
-    else{
+    if (image_url == '' || location == '' || name == '' || description == '' || !userid){
+      alert('Please login and enter all details');
+    } else {
       $.ajax({
         url: `http://${url}/addPost`,
         type: 'POST',
@@ -219,28 +206,15 @@ $(document).ready(function(){
         },
         success: function(post) {
           console.log(post);
-          alert('Post Added');
+          alert('post added');
         },
         error: function() {
           console.log('error: cannot call api');
         } //error
       }) //ajax
     } //else
-  }); //addProduct
+  }); //Add Sighting
 
-
-
-  // Add Sighting Finished
-
-
-  
-    // Log Out Function
-
-    // $('#logoutClassName').click(function() {
-    //   sessionStorage.clear();
-    //   alert('You are now logged out');
-    //   console.log(sessionStorage);
-    // })
 
 
 

@@ -185,26 +185,33 @@ $(document).ready(function() {
                             $('#post-modal-content').empty().append(
 
                             `
-                            <div class="post-modal__img-container" style="background: url('${singleProject.image_url}'); background-size: cover; background-position: center;">
+                            <div class= "modal-post__header">
+                                <img class="modal-post__profile" src="#" alt="User posted picture">
+                                <button type="button" class="btn-close modal-post__close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                
-                            <div class="post-modal__location-container">
-                                <p class="card__text">${singleProject.location}</p>
-                                <p id="cardText" class="card__text">${singleProject.name}</p>
+
+                            <div class="modal-post__img-container">
+                                <img class="modal-post__image" src="${singleProject.image_url}" alt="User posted picture">
                             </div>
-                
-                            <div class="post-modal__description-container">
-                                <p class="post-modal__description">${singleProject.description}</p>
+
+                            <div class="modal-post__locationName-container">
+                                <p class="modal-post__text">${singleProject.location}</p>
+                                <p class="modal-post__text">${singleProject.name}</p>
                             </div>
-                
-                            <div class="post-modal__comments-container">
-                                <div class="post-modal__comments-top">
-                                </div>
-                
-                                <div class="post-modal__comments-bottom">
-                                    <input placeholder="Comment here..." class="post-modal__comments-input" type="text">
-                                    <button class="post-modal__comment-btn">
-                                    </button>
+
+                            <textarea class="modal-post__description" type="text" spellcheck="false">${singleProject.description}</textarea>
+
+                            <div class="modal-post__comments-container">
+                                <div class="modal-post__comments">
+                                    <div class="modal-post__comments-top accordion-body">
+                                        <img class="#" src="" alt="User profile picture">
+                                        <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                                    </div>
+
+                                    <div class="modal-post__comments-bottom">
+                                        <input class="modal-post__input" type="text" placeholder="Add a comment">
+                                        <button class="modal-post__comments-btn"><img class="modal-post__comments-btn" src="./img/postComment.png"></button>
+                                    </div>
                                 </div>
                             </div>
                             `
@@ -268,4 +275,33 @@ $(document).ready(function() {
     }//view
     //------- All Posts Ends ---------
 
+    
+    //Comments starts
+    // =========================================
+    //Get Comments
+    function getComments() {
+        let openComs = document.querySelector('#commentShow');
+        let id = openComs.value;
+        $.ajax({
+        url: `http://${url}/seeComments/${id}`,
+        type: 'GET',
+        success: function(commentsFromMongo) {
+            console.log(commentsFromMongo);
+            let i;
+            document.getElementById('commentCont').innerHtml = "";
+            for (i = 0; i < commentsFromMongo.length; i++) {
+            document.getElementById('commentCont').innerHTML +=
+                `
+                <div class="accordion-body">
+                <p>${commentsFromMongo[i].text}</p>
+                <h6>${commentsFromMongo[i].user_id}<h6>
+                </div>`;
+            }
+        },
+        error: function() {
+            console.log('error: cannot retreive comments');
+        } //error
+        }) //ajax
+    };
+  
 }); //document.ready

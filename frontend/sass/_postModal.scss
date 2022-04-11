@@ -1,76 +1,132 @@
-.post-modal__header{
-    border: none;
+#postModal{
+    padding-top: 1.7rem;
+    padding-bottom: 1.7rem;
 }
 
-.post-modal__body{
-    min-height: 98vh;
-}
-
-.post-modal__img-container{
-    min-height: 400px;
-    background: coral;
+.modal-post__master{
+    min-height: 90vh;
+    background: white;
     display: flex;
-    justify-content: center;
+    flex-flow: column;
     align-items: center;
+    padding: 0 2.5%;
 }
 
-.post-modal__location-container{
+.modal-post__header{
+    @include modal-header-layout;
+    justify-content: flex-start;
+    height: 8.7rem;
+}
+
+.modal-post__profile{
+    margin-left: 1.5rem;
+}
+
+.modal-post__close{
+    @include modal-close-icon;
+    top: 2.9rem;
+    font-size: 1.9rem;
+}
+
+.modal-post__img-container{
+    width: 100%;
+}
+
+.modal-post__image{
+    border-radius: 3rem;
+    width: 100%;
+}
+
+.modal-post__locationName-container{
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
+    width: 100%;
     padding-top: 1.5rem;
 }
 
-.post-modal__description-container, .post-modal__comments-container{
-    background: linear-gradient(12.04deg, #1AA878 0%, #78C948 100%);
-    min-height: 200px;
-    margin-top: 2rem;
-    border-radius: 30px;
-    padding: 1.5rem;
-    color: white;
-}
-.post-modal__comments-container{
-    padding: 0;
-    margin-bottom: 2rem;
-    -webkit-box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.59);
-    -moz-box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.59);
-    box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.59);
+.modal-post__text{
+    font-family: $body-font;
+    font-weight: $medium;
+    color: $white;
+    font-size: 1.2rem;
+    letter-spacing: 0.1rem;
+    background: linear-gradient(268.51deg, #78C948 0%, #1AA878 96.71%);
+    border-radius: 3rem;
+    padding: 0.4em 1em;
+    margin-right: 1rem;
 }
 
-.post-modal__comments-top{
+.modal-post__description{
     width: 100%;
-    height: 150px;
+    min-height: 9.2rem;
     background: linear-gradient(12.04deg, #1AA878 0%, #78C948 100%);
-    border-radius: 30px 30px 0px 0px;
-}
-
-.post-modal__comments-bottom{
-    height: 50px;
-    background: white;
-    border-radius: 0px 0px 30px 30px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 1.5rem;
-}
-
-.post-modal__comment-arrow{
-    height: 30px;
-    width: auto;
-}
-
-.post-modal__comment-btn{
-    background: none;
+    border-radius: 2rem;
+    letter-spacing: 0.05rem;
+    padding: 0.8em 1.5em;
+    font-size: 1.2rem;
+    color: $white;
     outline: none;
     border: none;
-    margin-left: 2rem;
+    overflow: scroll;
+    margin-top: 0.5rem;
 }
 
-.post-modal__comments-input{
-    width: 250px;
+.modal-post__comments-container{
+    width: 100%;
+    min-height: 22rem;
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.modal-post__comments{
+    width: 100%;
+    min-height: 20rem;
+    background: white;
+    border-radius: 30px;
+    box-shadow: -3px 3px 4px rgba(0, 0, 0, 0.15);
+}
+
+.modal-post__comments-top{
+    height: 15rem;
+    width: 100%;
+    border-radius: 30px 30px 0px 0px;
+    background: linear-gradient(12.04deg, #1AA878 0%, #78C948 100%);
+    padding: 1.5rem;
+    display: flex;
+    color: $white;
+    font-size: 1.2rem;
+    font-family: $body-font;
+    font-weight: $regular;
+    letter-spacing: 0.05rem;
+}
+
+.modal-post__comments-bottom{
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 0.8rem;
+    margin-right: 2rem;
+}
+
+.modal-post__comments-btn{
+    width: 2rem;
+    height: auto;
     outline: none;
+    border: none;
+    background: transparent;
+}
+
+.modal-post__input{
     border-top-style: hidden;
     border-right-style: hidden;
     border-left-style: hidden;
     border-bottom-style: groove;
+    margin-right: 1.5rem;
+    width: 80%;
+}
+
+.modal-post__input:focus{
+    outline: none;
 }
