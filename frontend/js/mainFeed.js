@@ -7,20 +7,17 @@ $(document).ready(function() {
 
     // ============ Masonry Layout - Masonry init Starts ============
     // init Masonry
-    $( function() {
-        $('.grid').masonry({
-            // options
-            itemSelector: ".post",
-            columnWidth: 341,
-            gutter: 10,
-            horizontalOrder: true,
-            fitWidth: true
-        });
+    const $grid = $('.grid').masonry({
+        itemSelector: ".post",
+        columnWidth: 341,
+        gutter: 10,
+        horizontalOrder: true,
+        fitWidth: true
     });
 
     // layout Masonry after each image loads
-    $('.grid').imagesLoaded().progress(function() {
-        $('.grid').masonry("layout");
+    $grid.imagesLoaded().progress(function() {
+        $grid.masonry("layout");
     });
     // ============ Masonry Layout - Masonry init Ends ============
 
@@ -91,6 +88,81 @@ $(document).ready(function() {
         location.href='./signIn.html'
     })
     // ============ Log Out User Ends ============
+
+
+
+    // ============ User Registration Starts ============
+    $('#createAccount').click(function() {
+        event.preventDefault() //this prevents code breaking when no data is found
+
+        let username = $('#c-username').val();
+        let password = $('#c-password').val();
+        let profile_img = $('#c-profile_img').val();
+        console.log(username, password, profile_img);
+
+        if (username == '' || password == '' || profile_img == '') {
+          alert('Please enter all details');
+
+        } else {
+          $.ajax({
+            url: `http://${url}/registerUser`,
+            type: 'POST',
+            data: {
+              username: username,
+              password: password,
+              profile_img: profile_img
+            },
+            success: function(user) {
+              console.log(user); //remove when development is finished
+
+              if (user !== 'username taken already. Please try another name'){
+
+                // if register is successful - log user in Starts
+                let username = $('#c-username').val();
+                let password = $('#c-password').val();
+                console.log(username, password); //remove when development is finished
+
+                $.ajax({
+                  url: `http://${url}/loginUser`,
+                  type: 'POST',
+                  data: {
+                    username: username,
+                    password: password
+                  },
+                  success: function(user) {
+                    console.log(user);
+
+                    sessionStorage.setItem('userID', user['_id']);
+                    sessionStorage.setItem('userName', user['username']);
+                    sessionStorage.setItem('profileImg', user['profile_img']);
+                    console.log(sessionStorage);
+                    // alert('Welcome')
+
+                    location.reload();
+
+                  }, //success
+                  error: function() {
+                    console.log('error: cannot call api');
+                    alert('Unable to login - unable to call api');
+                  } //error
+                }) //end of ajax
+
+              } else {
+                alert('username taken already. Please try another name');
+                $('#r-username').val('');
+                $('#c-password').val('');
+                $('#c-profile_img').val('');
+              } //else
+              // if register is successful - log user in Ends
+
+            }, //success
+            error: function() {
+              console.log('error: cannot call api');
+            } //error
+          }) //ajax post
+        } //if
+      }) //r-submit click
+    // ============ User Registration Ends ============
     
 
 
@@ -103,62 +175,54 @@ $(document).ready(function() {
             dataType: 'json',
             success:function(postsFromMongo){
                 console.log(postsFromMongo);
-                document.getElementById('postContainer').innerHTML = '';
+
+                let i;
                 for(i = 0; i < postsFromMongo.length; i++){
-                    
-                    document.getElementById('postContainer').innerHTML +=
-                    `
-                    <div class="post" id="${postsFromMongo[i]._id}">
-                        <div class="post__top">
-                            <div class="post__author-img-wrap">
-                                <img class="post__author-image" src="https://images.unsplash.com/photo-1482046187924-50f27dc64333?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Author profile image">
+                    // create new item elements
+                    var $items = $(
+                        `
+                        <div class="post" id="${postsFromMongo[i]._id}">
+                            <div class="post__top">
+                                <div class="post__author-img-wrap">
+                                    <img class="post__author-image" src="https://images.unsplash.com/photo-1482046187924-50f27dc64333?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Author profile image">
+                                </div>
+                                <div class="post__btn-ctn">
+                                    <button type="button" class="btn dropdown-toggle post__post-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img class="post__dropdown-icon" src="./img/post-dropdown-icon.svg" alt="post dropdown icon">
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end post__dropdown-menu">
+                                        <li><button class="dropdown-item post__dropdown-item" type="button" data-bs-toggle="modal" data-bs-target=".main-feed-update-post-modal">Update</button></li>
+                                        <li><button class="dropdown-item post__dropdown-item" type="button" data-bs-toggle="modal" data-bs-target=".main-feed-delete-post-modal">Delete</button></li>
+                                    </ul>
+                                </div>
+                                <img class="post__image" src="${postsFromMongo[i].image_url}" alt="User posted picture">
                             </div>
-                            <div class="post__btn-ctn">
-                                <button type="button" class="btn dropdown-toggle post__post-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img class="post__dropdown-icon" src="./img/post-dropdown-icon.svg" alt="post dropdown icon">
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end post__dropdown-menu">
-                                    <li><button class="dropdown-item post__dropdown-item" type="button" data-bs-toggle="modal" data-bs-target=".main-feed-update-post-modal">Update</button></li>
-                                    <li><button class="dropdown-item post__dropdown-item" type="button" data-bs-toggle="modal" data-bs-target=".main-feed-delete-post-modal">Delete</button></li>
-                                </ul>
+                            <div class="post__bottom" data-bs-toggle="modal" data-bs-target="#postModal">
+                                <div class="post__bottom-upper">
+                                    <p class="post__text">${postsFromMongo[i].location}</p>
+                                    <p class="post__text">${postsFromMongo[i].name}</p>
+                                </div>
+                                <div class="post__bottom-lower">
+                                    <p class="post__caption">${postsFromMongo[i].description}</p>
+                                </div>
+                                <div class="post__comments">
+                                    <p class="post__comments-details">view details</p>
+                                    <img class="post__speech" src="./img/comments-icon.svg" alt="comments icon">
+                                </div>
                             </div>
-                            <img class="post__image" src="${postsFromMongo[i].image_url}" alt="User posted picture">
                         </div>
-                        <div class="post__bottom" data-bs-toggle="modal" data-bs-target="#postModal">
-                            <div class="post__bottom-upper">
-                                <p class="post__text">${postsFromMongo[i].location}</p>
-                                <p class="post__text">${postsFromMongo[i].name}</p>
-                            </div>
-                            <div class="post__bottom-lower">
-                                <p class="post__caption">${postsFromMongo[i].description}</p>
-                            </div>
-                            <div class="post__comments">
-                                <p class="post__comments-details">view details</p>
-                                <img class="post__speech" src="./img/comments-icon.svg" alt="comments icon">
-                            </div>
-                        </div>
-                    </div>
-                    `
-                }
+                        `
+                    );
+                     // append items to grid
+                    $grid.prepend( $items )
+                    // add and lay out newly prepended items
+                    .masonry( 'prepended', $items );
 
-                // Masonry init destory and reinit for ajax posts Starts
-                $('.grid').masonry('destroy'); 
-                $( function() {
-                    $('.grid').masonry({
-                        // options
-                        itemSelector: ".post",
-                        columnWidth: 341,
-                        gutter: 10,
-                        horizontalOrder: true,
-                        fitWidth: true
+                    // layout Masonry after each image loads
+                    $grid.imagesLoaded().progress(function() {
+                        $grid.masonry("layout");
                     });
-                });
-
-                // layout Masonry after each image loads
-                $('.grid').imagesLoaded().progress(function() {
-                    $('.grid').masonry("layout");
-                });
-                // Masonry init destory and reinit for ajax posts Ends
+                }
 
 
                 // setting postId global variable for update and delete modals

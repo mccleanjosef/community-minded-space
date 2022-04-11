@@ -96,7 +96,7 @@ $(document).ready(function() {
                 sessionStorage.setItem('userName', user['username']);
                 sessionStorage.setItem('profileImg', user['profile_img']);
                 console.log(sessionStorage);
-                document.location.href = 'main-feed.html';
+                // document.location.href = 'main-feed.html';
                 // alert('Welcome')
 
                 // go to main-feed
