@@ -104,6 +104,100 @@ $(document).ready(function() {
 
 
 
+    // ============ Delete Post starts ============
+
+$('#deletePost').click(function(){
+    event.preventDefault();
+    let deletePostId = $('#deletePostId').val();
+    console.log(deletePostId);
+
+    if (deletePostId == ''){
+        alert('Are you sure you want to delete?');
+    } else {
+      $.ajax({ 
+        url : `http://${url}/deletePost/${deletePostId}`,
+        type: 'DELETE',
+        success : function(){
+            console.log('deleted');
+            alert('deleted')
+        }, //success
+        error:function(){
+            console.log('error: cannot be deleted');
+        }//eror
+    })//ajax
+}//if
+})//deletepost
+
+
+    // let id = $('#deleteProject').val();
+    // let imgUrl = $('#deletePostImage').val();
+    // let location = $('#deletePostLocation').val();
+    // let name = $('#deletePostName').val();
+    // let description = $('#deletePostDescription').val();
+
+
+
+    // console.log(id, imgUrl, location, name, description);
+    
+    // if(id =="") {
+    //     alert("are you sure you want to delete?")
+    // } else {
+    //     $.ajax({
+    //         url: `http://${url}/deletePost/${id}`,
+    //         type: 'DELETE',
+    //         data: {
+    //             image_url:imgUrl,
+    //             location: location,
+    //             name: name,
+    //             description: description
+    //         },
+
+    //         success: function(data) {
+    //             console.log(data);
+
+    //             $('#deletePostId').val('');
+    //             $('#deletePostImage').val('');
+    //             $('#deletePostLocation').val('');
+    //             $('#deletePostName').val('');
+    //             $('#deletePostDescription').val('');
+
+    //         },
+    //         error:function() {
+    //             console.log('error: cannot delete');
+    //         }
+    //     });
+
+    // }
+    // });
+
+
+//    app.delete('/deletePost/:id', (req,res)=>{
+//     const idParam = req.params.id;
+//     Post.findOne({_id:idParam}, (err,product)=>{
+//      if(post){
+//        Post.deleteOne({id:idParam},err=>{
+//          res.send('deleted');
+//        });
+//      } else {
+//        res.send('cancel delete');
+//      }//else
+//     }).catch(err=> res.send(err));
+//   });//delete
+
+
+
+   
+
+//     if(id =="#deleteProject"){
+//         alert("Are you sure you want to delete")}
+// });
+
+
+
+ 
+
+    // ============ Delete Post ends ============
+
     //============ All Posts Starts ============
     // Getting all posts once main-feed is ready
     function allPosts(url){
