@@ -76,7 +76,6 @@ app.patch('/updatePost/:id',(req,res)=>{
         image_url: req.body.image_url,
         location: req.body.location,
         name: req.body.name,
-        species: req.body.species,
         description: req.body.description
       }
       Post.updateOne({_id:idParam}, updatedPost).

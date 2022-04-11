@@ -23,38 +23,10 @@
 
 <body>
 
-
-  <!-- Sign In -->
-
-    <div class="signIn-container">
-        <div class="signIn-logo">
-            <img class="signIn-logo--img" src="./img/logo.png" alt="">
-        </div>
-        <div class="signIn-middle">
-            <label class="signIn-middle--label" for="">Username</label>
-            <input class="signIn-middle--input" name="s-username" id="s-username" type="text" name="s-username" placeholder="Username">
-
-            <label class="signIn-middle--label" for="">Password</label>
-            <input class="signIn-middle--input" name="s-password" id="s-password" type="password" name="s-password" placeholder="Password">
-        </div>
-        <div class="signIn-bottom">
-            <button id="signInBtn" class="signIn-bottom--signIn">Sign In</button>
-            <button class="signIn-bottom--createAccount" data-bs-toggle="modal" data-bs-target="#createAccountModal">Create Account</button>
-
-            <a href="main-feed.html"><p class="signIn-bottom--guest">Continue as guest</p></a>
-
-        </div>
-    </div>
-
-
-  
-
-
-
-    <!-- Create Account modal -->
+  <!-- Create Account modal -->
 
   <!-- Modal -->
-  <div class="modal fade" id="createAccountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade sign-in-create-account-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
 
@@ -85,91 +57,24 @@
 
 
 
-      <!-- Delete Post Modal -->
+  <!-- Sign In -->
 
-      <!-- Delete Modal Target (Put inside button you want to trigger) -->
-      <!-- data-bs-toggle="modal" data-bs-target="#deletePostModal" -->
-
-
-  <!-- Modal -->
-
-<div class="modal fade" id="deletePostModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-
-      <div class="deletePostModal-header">
-        <h5 class="deletePostModal-header--title">Delete</h5>
-        <div class="deletePostModal-header--closeBtn">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-      </div>
-      <div class="deletePostModal-body">
-        <p class="deletePostModal-body--text">Are you sure you want to delete?</p>
-      </div>
-      <div class="deletePostModal-footer">
-        <button class="deletePostModal-footer--btn">Yes</button>
-        <button class="deletePostModal-footer--btn" data-bs-dismiss="modal" aria-label="Close">No</button>
-      </div>
+  <div class="signIn-container">
+    <div class="signIn-logo">
+      <img class="signIn-logo--img" src="./img/sanctuary-main-logo.svg" alt="Sanctuary Logo">
+    </div>
+    <div class="signIn-middle">
+      <label class="signIn-middle--label" for="">Username</label>
+      <input class="signIn-middle--input" name="s-username" id="s-username" type="text" name="username" placeholder="Username">
+      <label class="signIn-middle--label" for="">Password</label>
+      <input class="signIn-middle--input" name="s-password" id="s-password" type="password" name="s-password" placeholder="Password">
+    </div>
+    <div class="signIn-bottom">
+      <button id="signInBtn" class="signIn-bottom--signIn">Sign In</button>
+      <button class="signIn-bottom--createAccount" data-bs-toggle="modal" data-bs-target=".sign-in-create-account-modal">Create Account</button>
+      <a href="./main-feed.html"><p class="signIn-bottom--guest">Continue as guest</p></a>
     </div>
   </div>
-</div>
-
-
-
-
-
-
-
-      <!-- Update Post Modal -->
-
-      <!-- Update Modal Target (Put inside button you want to trigger) -->
-      <!-- data-bs-toggle="modal" data-bs-target="#updatePostModal" -->
-
-    <!-- Modal -->
-    <div class="modal fade" id="updatePostModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-
-
-          <div class="updatePostModal-header">
-            <h5 class="updatePostModal-header--title">Update</h5>
-            <div class="updatePostModal-header--closeBtn">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-
-
-
-          </div>
-
-
-          <div class="updatePostModal-body">
-
-            <label class="updatePostModal-body--label" for="">Image url</label>
-            <input class="updatePostModal-body--input" id="1" type="text" name="imageURL" placeholder="Image.png...">
-
-            <label class="updatePostModal-body--label2" for="">Location</label>
-            <input class="updatePostModal-body--input" id="2" type="text" name="location" placeholder="Wellington...">
-
-
-            <label class="updatePostModal-body--label3" for="">Name</label>
-            <input class="updatePostModal-body--input" id="3" type="text" name="name" placeholder="Pīwakawaka...">
-
-
-            <label class="updatePostModal-body--label4" for="">Description</label>
-            <input class="updatePostModal-body--inputDescription" id="4" type="text" name="description" placeholder="Found this little fella on my hike..">
-
-
-          </div>
-
-
-          <div class="updatePostModal-footer">
-            <button class="updatePostModal-footer--btn">Update</button>
-          </div>
-
-
-
-
 
 
 

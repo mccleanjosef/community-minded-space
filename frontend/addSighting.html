@@ -34,12 +34,12 @@
     <div class="addSighting-container">
 
          <!-- Go back section on top left of page -->
-
-        <div class="addSighting-backSection">
-            <a href="main-feed.html"><img class="addSighting-backSection--arrowIMG" src="./img/Arrow.png" alt="Left Arrow"></a>
-
-            <a href="main-feed.html"><p class="addSighting-backSection--back">Back</p></a>
-        </div>
+        <a href="./main-feed.html">
+            <div class="addSighting-backSection">
+                <img class="addSighting-backSection--arrowIMG" src="./img/Arrow.png" alt="Left Arrow">
+                <p class="addSighting-backSection--back">Back</p>
+            </div>
+        </a>
 
 
 
@@ -62,17 +62,15 @@
             <label class="addSighting-sightingForm--label3" for="">Name</label>
             <input class="addSighting-sightingForm--input" id="as-name" type="text" name="as-name" placeholder="Pīwakawaka...">
 
-            <label class="addSighting-sightingForm--label4" for="">Description</label>
-            <input class="addSighting-sightingForm--inputDescription" id="as-description" type="text" name="description" placeholder="Found this little fella....">
+            <label class="addSighting-sightingForm--label" for="">Description</label>
+            <textarea class="addSighting-sightingForm--inputDescription" id="as-description" type="text" name="description" placeholder="Found this little fella on my hike up Mt Victoria this afternoon...."></textarea>
 
         </div>
 
 
 
         <div class="addSighting-addPost">
-
-            <button id="add-sighting-btn" class="addSighting-addPost--btn">Add Post</button>
-
+            <button id="add-sighting-btn" class="addSighting-addPost--btn" onclick="location.href='./main-feed.html'">Add Post</button>
         </div>
 
     </div>
