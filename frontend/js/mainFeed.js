@@ -201,17 +201,19 @@ $(document).ready(function() {
                                 </div>
 
                                 <div class="modal-post__description-container">
-                                    <p class="modal-post__text">${singleProject.description}</p>
+                                    <p class="modal-post__description">${singleProject.description}</p>
                                 </div>
 
                                 <div class="modal-post__comments-container">
-                                    <div class="modal-post__comments>
-                                        <div class="modal-post__comments-top>
-                                        
+                                    <div class="modal-post__comments">
+                                        <div class="modal-post__comments-top accordion-body">
+                                            <img class="#" src="" alt="User profile picture">
+                                            <p class="">USER COMMENT GOES HERE</p>
                                         </div>
 
-                                        <div class="modal-post__comments-bottom>
-                                        
+                                        <div class="modal-post__comments-bottom">
+                                            <input class="modal-post__input" type="text" placeholder="Add a comment">
+                                            <button class="modal-post__comments-btn"><img class="modal-post__comments-btn" src="./img/postComment.png"></button>
                                         </div>
                                     </div>
                                 </div>
@@ -235,4 +237,33 @@ $(document).ready(function() {
     }//view
     //------- All Posts Ends ---------
 
+    
+    //Comments starts
+    // =========================================
+    //Get Comments
+    function getComments() {
+        let openComs = document.querySelector('#commentShow');
+        let id = openComs.value;
+        $.ajax({
+        url: `http://${url}/seeComments/${id}`,
+        type: 'GET',
+        success: function(commentsFromMongo) {
+            console.log(commentsFromMongo);
+            let i;
+            document.getElementById('commentCont').innerHtml = "";
+            for (i = 0; i < commentsFromMongo.length; i++) {
+            document.getElementById('commentCont').innerHTML +=
+                `
+                <div class="accordion-body">
+                <p>${commentsFromMongo[i].text}</p>
+                <h6>${commentsFromMongo[i].user_id}<h6>
+                </div>`;
+            }
+        },
+        error: function() {
+            console.log('error: cannot retreive comments');
+        } //error
+        }) //ajax
+    };
+  
 }); //document.ready

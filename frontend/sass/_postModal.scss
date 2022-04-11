@@ -9,11 +9,12 @@
 
 .modal-post__header{
     width: 100%;
-    height: 5rem;
+    height: 15rem !important;
     // background: coral;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 1rem;
 }
 
 .modal-post__profile{
@@ -53,21 +54,71 @@
 
 .modal-post__description-container{
     width: 95%;
-    min-height: 50rem;
+    min-height: 20rem;
     background: linear-gradient(12.04deg, #1AA878 0%, #78C948 100%);
     border-radius: 30px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 1rem;
+    padding: 1.5rem;
 }
 
-.modal-post__text{
+.modal-post__text, .modal-post__description{
     color: white;
 }
 
 .modal-post__comments-container{
     width: 100%;
-    min-height: 10rem;
-    background: coral;
+    min-height: 22rem;
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.modal-post__comments{
+    width: 95%;
+    min-height: 20rem;
+    background: white;
+    border-radius: 30px;
+    -webkit-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.49);
+    -moz-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.49);
+    box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.49);
+}
+
+.modal-post__comments-top{
+    height: 15rem;
+    width: 100%;
+    border-radius: 30px 30px 0px 0px;
+    background: linear-gradient(12.04deg, #1AA878 0%, #78C948 100%);
+    padding: 1.5rem;
+    display: flex;
+}
+
+.modal-post__comments-bottom{
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 0.8rem;
+    margin-right: 2rem;
+}
+
+.modal-post__comments-btn{
+    width: 2rem;
+    height: auto;
+    outline: none;
+    border: none;
+    background: transparent;
+}
+
+.modal-post__input{
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    margin-right: 1.5rem;
+    width: 80%;
+}
+
+.modal-post__input:focus{
+    outline: none;
 }

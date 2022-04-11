@@ -251,3 +251,67 @@ app.get('/allPostsFromDB/:id', (req, res) => {
      }
    });
 })
+
+//Comments begins
+// =========================================
+
+// Create Comment
+app.post('/createComment', (req, res) => {
+  const newComment = new Comment({
+    _id: new mongoose.Types.ObjectId,
+    text: req.body.text,
+    time: new Date(),
+    post_id: req.body.user_id,
+  });
+  newComment.save()
+    .then(result => {
+      Product.findByIdAndUpdate(
+         newComment.post_id ,
+         { $push: { comment: newComment }}
+      ).then(result => {
+        res.send(newComment);
+      }).catch(err => {
+        res.send(err);
+      });
+    }).catch(err => {
+      res.send(err);
+    });
+});
+
+//Delete comment
+app.delete('/deleteComment/:id', (req, res) => {
+  Comment.findOne({
+    _id: req.params.id
+  }, (err, comment) => {
+    if (comment && comment['user_id'] == req.body.user_id) {
+      Product.updateOne({
+          _id: comment.product_id
+        }
+      ).then(result => {
+        Comment.deleteOne({
+          _id: req.params.id
+        }, err => {
+          res.send('deleted');
+        });
+      }).catch(err => {
+        res.send(err);
+      });
+    } else {
+      res.send('not found / unauthorised');
+    }
+  });
+});
+
+// Get one Comment from Product Array
+app.get('/seeComments/:id', (req, res) => {
+  const id= req.params.id;
+  Product.findById(id, function (err, product) {
+    if (err){
+        console.log(err);
+    }
+    else{
+        console.log("Result : ", product);
+        res.send(product.comment)
+    }
+});
+})
