@@ -1,20 +1,21 @@
+#postModal{
+    padding-top: 1.7rem;
+    padding-bottom: 1.7rem;
+}
+
 .modal-post__master{
     min-height: 90vh;
     background: white;
     display: flex;
     flex-flow: column;
     align-items: center;
-    overflow: scroll;
+    padding: 0 2.5%;
 }
 
 .modal-post__header{
-    width: 100%;
-    height: 15rem !important;
-    // background: coral;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 1rem;
+    @include modal-header-layout;
+    justify-content: flex-start;
+    height: 8.7rem;
 }
 
 .modal-post__profile{
@@ -22,16 +23,17 @@
 }
 
 .modal-post__close{
-    padding-right: 1.5rem;
+    @include modal-close-icon;
+    top: 2.9rem;
+    font-size: 1.9rem;
 }
 
 .modal-post__img-container{
-    width: 95%;
-    margin-top: 2rem;
+    width: 100%;
 }
 
 .modal-post__image{
-    border-radius: 30px;
+    border-radius: 3rem;
     width: 100%;
 }
 
@@ -39,32 +41,35 @@
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
-    justify-content: flex-start !important;
     width: 100%;
-    padding: 1.5rem;
+    padding-top: 1.5rem;
 }
 
 .modal-post__text{
+    font-family: $body-font;
+    font-weight: $medium;
+    color: $white;
+    font-size: 1.2rem;
+    letter-spacing: 0.1rem;
+    background: linear-gradient(268.51deg, #78C948 0%, #1AA878 96.71%);
+    border-radius: 3rem;
+    padding: 0.4em 1em;
     margin-right: 1rem;
-    color: white;
-    background: linear-gradient(12.04deg, #1AA878 0%, #78C948 100%);
-    padding: 1rem;
-    border-radius: 30px;
 }
 
-.modal-post__description-container{
-    width: 95%;
-    min-height: 20rem;
+.modal-post__description{
+    width: 100%;
+    min-height: 9.2rem;
     background: linear-gradient(12.04deg, #1AA878 0%, #78C948 100%);
-    border-radius: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 1.5rem;
-}
-
-.modal-post__text, .modal-post__description{
-    color: white;
+    border-radius: 2rem;
+    letter-spacing: 0.05rem;
+    padding: 0.8em 1.5em;
+    font-size: 1.2rem;
+    color: $white;
+    outline: none;
+    border: none;
+    overflow: scroll;
+    margin-top: 0.5rem;
 }
 
 .modal-post__comments-container{
@@ -77,13 +82,11 @@
 }
 
 .modal-post__comments{
-    width: 95%;
+    width: 100%;
     min-height: 20rem;
     background: white;
     border-radius: 30px;
-    -webkit-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.49);
-    -moz-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.49);
-    box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.49);
+    box-shadow: -3px 3px 4px rgba(0, 0, 0, 0.15);
 }
 
 .modal-post__comments-top{
@@ -93,6 +96,11 @@
     background: linear-gradient(12.04deg, #1AA878 0%, #78C948 100%);
     padding: 1.5rem;
     display: flex;
+    color: $white;
+    font-size: 1.2rem;
+    font-family: $body-font;
+    font-weight: $regular;
+    letter-spacing: 0.05rem;
 }
 
 .modal-post__comments-bottom{

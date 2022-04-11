@@ -7,7 +7,7 @@
   <title>Main Feed - Sanctuary</title>
 
   <!-- favicon link -->
-  <link rel="icon" href="./img/logo.png">
+  <link rel="icon" href="./img/favicon-img.png">
 
   <!-- bootstrap css -->
   <link rel="stylesheet" href="../frontend/node_modules/bootstrap/dist/css/bootstrap.min.css">
@@ -26,13 +26,9 @@
 <body id="mainFeedBody">
 
   <!-- View POST MODAL -->
-  <div class="modal fade" id="postModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div id="post-modal-content"  class="modal-content">
-
-        <div id="post-modal-body" class="post-modal-body">
-          
-        </div>
+  <div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div id="post-modal-content" class="modal-content modal-post__master">
 
       </div>
     </div>
@@ -47,8 +43,6 @@
           <button type="button" class="btn-close close-icon" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <form class="updatePostModal-body">
-          <label class="updatePostModal-body--label" for="">Post Id</label>
-          <input class="updatePostModal-body--input" id="updatePostId" type="text" name="imageURL" placeholder="Post Id">
           <label class="updatePostModal-body--label" for="">Image url</label>
           <input class="updatePostModal-body--input" id="updatePostImage" type="text" name="imageURL" placeholder="https://unsplash.com/photos/...">
           <label class="updatePostModal-body--label" for="">Location</label>
@@ -59,7 +53,7 @@
           <textarea class="updatePostModal-body--inputDescription" id="updatePostDescription" type="text" name="description" placeholder="Found this little fella on my hike"></textarea>
         </form>
         <div class="updatePostModal-footer">
-          <button class="updatePostModal-footer--btn" id="updatePostSubmitBtn">Update</button>
+          <button class="updatePostModal-footer--btn" id="updatePostSubmitBtn" data-bs-dismiss="modal">Update</button>
         </div>
       </div>
     </div>
@@ -111,15 +105,18 @@
       <a href="./main-feed.html"><img class="header__logo" src="./img/sanctuary-logo-right-heavy.svg" alt="Sanctuary Logo"></a>
       <div class="btn-group">
         <button type="button" class="btn dropdown-toggle header__account-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-          <img class="header__profile-icon" src="./img/profile-icon.svg" alt="Signed Out Profile Icon">
+          <div class="header__profile-icon-wrap">
+            <img class="header__profile-icon" src="./img/profile-icon.svg" alt="Signed Out Profile Icon">
+          </div>
           <i class="fa-solid fa-chevron-down header__down-icon"></i>
           <i class="fa-solid fa-chevron-up header__up-icon"></i>
         </button>
         <ul class="dropdown-menu dropdown-menu-end header__dropdown-menu">
-          <a href="./signIn.html"><li><button class="dropdown-item header__dropdown-item" type="button">Sign In</button></li></a>
+          <a href="./signIn.html"><li><button class="dropdown-item header__dropdown-item" id="signInBtn" type="button">Sign In</button></li></a>
           <a href=""></a><li><button class="dropdown-item header__dropdown-item" type="button">Display Mode</button></li>
           <a href="./get-involved.html"><li><button class="dropdown-item header__dropdown-item" type="button">Get Involved</button></li></a>
-          <li><button class="dropdown-item header__dropdown-item" type="button" data-bs-toggle="modal" data-bs-target=".main-feed-create-account-modal">Create Account</button></li>
+          <li><button class="dropdown-item header__dropdown-item" id="createAccountBtn" type="button" data-bs-toggle="modal" data-bs-target=".main-feed-create-account-modal">Create Account</button></li>
+          <li><button class="dropdown-item header__dropdown-item" id="signOutBtn" type="button">Sign Out</button></li>
         </ul>
       </div>
   </header>

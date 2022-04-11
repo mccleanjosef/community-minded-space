@@ -2,6 +2,9 @@ $(document).ready(function() {
     console.log('main script is linked'); //testing if script.js is working
     console.log(sessionStorage);
 
+    // global variables
+    let postId = '';
+
     // ============ Masonry Layout - Masonry init Starts ============
     // init Masonry
     $( function() {
@@ -41,7 +44,6 @@ $(document).ready(function() {
     }
     })
     // ============ API Ends ============
-
     
 
     // ============ Account dropdown arrow Starts ============
@@ -60,48 +62,36 @@ $(document).ready(function() {
     // ============ Account dropdown arrow Ends ============
 
 
-    // ============ Update Post Starts ============
-    $('#updatePostSubmitBtn').click(function() {
-        event.preventDefault();
-        console.log("yes");
+    // ============ User Account Profile Img and Dropdown options Starts ============
+    // based on if signed in
+    if(sessionStorage.getItem('userName') == null){
+        $('#signOutBtn').hide();
 
-        let id = $('#updatePostId').val();
-        let imgUrl = $('#updatePostImage').val();
-        let location = $('#updatePostLocation').val();
-        let name = $('#updatePostName').val();
-        let description = $('#updatePostDescription').val();
+    } else{
+        $('#signInBtn').hide();
+        $('#createAccountBtn').hide();
 
-        console.log(id, imgUrl, location, name, description);
+        // append user profile image from session storage
+        let profileImgUrl = sessionStorage.getItem('profileImg');
+        $('.header__profile-icon-wrap').empty().append(
+            `
+            <img class="header__profile-image" src="${profileImgUrl}" alt="User profile Image">
+            `
+        );
+    }
+    // ============ User Account Profile Img and Dropdown options in Ends ============
 
-        if(id == "") {
-            alert("please enter project ID");
-        } else {
-            $.ajax({
-                url: `http://${url}/updatePost/${id}`,
-                type: 'PATCH',
-                data: {
-                    image_url: imgUrl,
-                    location: location,
-                    name: name,
-                    description: description
-                },
-                success: function(data) {
-                    console.log(data);
 
-                    $('#updatePostId').val('');
-                    $('#updatePostImage').val('');
-                    $('#updatePostLocation').val('');
-                    $('#updatePostName').val('');
-                    $('#updatePostDescription').val('');
-                },
-                error: function() {
-                    console.log('error: cannot update');
-                }
-            }); // end of ajax
-        } // end of if statement
-    });
-    // ============ Update Post Ends ============
+    // ============ Log Out User Starts ============
+    $('#signOutBtn').click(function() {
+        sessionStorage.clear();
+        console.log(sessionStorage);
 
+        // go to sign in page
+        location.href='./signIn.html'
+    })
+    // ============ Log Out User Ends ============
+    
 
 
     //============ All Posts Starts ============
@@ -118,7 +108,7 @@ $(document).ready(function() {
                     
                     document.getElementById('postContainer').innerHTML +=
                     `
-                    <div class="post" id="${postsFromMongo[i]._id}" data-bs-toggle="modal" data-bs-target="#postModal">
+                    <div class="post" id="${postsFromMongo[i]._id}">
                         <div class="post__top">
                             <div class="post__author-img-wrap">
                                 <img class="post__author-image" src="https://images.unsplash.com/photo-1482046187924-50f27dc64333?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Author profile image">
@@ -134,7 +124,7 @@ $(document).ready(function() {
                             </div>
                             <img class="post__image" src="${postsFromMongo[i].image_url}" alt="User posted picture">
                         </div>
-                        <div class="post__bottom">
+                        <div class="post__bottom" data-bs-toggle="modal" data-bs-target="#postModal">
                             <div class="post__bottom-upper">
                                 <p class="post__text">${postsFromMongo[i].location}</p>
                                 <p class="post__text">${postsFromMongo[i].name}</p>
@@ -170,10 +160,20 @@ $(document).ready(function() {
                 });
                 // Masonry init destory and reinit for ajax posts Ends
 
+
+                // setting postId global variable for update and delete modals
+                //  on click of post dropdown
+                $('.post__post-dropdown').click(function() {
+                    postId = $(this).parent().parent().parent().attr('id');
+                    console.log(postId);
+                });
+
+
+
                 
-                // View Post Modal
-                $('.post').click(function () {
-                    let id = this.id;
+                // ============ View Post Modal Starts ============
+                $('.post__bottom').click(function () {
+                    let id = $(this).parent().attr('id');
                     console.log(id);
 
                     $.ajax({
@@ -185,53 +185,91 @@ $(document).ready(function() {
                             $('#post-modal-content').empty().append(
 
                             `
-                            <div class= "modal-post__master">
-                                <div class= "modal-post__header">
-                                    <img class="modal-post__profile" src="#" alt="User posted picture">
-                                    <button type="button" class="btn-close modal-post__close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
+                            <div class= "modal-post__header">
+                                <img class="modal-post__profile" src="#" alt="User posted picture">
+                                <button type="button" class="btn-close modal-post__close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
 
-                                <div class="modal-post__img-container">
-                                    <img class="modal-post__image" src="${singleProject.image_url}" alt="User posted picture">
-                                </div>
+                            <div class="modal-post__img-container">
+                                <img class="modal-post__image" src="${singleProject.image_url}" alt="User posted picture">
+                            </div>
 
-                                <div class="modal-post__locationName-container">
-                                    <p class="modal-post__text">${singleProject.location}</p>
-                                    <p class="modal-post__text">${singleProject.name}</p>
-                                </div>
+                            <div class="modal-post__locationName-container">
+                                <p class="modal-post__text">${singleProject.location}</p>
+                                <p class="modal-post__text">${singleProject.name}</p>
+                            </div>
 
-                                <div class="modal-post__description-container">
-                                    <p class="modal-post__description">${singleProject.description}</p>
-                                </div>
+                            <textarea class="modal-post__description" type="text" spellcheck="false">${singleProject.description}</textarea>
 
-                                <div class="modal-post__comments-container">
-                                    <div class="modal-post__comments">
-                                        <div class="modal-post__comments-top accordion-body">
-                                            <img class="#" src="" alt="User profile picture">
-                                            <p class="">USER COMMENT GOES HERE</p>
-                                        </div>
+                            <div class="modal-post__comments-container">
+                                <div class="modal-post__comments">
+                                    <div class="modal-post__comments-top accordion-body">
+                                        <img class="#" src="" alt="User profile picture">
+                                        <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                                    </div>
 
-                                        <div class="modal-post__comments-bottom">
-                                            <input class="modal-post__input" type="text" placeholder="Add a comment">
-                                            <button class="modal-post__comments-btn"><img class="modal-post__comments-btn" src="./img/postComment.png"></button>
-                                        </div>
+                                    <div class="modal-post__comments-bottom">
+                                        <input class="modal-post__input" type="text" placeholder="Add a comment">
+                                        <button class="modal-post__comments-btn"><img class="modal-post__comments-btn" src="./img/postComment.png"></button>
                                     </div>
                                 </div>
-
                             </div>
                             `
                             );
                         },
                         error:function(){
-                            alert('Unable to get posts');
+                            alert('Unable to view post modal');
                         }//error
                     })
                 })
+                // ============ View Post Modal Ends ============
+
+
+                // ============ Update Post Starts ============
+                $('#updatePostSubmitBtn').click(function() {
+                    event.preventDefault();
+                    console.log(postId);
+
+                    let id = postId;
+                    let imgUrl = $('#updatePostImage').val();
+                    let location = $('#updatePostLocation').val();
+                    let name = $('#updatePostName').val();
+                    let description = $('#updatePostDescription').val();
+
+                    console.log(id, imgUrl, location, name, description);
+
+                    $.ajax({
+                        url: `http://${url}/updatePost/${id}`,
+                        type: 'PATCH',
+                        data: {
+                            image_url: imgUrl,
+                            location: location,
+                            name: name,
+                            description: description
+                        },
+                        success: function(data) {
+                            console.log(data);
+
+                            $('#updatePostId').val('');
+                            $('#updatePostImage').val('');
+                            $('#updatePostLocation').val('');
+                            $('#updatePostName').val('');
+                            $('#updatePostDescription').val('');
+
+                            $('.grid').masonry('reloadItems'); // NOT WORKING HERE
+                        },
+                        error: function() {
+                            console.log('error: cannot update');
+                        }
+                    }); // end of ajax
+                    
+                });
+                // ============ Update Post Ends ============
 
 
             },//success
             error:function(){
-                alert('Unable to get posts');
+                alert('Unable to update');
             }//error
         })//ajax
     }//view

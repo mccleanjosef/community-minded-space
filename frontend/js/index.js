@@ -22,30 +22,29 @@ $(document).ready(function() {
     
   // Appending Intro next page on App start
 
-$('#index-btn').click(function(){
+  $('#index-btn').click(function(){
 
-  $('#landing-page').empty().append(
-    `
-    <div class="landing-background-second">
-    <div class="landing-section">
-    <div class="landing-section--topSecond">
-    <h1 class="landing-section--h1">Discover a new world of wildlife</h1>
-    <p class="landing-section--p">Join the community documenting wildlife observations that support the research and conservation worldwide</p>
-</div>
-<div class="landing-section--bottom">
-<a href="signIn.html"><button id="index-btn" class="landing-section--button">Get Started</button></a>
-    <div class="landing-section--navigation-circles">
-        <div class="landing-section--navigation-circles__circle2"></div>
-        <div class="landing-section--navigation-circles__circle1"></div>
-    </div>
-</div>
-</div>
-</div>
-    `
+    $('#landing-page').empty().append(
+      `
+      <div class="landing-background-second">
+      <div class="landing-section">
+      <div class="landing-section--topSecond">
+      <h1 class="landing-section--h1">Discover a new world of wildlife</h1>
+      <p class="landing-section--p">Join the community documenting wildlife observations that support the research and conservation worldwide</p>
+      </div>
+      <div class="landing-section--bottom">
+      <a href="signIn.html"><button id="index-btn" class="landing-section--button">Get Started</button></a>
+          <div class="landing-section--navigation-circles">
+              <div class="landing-section--navigation-circles__circle2"></div>
+              <div class="landing-section--navigation-circles__circle1"></div>
+          </div>
+      </div>
+      </div>
+      </div>
+      `
     );
   });
   // ============ Appending Intro into App Ends ============
-
 
   // Appending Intro next page on App finished
 
@@ -75,8 +74,40 @@ $('#index-btn').click(function(){
         },
         success: function(user) {
           console.log(user); //remove when development is finished
-          if (user !== 'username taken already. Please try another name') {
-            alert('Thank you for registering. Please login');
+
+          if (user !== 'username taken already. Please try another name'){
+
+            // if register is successful - log user in Starts
+            let username = $('#c-username').val();
+            let password = $('#c-password').val();
+            console.log(username, password); //remove when development is finished
+
+            $.ajax({
+              url: `http://${url}/loginUser`,
+              type: 'POST',
+              data: {
+                username: username,
+                password: password
+              },
+              success: function(user) {
+                console.log(user);
+
+                sessionStorage.setItem('userID', user['_id']);
+                sessionStorage.setItem('userName', user['username']);
+                sessionStorage.setItem('profileImg', user['profile_img']);
+                console.log(sessionStorage);
+                document.location.href = 'main-feed.html';
+                // alert('Welcome')
+
+                // go to main-feed
+                location.href='./main-feed.html'
+
+              }, //success
+              error: function() {
+                console.log('error: cannot call api');
+                alert('Unable to login - unable to call api');
+              } //error
+            }) //end of ajax
 
           } else {
             alert('username taken already. Please try another name');
@@ -84,6 +115,7 @@ $('#index-btn').click(function(){
             $('#c-password').val('');
             $('#c-profile_img').val('');
           } //else
+          // if register is successful - log user in Ends
 
         }, //success
         error: function() {
@@ -93,76 +125,62 @@ $('#index-btn').click(function(){
     } //if
   }) //r-submit click
 
-
-    // User Registration Finished
-
+  // User Registration Finished
 
 
 
-    // Login User Starts
 
-    $('#signInBtn').click(function(){
-      event.preventDefault();
-      let username = $('#s-username').val();
-      let password = $('#s-password').val();
-      console.log(username, password);
+  // Login User Starts
+
+  $('#signInBtn').click(function(){
+    event.preventDefault();
+    let username = $('#s-username').val();
+    let password = $('#s-password').val();
+    console.log(username, password);
+
+    if (username == '' || password == '') {
+      alert('Please enter all details');
+    } else {
+      $.ajax({
+        url: `http://${url}/loginUser`,
+        type: 'POST',
+        data: {
+          username: username,
+          password: password
+        },
+        success: function(user) {
+          console.log(user);
+
+          if (user == 'user not found. Please register') {
+            alert('User not found. Please Register');
+          } else if (user == 'not authorized') {
+            alert('Please try with correct details');
+            $('#s-username').val('');
+            $('#s-password').val('');
+          } else {
+            sessionStorage.setItem('userID', user['_id']);
+            sessionStorage.setItem('userName', user['username']);
+            sessionStorage.setItem('profileImg', user['profile_img']);
+            console.log(sessionStorage);
+            document.location.href = 'main-feed.html';
+            // alert('Welcome back! :)')
+          } // end of ifs
+        }, //success
+        error: function() {
+          console.log('error: cannot call api');
+          alert('Unable to login - unable to call api');
+        } //error
+      }) //end of ajax
+    } //end of else
+  }); //end of login click function
   
-      if (username == '' || password == '') {
-        alert('Please enter all details');
-      } else {
-        $.ajax({
-          url: `http://${url}/loginUser`,
-          type: 'POST',
-          data: {
-            username: username,
-            password: password
-          },
-          success: function(user) {
-            console.log(user);
-  
-            if (user == 'user not found. Please register') {
-              alert('User not found. Please Register');
-            } else if (user == 'not authorized') {
-              alert('Please try with correct details');
-              $('#s-username').val('');
-              $('#s-password').val('');
-            } else {
-              sessionStorage.setItem('userID', user['_id']);
-              sessionStorage.setItem('userName', user['username']);
-              console.log(sessionStorage);
-              document.location.href = 'main-feed.html';
-              alert('Welcome back! :)')
-            } // end of ifs
-          }, //success
-          error: function() {
-            console.log('error: cannot call api');
-            alert('Unable to login - unable to call api');
-          } //error
-        }) //end of ajax
-      } //end of else
-    }); //end of login click function
-  
-
-    // Login User Finished
+  // Login User Finished
     
 
-
-
-
-
-
-
-
-
-
-
+  
 
 
   // Add Sighting Start
-
-
-
-  // Add a product
 
   $('#add-sighting-btn').click(function(){
     event.preventDefault();
@@ -195,21 +213,8 @@ $('#index-btn').click(function(){
         } //error
       }) //ajax
     } //else
-  }); //addProduct
+  }); //Add Sighting
 
-
-
-
-  // Add Sighting Finished
-
-
-    // Log Out Function
-
-    // $('#logoutClassName').click(function() {
-    //   sessionStorage.clear();
-    //   alert('You are now logged out');
-    //   console.log(sessionStorage);
-    // })
 
 
 
