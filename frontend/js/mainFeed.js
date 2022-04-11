@@ -2,6 +2,9 @@ $(document).ready(function() {
     console.log('main script is linked'); //testing if script.js is working
     console.log(sessionStorage);
 
+    // global variables
+    let postId = '';
+
     // ============ Masonry Layout - Masonry init Starts ============
     // init Masonry
     $( function() {
@@ -59,49 +62,7 @@ $(document).ready(function() {
     });
     // ============ Account dropdown arrow Ends ============
 
-
-    // ============ Update Post Starts ============
-    $('#updatePostSubmitBtn').click(function() {
-        event.preventDefault();
-        console.log("yes");
-
-        let id = $('#updatePostId').val();
-        let imgUrl = $('#updatePostImage').val();
-        let location = $('#updatePostLocation').val();
-        let name = $('#updatePostName').val();
-        let description = $('#updatePostDescription').val();
-
-        console.log(id, imgUrl, location, name, description);
-
-        if(id == "") {
-            alert("please enter project ID");
-        } else {
-            $.ajax({
-                url: `http://${url}/updatePost/${id}`,
-                type: 'PATCH',
-                data: {
-                    image_url: imgUrl,
-                    location: location,
-                    name: name,
-                    description: description
-                },
-                success: function(data) {
-                    console.log(data);
-
-                    $('#updatePostId').val('');
-                    $('#updatePostImage').val('');
-                    $('#updatePostLocation').val('');
-                    $('#updatePostName').val('');
-                    $('#updatePostDescription').val('');
-                },
-                error: function() {
-                    console.log('error: cannot update');
-                }
-            }); // end of ajax
-        } // end of if statement
-    });
-    // ============ Update Post Ends ============
-
+    
 
 
     //============ All Posts Starts ============
@@ -170,8 +131,18 @@ $(document).ready(function() {
                 });
                 // Masonry init destory and reinit for ajax posts Ends
 
+
+                // setting postId global variable for update and delete modals
+                //  on click of post dropdown
+                $('.post__post-dropdown').click(function() {
+                    postId = $(this).parent().parent().parent().attr('id');
+                    console.log(postId);
+                });
+
+
+
                 
-                // View Post Modal
+                // ============ View Post Modal Starts ============
                 $('.post__bottom').click(function () {
                     let id = $(this).parent().attr('id');
                     console.log(id);
@@ -215,6 +186,50 @@ $(document).ready(function() {
                         }//error
                     })
                 })
+                // ============ View Post Modal Ends ============
+
+
+                // ============ Update Post Starts ============
+                $('#updatePostSubmitBtn').click(function() {
+                    event.preventDefault();
+                    console.log(postId);
+
+                    let id = postId;
+                    let imgUrl = $('#updatePostImage').val();
+                    let location = $('#updatePostLocation').val();
+                    let name = $('#updatePostName').val();
+                    let description = $('#updatePostDescription').val();
+
+                    console.log(id, imgUrl, location, name, description);
+
+                    if(id == "") {
+                        alert("please enter project ID");
+                    } else {
+                        $.ajax({
+                            url: `http://${url}/updatePost/${id}`,
+                            type: 'PATCH',
+                            data: {
+                                image_url: imgUrl,
+                                location: location,
+                                name: name,
+                                description: description
+                            },
+                            success: function(data) {
+                                console.log(data);
+
+                                $('#updatePostId').val('');
+                                $('#updatePostImage').val('');
+                                $('#updatePostLocation').val('');
+                                $('#updatePostName').val('');
+                                $('#updatePostDescription').val('');
+                            },
+                            error: function() {
+                                console.log('error: cannot update');
+                            }
+                        }); // end of ajax
+                    } // end of if statement
+                });
+                // ============ Update Post Ends ============
 
 
             },//success
