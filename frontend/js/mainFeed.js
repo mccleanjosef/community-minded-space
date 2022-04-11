@@ -44,7 +44,6 @@ $(document).ready(function() {
     }
     })
     // ============ API Ends ============
-
     
 
     // ============ Account dropdown arrow Starts ============
@@ -62,6 +61,36 @@ $(document).ready(function() {
     });
     // ============ Account dropdown arrow Ends ============
 
+
+    // ============ User Account Profile Img and Dropdown options Starts ============
+    // based on if signed in
+    if(sessionStorage.getItem('userName') == null){
+        $('#signOutBtn').hide();
+
+    } else{
+        $('#signInBtn').hide();
+        $('#createAccountBtn').hide();
+
+        // append user profile image from session storage
+        let profileImgUrl = sessionStorage.getItem('profileImg');
+        $('.header__profile-icon-wrap').empty().append(
+            `
+            <img class="header__profile-image" src="${profileImgUrl}" alt="User profile Image">
+            `
+        );
+    }
+    // ============ User Account Profile Img and Dropdown options in Ends ============
+
+
+    // ============ Log Out User Starts ============
+    $('#signOutBtn').click(function() {
+        sessionStorage.clear();
+        console.log(sessionStorage);
+
+        // go to sign in page
+        location.href='./signIn.html'
+    })
+    // ============ Log Out User Ends ============
     
 
 
@@ -182,7 +211,7 @@ $(document).ready(function() {
                             );
                         },
                         error:function(){
-                            alert('Unable to get posts');
+                            alert('Unable to view post modal');
                         }//error
                     })
                 })
@@ -233,7 +262,7 @@ $(document).ready(function() {
 
             },//success
             error:function(){
-                alert('Unable to get posts');
+                alert('Unable to update');
             }//error
         })//ajax
     }//view
