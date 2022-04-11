@@ -21,6 +21,10 @@
     &--title{
         @include modal-title;
     }
+
+    &--closeBtn{
+        @include modal-close-icon
+    }
 }
 
 .createAccountModal-body{

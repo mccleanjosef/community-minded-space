@@ -22,26 +22,26 @@ $(document).ready(function(){
     
   // Appending Intro next page on App start
 
-$('#index-btn').click(function(){
+  $('#index-btn').click(function(){
 
-  $('#landing-page').empty().append(
-    `
-    <div class="landing-background-second">
-    <div class="landing-section">
-    <div class="landing-section--topSecond">
-    <h1 class="landing-section--h1">Discover a new world of wildlife</h1>
-    <p class="landing-section--p">Join the community documenting wildlife observations that support the research and conservation worldwide</p>
-</div>
-<div class="landing-section--bottom">
-<a href="signIn.html"><button id="index-btn" class="landing-section--button">Get Started</button></a>
-    <div class="landing-section--navigation-circles">
-        <div class="landing-section--navigation-circles__circle2"></div>
-        <div class="landing-section--navigation-circles__circle1"></div>
-    </div>
-</div>
-</div>
-</div>
-    `
+    $('#landing-page').empty().append(
+      `
+      <div class="landing-background-second">
+      <div class="landing-section">
+      <div class="landing-section--topSecond">
+      <h1 class="landing-section--h1">Discover a new world of wildlife</h1>
+      <p class="landing-section--p">Join the community documenting wildlife observations that support the research and conservation worldwide</p>
+      </div>
+      <div class="landing-section--bottom">
+      <a href="signIn.html"><button id="index-btn" class="landing-section--button">Get Started</button></a>
+          <div class="landing-section--navigation-circles">
+              <div class="landing-section--navigation-circles__circle2"></div>
+              <div class="landing-section--navigation-circles__circle1"></div>
+          </div>
+      </div>
+      </div>
+      </div>
+      `
     );
   });
   // ============ Appending Intro into App Ends ============
@@ -77,7 +77,38 @@ $('#index-btn').click(function(){
           console.log(user); //remove when development is finished
 
           if (user !== 'username taken already. Please try another name'){
-            alert('Thank you for registering. Please login');
+
+            // if register is successful - log user in Starts
+            let username = $('#c-username').val();
+            let password = $('#c-password').val();
+            console.log(username, password); //remove when development is finished
+
+            $.ajax({
+              url: `http://${url}/loginUser`,
+              type: 'POST',
+              data: {
+                username: username,
+                password: password
+              },
+              success: function(user) {
+                console.log(user);
+
+                sessionStorage.setItem('userID', user['_id']);
+                sessionStorage.setItem('userName', user['username']);
+                sessionStorage.setItem('profileImg', user['profile_img']);
+                console.log(sessionStorage);
+                document.location.href = 'main-feed.html';
+                // alert('Welcome')
+
+                // go to main-feed
+                location.href='./main-feed.html'
+
+              }, //success
+              error: function() {
+                console.log('error: cannot call api');
+                alert('Unable to login - unable to call api');
+              } //error
+            }) //end of ajax
 
           } else {
             alert('username taken already. Please try another name');
@@ -85,6 +116,7 @@ $('#index-btn').click(function(){
             $('#c-password').val('');
             $('#c-profile_img').val('');
           } //else
+          // if register is successful - log user in Ends
 
         }, //success
         error: function() {
@@ -129,9 +161,10 @@ $('#index-btn').click(function(){
             } else {
               sessionStorage.setItem('userID', user['_id']);
               sessionStorage.setItem('userName', user['username']);
+              sessionStorage.setItem('profileImg', user['profile_img']);
               console.log(sessionStorage);
               document.location.href = 'main-feed.html';
-              alert('Welcome back! :)')
+              // alert('Welcome back! :)')
             } // end of ifs
           }, //success
           error: function() {

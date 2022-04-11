@@ -148,6 +148,8 @@ app.post('/loginUser', (req, res)=>{
 
 
 
+
+
 // Get all Posts for the Database
 
 app.get('/allPostsFromDB',(req,res)=>{
@@ -155,9 +157,6 @@ app.get('/allPostsFromDB',(req,res)=>{
     res.send(result);
   })
 })
-
-
-
 
 
 

@@ -7,7 +7,7 @@
   <title>Main Feed - Sanctuary</title>
 
   <!-- favicon link -->
-  <link rel="icon" href="./img/logo.png">
+  <link rel="icon" href="./img/favicon-img.png">
 
   <!-- bootstrap css -->
   <link rel="stylesheet" href="../frontend/node_modules/bootstrap/dist/css/bootstrap.min.css">
@@ -110,15 +110,18 @@
       <a href="./main-feed.html"><img class="header__logo" src="./img/sanctuary-logo-right-heavy.svg" alt="Sanctuary Logo"></a>
       <div class="btn-group">
         <button type="button" class="btn dropdown-toggle header__account-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-          <img class="header__profile-icon" src="./img/profile-icon.svg" alt="Signed Out Profile Icon">
+          <div class="header__profile-icon-wrap">
+            <img class="header__profile-icon" src="./img/profile-icon.svg" alt="Signed Out Profile Icon">
+          </div>
           <i class="fa-solid fa-chevron-down header__down-icon"></i>
           <i class="fa-solid fa-chevron-up header__up-icon"></i>
         </button>
         <ul class="dropdown-menu dropdown-menu-end header__dropdown-menu">
-          <a href="./signIn.html"><li><button class="dropdown-item header__dropdown-item" type="button">Sign In</button></li></a>
+          <a href="./signIn.html"><li><button class="dropdown-item header__dropdown-item" id="signInBtn" type="button">Sign In</button></li></a>
           <a href=""></a><li><button class="dropdown-item header__dropdown-item" type="button">Display Mode</button></li>
           <a href="./get-involved.html"><li><button class="dropdown-item header__dropdown-item" type="button">Get Involved</button></li></a>
-          <li><button class="dropdown-item header__dropdown-item" type="button" data-bs-toggle="modal" data-bs-target=".main-feed-create-account-modal">Create Account</button></li>
+          <li><button class="dropdown-item header__dropdown-item" id="createAccountBtn" type="button" data-bs-toggle="modal" data-bs-target=".main-feed-create-account-modal">Create Account</button></li>
+          <li><button class="dropdown-item header__dropdown-item" id="signOutBtn" type="button">Sign Out</button></li>
         </ul>
       </div>
   </header>
