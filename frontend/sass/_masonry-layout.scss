@@ -17,3 +17,19 @@
   display: block;
   clear: both;
 }
+
+
+/* Medium Devices (Tablets) */
+@media #{$tablet} {
+  .posts-wrap{
+    height: 76vh;
+  }
+}
+
+/* Large Devices (Desktop) */
+@media #{$desktop}{
+  .posts-wrap{
+    width: 90%;
+    height: 81vh;
+  }
+}

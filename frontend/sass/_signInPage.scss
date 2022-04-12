@@ -91,3 +91,95 @@
         letter-spacing: 0.05rem;
     }
 }
+
+/* Medium Devices (Tablets) */
+@media #{$tablet} {
+    .signIn-logo{
+        height: 35%;
+
+        &--img{
+            height: 19.2rem;
+        }
+    }
+
+    .signIn-middle{
+        height: 20%;
+
+        &--label{
+            font-size: 1.8rem;
+            margin-right: 23.5rem;
+        }
+
+        &--input{
+            border-radius: 1rem;
+            width: 34.3rem;
+            font-size: 1.8rem;
+        }
+    }
+
+    .signIn-bottom{
+        height: 25%;
+        margin-top: 15rem;
+
+        &--signIn{
+            width: 34.3rem;
+        }
+
+        &--createAccount{
+            border-radius: 1rem;
+            width: 34.3rem;
+        }
+    }
+}
+
+/* Large Devices (Desktop) */
+@media #{$desktop}{
+    .signIn-logo{
+        height: 40%;
+        justify-content: flex-end;
+        padding-right: 8%;
+
+        &--img{
+            height: 19.5rem;
+        }
+    }
+
+    .signIn-middle{
+        height: 20%;
+        align-items: flex-start;
+        padding-left: 15%;
+
+        &--label{
+            font-size: 1.8rem;
+            margin-right: 23.5rem;
+        }
+
+        &--input{
+            border-radius: 1rem;
+            width: 34.3rem;
+            font-size: 1.8rem;
+        }
+    }
+
+    .signIn-bottom{
+        height: 25%;
+        margin-top: 9rem;
+        align-items: flex-start;
+        padding-left: 15%;
+
+        &--signIn{
+            width: 34.3rem;
+        }
+
+        &--createAccount{
+            border-radius: 1rem;
+            width: 34.3rem;
+        }
+
+        &--guest{
+            width: 34.3rem;
+            text-align: center;
+            letter-spacing: 0.1rem;
+        }
+    }
+}
