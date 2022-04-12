@@ -1059,12 +1059,46 @@ footer {
 }
 
 .modal-post__comments-top {
-  height: 15rem;
+  min-height: 15rem;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: scroll;
   border-radius: 30px 30px 0px 0px;
   background: linear-gradient(12.04deg, #1AA878 0%, #78C948 100%);
   padding: 1.5rem;
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.05rem;
+}
+
+.appendContainer {
+  height: 30%;
+  width: 100%;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.4rem;
+  padding-left: 12%;
+  padding-right: 12%;
+}
+.appendContainer__profileContainer {
+  height: 3.4rem;
+  width: 3.4rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.appendContainer__profileContainer--img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.appendContainer--text {
   color: #ffffff;
   font-size: 1.2rem;
   font-family: "Roboto", sans-serif;
@@ -1077,6 +1111,7 @@ footer {
   justify-content: flex-end;
   padding-top: 0.8rem;
   margin-right: 2rem;
+  margin-bottom: 2rem;
 }
 
 .modal-post__comments-btn {

@@ -9,7 +9,7 @@ const commentSchema = new mongoose.Schema({
     ref: 'User'
   },
 
-  username: {
+  profile_img: {
     type: String,
     ref: 'User'
   },

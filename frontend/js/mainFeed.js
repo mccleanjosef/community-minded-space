@@ -11,7 +11,7 @@ $(document).ready(function() {
         let saveComs = document.querySelector('#saveComment');
         let id = saveComs.value;
         let userId = sessionStorage.getItem('userID');
-        let userName = sessionStorage.getItem('userName');
+        let profile = sessionStorage.getItem('profileImg');
 
         let comment = document.querySelector('#commentText');
         console.log(id);
@@ -26,7 +26,7 @@ $(document).ready(function() {
             data: {
               text: comment.value,
               user_id: userId,
-              username: userName,
+              profile_img: profile,
               post_id: id,
             },
             success: function(comment) {
@@ -55,14 +55,32 @@ $(document).ready(function() {
         console.log("hello");
         console.log(commentsFromMongo);
         let i;
-        document.getElementById('commentAppend').innerHtml = "";
-        for (i = 0; i < commentsFromMongo.length; i++) {
-          document.getElementById('commentAppend').innerHTML +=
-            `
-            <p>${commentsFromMongo[i].username}</p>
-            <p>${commentsFromMongo[i].text}</p>
+        // document.getElementById('commentAppend').innerHtml = "";
 
+        $('#commentAppend').empty().append(
+          ``
+        );
+
+
+        for (i = 0; i < commentsFromMongo.length; i++) {
+
+          $('#commentAppend').append(
+            `
+            <div class="appendContainer">
+
+            <div class="appendContainer__profileContainer">
+
+            <img class="appendContainer__profileContainer--img" src="${commentsFromMongo[i].profile_img}" alt="Profile Image">
+
+            </div>
+
+
+
+            <p class="appendContainer--text">${commentsFromMongo[i].text}</p>
+
+            </div>
               `
+          );
         }
       },
       error: function() {
@@ -340,6 +358,8 @@ $(document).ready(function() {
 
                             <textarea class="modal-post__description" type="text" spellcheck="false">${singleProject.description}</textarea>
 
+
+
                             <div class="modal-post__comments-container">
 
                                 <div class="modal-post__comments">
@@ -350,6 +370,7 @@ $(document).ready(function() {
                                     <p id="viewComments">View Comments</p>
 
                                     </div>
+
 
                                     <div class="modal-post__comments-bottom">
 
