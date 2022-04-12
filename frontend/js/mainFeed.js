@@ -321,15 +321,42 @@ $(document).ready(function() {
                             $('#updatePostName').val('');
                             $('#updatePostDescription').val('');
 
-                            $('.grid').masonry('reloadItems'); // NOT WORKING HERE
+                            // location.href='./main-feed.html' // Not working
                         },
                         error: function() {
                             console.log('error: cannot update');
                         }
                     }); // end of ajax
-                    
                 });
                 // ============ Update Post Ends ============
+
+                
+                // ============ Delete Post Starts ============
+
+                $('#deletePost').click(function() {
+                    event.preventDefault();
+                    console.log(postId);
+                
+                    let id = postId;
+                    $.ajax({
+                        url: `http://${url}/deletePost/${id}`,
+                        type: 'DELETE',
+                        success: function(data) {
+                            console.log(data);
+                            // alert('Post has been deleted');
+
+                            location.reload();
+                        },
+                        
+                        error: function() {
+                            console.log('error: cannot delete');
+                        }
+                    
+                    }); // end of ajax
+                
+                });
+                
+                // ============ Delete Post Ends ============
 
 
             },//success

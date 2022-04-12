@@ -47,17 +47,6 @@ app.get('/allPostsFromDB', (req, res) => {
 
 
 
-// get all User Info
-
-app.get('/allUsersFromDB', (req, res) => {
-  User.find().then(result => {
-    res.send(result);
-  })
-});
-
-
-
-
 // Adding a post to the Database
 
 app.post('/addPost',(req,res)=>{
