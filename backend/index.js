@@ -55,9 +55,10 @@ app.post('/addPost',(req,res)=>{
     image_url: req.body.image_url,
     location: req.body.location,
     name: req.body.name,
-    species: req.body.species,
     description: req.body.description,
-    comment: req.body.comment
+    user_id: req.body.user_id,
+    profile_img: req.body.profile_img,
+    username: req.body.username
   }); 
   
   dbPost.save().then(result=>{ // save to database and to notify the user
@@ -146,17 +147,6 @@ app.post('/loginUser', (req, res)=>{
   }) // Find one ends
 }); // end of post login
 
-
-
-
-
-// Get all Posts for the Database
-
-app.get('/allPostsFromDB',(req,res)=>{
-  Post.find().then(result=>{
-    res.send(result);
-  })
-})
 
 
 

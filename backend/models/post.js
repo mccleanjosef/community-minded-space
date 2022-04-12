@@ -12,7 +12,11 @@ const postSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
-  user_img: {
+  profile_img:{
+    type: String,
+    ref: 'User'
+  },
+  username:{
     type: String,
     ref: 'User'
   }

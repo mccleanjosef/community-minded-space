@@ -189,6 +189,8 @@ $(document).ready(function() {
     let name = $('#as-name').val();
     let description = $('#as-description').val();
     let userid = sessionStorage.getItem('userID');
+    let user_image = sessionStorage.getItem('profileImg');
+    let username = sessionStorage.getItem('userName');
 
     console.log(userid);
     console.log(image_url, location, name, description);
@@ -209,7 +211,10 @@ $(document).ready(function() {
           image_url: image_url,
           location: location,
           name: name,
-          description: description
+          description: description,
+          profile_img: user_image,
+          user_id: userid,
+          username: username
         },
         success: function(post) {
           console.log(post);

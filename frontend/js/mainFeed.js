@@ -2,76 +2,74 @@ $(document).ready(function() {
     console.log('main script is linked'); //testing if script.js is working
     console.log(sessionStorage);
 
+    // global variable for modals 
+    let postId = '';
+
+    // ============ Post Comment Starts ============
     function postComment(){
 
-        let saveComs = document.querySelector('#saveComment');
-        let id = saveComs.value;
-        let userId = sessionStorage.getItem('userID');
-        let comment = document.querySelector('#commentText');
-        console.log(id);
+      let saveComs = document.querySelector('#saveComment');
+      let id = saveComs.value;
+      let userId = sessionStorage.getItem('userID');
+      let comment = document.querySelector('#commentText');
+      console.log(id);
 
-        console.log(comment.value);
-        if (!userId){
-          alert('Please login to comment')
-        } else {
-          $.ajax({
-            url: `http://${url}/createComment`,
-            type: 'POST',
-            data: {
-              text: comment.value,
-              user_id: userId,
-              post_id: id,
-            },
-            success: function(comment) {
-              alert('Comment posted');
-              console.log(comment);
-            },
-            error: function() {
-              alert('unable to post comment');
-            } // end of error
-          })//end of ajax
-        }//end of if
-      };
-
-
-
-   // Get Comments
+      console.log(comment.value);
+      if (!userId){
+        alert('Please login to comment')
+      } else {
+        $.ajax({
+          url: `http://${url}/createComment`,
+          type: 'POST',
+          data: {
+            text: comment.value,
+            user_id: userId,
+            post_id: id,
+          },
+          success: function(comment) {
+            alert('Comment posted');
+            console.log(comment);
+          },
+          error: function() {
+            alert('unable to post comment');
+          } // end of error
+        })//end of ajax
+      }//end of if
+    };
+    // ============ Post Comment Ends ============
 
 
-   function getComments() {
-    let openComs = document.querySelector('#saveComment');
-    let id = openComs.value;
+    // ============ Get Comment Starts ============
+    function getComments() {
+      let openComs = document.querySelector('#saveComment');
+      let id = openComs.value;
 
-    $.ajax({
-      url: `http://${url}/seeComments/${id}`,
-      type: 'GET',
-      success: function(commentsFromMongo) {
+      $.ajax({
+        url: `http://${url}/seeComments/${id}`,
+        type: 'GET',
+        success: function(commentsFromMongo) {
 
-        console.log("hello");
-        
-        console.log(commentsFromMongo);
-        let i;
-        document.getElementById('commentAppend').innerHtml = "";
-        for (i = 0; i < commentsFromMongo.length; i++) {
-          document.getElementById('commentAppend').innerHTML +=
-            `
-              <p>${commentsFromMongo[i].text}</p>
-              `;
-        }
-      },
-      error: function() {
-        console.log('error: cannot retreive comments');
-      } //error
-    }) //ajax
-  };
-
-
-
-
+          console.log("hello");
+          
+          console.log(commentsFromMongo);
+          let i;
+          document.getElementById('commentAppend').innerHtml = "";
+          for (i = 0; i < commentsFromMongo.length; i++) {
+            document.getElementById('commentAppend').innerHTML +=
+              `
+                <p>${commentsFromMongo[i].text}</p>
+                `;
+          }
+        },
+        error: function() {
+          console.log('error: cannot retreive comments');
+        } //error
+      }) //ajax
+    };
+    // ============ Get Comment Ends ============
 
 
-    // global variables
-    let postId = '';
+    
 
     // ============ Masonry Layout - Masonry init Starts ============
     // init Masonry
@@ -252,7 +250,7 @@ $(document).ready(function() {
                         <div class="post" id="${postsFromMongo[i]._id}">
                             <div class="post__top">
                                 <div class="post__author-img-wrap">
-                                    <img class="post__author-image" src="https://images.unsplash.com/photo-1482046187924-50f27dc64333?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Author profile image">
+                                    <img class="post__author-image" src="${postsFromMongo[i].profile_img}" alt="Author profile image">
                                 </div>
                                 <div class="post__btn-ctn">
                                     <button type="button" class="btn dropdown-toggle post__post-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -292,14 +290,15 @@ $(document).ready(function() {
                     });
                 }
 
-
+                
+                // ============ Setting Global variable Starts ============
                 // setting postId global variable for update and delete modals
                 //  on click of post dropdown
                 $('.post__post-dropdown').click(function() {
                     postId = $(this).parent().parent().parent().attr('id');
                     console.log(postId);
                 });
-
+                // ============ Setting Global variable Ends ============
 
 
                 
@@ -321,51 +320,54 @@ $(document).ready(function() {
 
                             `
                             <div class= "modal-post__header">
-                                <img class="modal-post__profile" src="#" alt="User posted picture">
-                                <button type="button" class="btn-close modal-post__close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              <img class="modal-post__profile" src="${singleProject.profile_img}" alt="User posted picture">
+                              <p class="modal-post__username">${singleProject.username}</p>
+                              <button type="button" class="btn-close modal-post__close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
 
                             <div class="modal-post__img-container">
-                                <img class="modal-post__image" src="${singleProject.image_url}" alt="User posted picture">
+                              <img class="modal-post__image" src="${singleProject.image_url}" alt="User posted picture">
                             </div>
 
                             <div class="modal-post__locationName-container">
-                                <p class="modal-post__text">${singleProject.location}</p>
-                                <p class="modal-post__text">${singleProject.name}</p>
+                              <p class="modal-post__text">${singleProject.location}</p>
+                              <p class="modal-post__text">${singleProject.name}</p>
                             </div>
 
-                            <textarea class="modal-post__description" type="text" spellcheck="false">${singleProject.description}</textarea>
+                            <p class="modal-post__description">${singleProject.description}</p>
 
                             <div class="modal-post__comments-container">
 
-                                <div class="modal-post__comments">
+                            <div class="modal-post__comments">
 
 
-                                    <div id="commentAppend" class="modal-post__comments-top">
+                              <div id="commentAppend" class="modal-post__comments-top">
 
-                                    <p id="viewComments">View Comments</p>
+                              <p id="viewComments">View Comments</p>
 
-                                    </div>
+                              </div>
 
-                                    <div class="modal-post__comments-bottom">
+                              <div class="modal-post__comments-bottom">
 
-                                        <input id="commentText" class="modal-post__input" type="text" placeholder="Add a comment">
+                                <input id="commentText" class="modal-post__input" type="text" placeholder="Add a comment">
 
-                                        <button id="saveComment" class="modal-post__comments-btn" value=${singleProject._id}><img  class="modal-post__comments-btn" src="./img/postComment.png"></button>
+                                <button id="saveComment" class="modal-post__comments-btn" value=${singleProject._id}><img  class="modal-post__comments-btn" src="./img/postComment.png"></button>
 
-                                    </div>
-                                </div>
+                              </div>
                             </div>
-                            `
-                            );
+                          </div>
+                          `
+                          );
 
-                            $('#viewComments').click(function(){
-                                getComments();
-                              });
+                          // Post Comment Function
+                          $('#viewComments').click(function(){
+                            getComments();
+                          });
 
-                            $('#saveComment').click(function(){
-                                postComment();
-                              });
+                          // Post Comment Function
+                          $('#saveComment').click(function(){
+                            postComment();
+                          });
 
                         },
                         error:function(){
@@ -374,9 +376,6 @@ $(document).ready(function() {
                     })
                 })
                 // ============ View Post Modal Ends ============
-
-                    // Post Comment Function
-
 
 
 
@@ -411,15 +410,42 @@ $(document).ready(function() {
                             $('#updatePostName').val('');
                             $('#updatePostDescription').val('');
 
-                            $('.grid').masonry('reloadItems'); // NOT WORKING HERE
+                            // location.href='./main-feed.html' // Not working
                         },
                         error: function() {
                             console.log('error: cannot update');
                         }
                     }); // end of ajax
-                    
                 });
                 // ============ Update Post Ends ============
+
+                
+                // ============ Delete Post Starts ============
+
+                $('#deletePost').click(function() {
+                    event.preventDefault();
+                    console.log(postId);
+                
+                    let id = postId;
+                    $.ajax({
+                        url: `http://${url}/deletePost/${id}`,
+                        type: 'DELETE',
+                        success: function(data) {
+                            console.log(data);
+                            // alert('Post has been deleted');
+
+                            location.reload();
+                        },
+                        
+                        error: function() {
+                            console.log('error: cannot delete');
+                        }
+                    
+                    }); // end of ajax
+                
+                });
+                
+                // ============ Delete Post Ends ============
 
 
             },//success
