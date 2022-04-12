@@ -15,11 +15,27 @@
 .modal-post__header{
     @include modal-header-layout;
     justify-content: flex-start;
+    align-items: center;
     height: 8.7rem;
+    padding-top: 0;
 }
 
 .modal-post__profile{
     margin-left: 1.5rem;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.modal-post__username{
+    color: $black;
+    letter-spacing: 0.06rem;
+    font-size: 1.6rem;
+    font-family: $body-font;
+    font-weight: $regular;
+    margin: 0;
+    margin-left: 1rem
 }
 
 .modal-post__close{
@@ -68,7 +84,6 @@
     color: $white;
     outline: none;
     border: none;
-    overflow: scroll;
     margin-top: 0.5rem;
 }
 
