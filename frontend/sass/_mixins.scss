@@ -9,6 +9,10 @@
     font-family: $body-font;
     font-weight: $medium;
     letter-spacing: 0.04rem;
+    &:hover{
+        background: linear-gradient(87.62deg, #1AA878 0.64%, #78C948 99.43%);
+        color: $white;
+    }
 }
 
 @mixin gradient-rounded-button{

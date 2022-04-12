@@ -76,7 +76,7 @@ $(document).ready(function() {
     const $grid = $('.grid').masonry({
         itemSelector: ".post",
         columnWidth: 341,
-        gutter: 10,
+        gutter: 21,
         horizontalOrder: true,
         fitWidth: true
     });
