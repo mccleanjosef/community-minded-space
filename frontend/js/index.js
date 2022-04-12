@@ -222,17 +222,19 @@ $(document).ready(function() {
 
   // ============ Carousel starts ============
   $('#fullscreen').click(function () {
-
+   event.preventDefault();
+    console.log("hello")
     $.ajax({
         url: `http://${url}/allPostsFromDB`,
         type: 'GET',
         dataType: 'json',
         success:function(postsFromMongo){
-            console.log(postsFromMongo);
+            console.log(postsFromMongo.length);
             document.location.href = 'full-screen.html';
             let i;
             for(i=0; i < postsFromMongo.length; i++){
-            $('.fullscreen__carousel-contanier').empty().append(
+              console.log(i)
+            $('#fullscreenInner').append(
 
             `
             <div class="card caurosel-item" style="width: 18rem;">

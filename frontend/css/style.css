@@ -1137,9 +1137,38 @@ footer {
 .fullscreen__nav-left {
   width: 50%;
 }
+.fullscreen__ld-container {
+  width: 100%;
+  display: flex;
+}
+.fullscreen__image {
+  border-radius: 30px;
+  margin-bottom: 2rem;
+}
+.fullscreen__body {
+  display: flex;
+  align-items: center;
+}
+.fullscreen__text {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  color: black;
+  font-size: 1.2rem;
+  letter-spacing: 0.1rem;
+  background: white;
+  border-radius: 3rem;
+  padding: 0.4em 1em;
+  margin-left: 1rem;
+}
+.fullscreen__description-container {
+  background: white;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 30px;
+  min-height: 20rem;
+}
 
 .fullscreen__carousel-contanier {
-  min-width: 32rem;
-  min-height: 68rem;
-  background: white;
+  width: 32rem;
+  min-height: 90%;
 }

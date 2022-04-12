@@ -23,12 +23,46 @@
     &__nav-left{
         width: 50%;
     }
+
+    &__ld-container{
+        width: 100%;
+        display: flex;
+    }
+
+    &__image{
+        border-radius: 30px;
+        margin-bottom: 2rem;
+    }
+
+    &__body{
+        display: flex;
+        align-items: center;
+    }
+
+    &__text{
+        font-family: $body-font;
+        font-weight: $medium;
+        color: black;
+        font-size: 1.2rem;
+        letter-spacing: 0.1rem;
+        background: white;
+        border-radius: 3rem;
+        padding: 0.4em 1em;
+        margin-left: 1rem;
+    }
+
+    &__description-container{
+        background: white;
+        width: 100%;
+        padding: 1rem;
+        border-radius: 30px;
+        min-height: 20rem;
+    }
 }
 
 .fullscreen__carousel-contanier{
-    min-width: 32rem;
-    min-height: 68rem;
-    background: white;
+    width: 32rem;
+    min-height: 90%;
 }
 
 
