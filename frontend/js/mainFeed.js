@@ -2,11 +2,17 @@ $(document).ready(function() {
     console.log('main script is linked'); //testing if script.js is working
     console.log(sessionStorage);
 
+
+
+    // Posting comment to Mongo DB Backend
+
     function postComment(){
 
         let saveComs = document.querySelector('#saveComment');
         let id = saveComs.value;
         let userId = sessionStorage.getItem('userID');
+        let userName = sessionStorage.getItem('userName');
+
         let comment = document.querySelector('#commentText');
         console.log(id);
 
@@ -20,6 +26,7 @@ $(document).ready(function() {
             data: {
               text: comment.value,
               user_id: userId,
+              username: userName,
               post_id: id,
             },
             success: function(comment) {
@@ -37,7 +44,6 @@ $(document).ready(function() {
 
    // Get Comments
 
-
    function getComments() {
     let openComs = document.querySelector('#saveComment');
     let id = openComs.value;
@@ -46,17 +52,17 @@ $(document).ready(function() {
       url: `http://${url}/seeComments/${id}`,
       type: 'GET',
       success: function(commentsFromMongo) {
-
         console.log("hello");
-        
         console.log(commentsFromMongo);
         let i;
         document.getElementById('commentAppend').innerHtml = "";
         for (i = 0; i < commentsFromMongo.length; i++) {
           document.getElementById('commentAppend').innerHTML +=
             `
-              <p>${commentsFromMongo[i].text}</p>
-              `;
+            <p>${commentsFromMongo[i].username}</p>
+            <p>${commentsFromMongo[i].text}</p>
+
+              `
         }
       },
       error: function() {
@@ -64,8 +70,6 @@ $(document).ready(function() {
       } //error
     }) //ajax
   };
-
-
 
 
 

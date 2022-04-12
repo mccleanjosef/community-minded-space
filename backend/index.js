@@ -188,6 +188,7 @@ app.post('/createComment', (req,res) => {
     _id: new mongoose.Types.ObjectId,
     text: req.body.text,
     user_id: req.body.user_id,
+    username: req.body.username,
     post_id: req.body.post_id
   });
   newComment.save()
