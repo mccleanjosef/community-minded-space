@@ -321,91 +321,42 @@ $(document).ready(function() {
                             $('#updatePostName').val('');
                             $('#updatePostDescription').val('');
 
-                            $('.grid').masonry('reloadItems'); // NOT WORKING HERE
+                            // location.href='./main-feed.html' // Not working
                         },
                         error: function() {
                             console.log('error: cannot update');
                         }
                     }); // end of ajax
-
-
-
-
-                    //start delete=============================
-                    
-// ============ Delete Post Starts ============
-
-        $('#deleteBtn').click(function() {
-        event.preventDefault();
-        console.log(postId);
-    
-        let id = postId;
-        $.ajax({
-        url: `http://${url}/deletePost/${id}`,
-        type: 'DELETE',
-        success: function(data) {
-        console.log(data);
-        alert('Post has been deleted');
-    },
-    
-    error: function() {
-    console.log('error: cannot delete');
-    }
-    
-    }); // end of ajax
-    
-    });
-    
-    // ============ Delete Post Ends ============
-
-
-
-                //     $('#deletePost').click(function(){
-                //         event.preventDefault();
-                //         let deletePostId = $('#deletePostId').val();
-                //         let userId = sessionStorage.getItem('userID');
-                //         console.log(deletePostId);
-                        
-                //         if (deletePostId == '' || !userId){
-                        
-                //         alert('Please log in to delete');
-                        
-                //         } else {
-                        
-                //             $.ajax({
-                //             url : `http://${url}/deletePost/${id}`,
-                //             type: 'DELETE',
-                //             data: {
-                //             image_url: imgUrl,
-                //             location: location,
-                //             name: name,
-                //             description:description
-                //         },
-                        
-                //         success : function(data){
-                //         console.log(data);
-                //         alert('deleted')
-                        
-                //         }, //success
-                        
-                //         error:function(){
-                        
-                //         console.log('error: cannot be deleted');
-                        
-                //         }//eror
-                        
-                //         })//ajax
-                        
-                //         }//if
-                        
-                //         })//deletepostdeletepost
-                    
-                // });
-
-                //============end delete ==============
-
-
+                });
                 // ============ Update Post Ends ============
+
+                
+                // ============ Delete Post Starts ============
+
+                $('#deletePost').click(function() {
+                    event.preventDefault();
+                    console.log(postId);
+                
+                    let id = postId;
+                    $.ajax({
+                        url: `http://${url}/deletePost/${id}`,
+                        type: 'DELETE',
+                        success: function(data) {
+                            console.log(data);
+                            // alert('Post has been deleted');
+
+                            location.reload();
+                        },
+                        
+                        error: function() {
+                            console.log('error: cannot delete');
+                        }
+                    
+                    }); // end of ajax
+                
+                });
+                
+                // ============ Delete Post Ends ============
 
 
             },//success
