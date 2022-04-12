@@ -982,11 +982,27 @@ footer {
   position: relative;
   padding-top: 4rem;
   justify-content: flex-start;
+  align-items: center;
   height: 8.7rem;
+  padding-top: 0;
 }
 
 .modal-post__profile {
   margin-left: 1.5rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.modal-post__username {
+  color: #000000;
+  letter-spacing: 0.06rem;
+  font-size: 1.6rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  margin: 0;
+  margin-left: 1rem;
 }
 
 .modal-post__close {
@@ -1037,7 +1053,6 @@ footer {
   color: #ffffff;
   outline: none;
   border: none;
-  overflow: scroll;
   margin-top: 0.5rem;
 }
 

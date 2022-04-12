@@ -8,12 +8,15 @@ const postSchema = new mongoose.Schema({
   description: String,
   comment: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}],
   // comment: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}],
-
-  user_id: {
+  user_id:{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
-  user_img: {
+  profile_img:{
+    type: String,
+    ref: 'User'
+  },
+  username:{
     type: String,
     ref: 'User'
   }

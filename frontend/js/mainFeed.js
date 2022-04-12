@@ -184,7 +184,7 @@ $(document).ready(function() {
                         <div class="post" id="${postsFromMongo[i]._id}">
                             <div class="post__top">
                                 <div class="post__author-img-wrap">
-                                    <img class="post__author-image" src="https://images.unsplash.com/photo-1482046187924-50f27dc64333?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Author profile image">
+                                    <img class="post__author-image" src="${postsFromMongo[i].profile_img}" alt="Author profile image">
                                 </div>
                                 <div class="post__btn-ctn">
                                     <button type="button" class="btn dropdown-toggle post__post-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -250,7 +250,8 @@ $(document).ready(function() {
 
                             `
                             <div class= "modal-post__header">
-                                <img class="modal-post__profile" src="#" alt="User posted picture">
+                                <img class="modal-post__profile" src="${singleProject.profile_img}" alt="User posted picture">
+                                <p class="modal-post__username">${singleProject.username}</p>
                                 <button type="button" class="btn-close modal-post__close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
 
@@ -263,7 +264,7 @@ $(document).ready(function() {
                                 <p class="modal-post__text">${singleProject.name}</p>
                             </div>
 
-                            <textarea class="modal-post__description" type="text" spellcheck="false">${singleProject.description}</textarea>
+                            <p class="modal-post__description">${singleProject.description}</p>
 
                             <div class="modal-post__comments-container">
                                 <div class="modal-post__comments">
