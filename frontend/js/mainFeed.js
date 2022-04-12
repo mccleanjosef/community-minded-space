@@ -288,8 +288,8 @@ $(document).ready(function() {
                     })
                 })
                 // ============ View Post Modal Ends ============
-
-
+            
+                
                 // ============ Update Post Starts ============
                 $('#updatePostSubmitBtn').click(function() {
                     event.preventDefault();

@@ -1114,3 +1114,32 @@ footer {
 .modal-post__input:focus {
   outline: none;
 }
+
+.fullscreen {
+  background: linear-gradient(268.51deg, #78C948 0%, #1AA878 96.71%);
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+.fullscreen__nav {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  height: 10rem;
+}
+.fullscreen__nav-right {
+  width: 50%;
+}
+.fullscreen__nav-left {
+  width: 50%;
+}
+
+.fullscreen__carousel-contanier {
+  min-width: 32rem;
+  min-height: 68rem;
+  background: white;
+}
