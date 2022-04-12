@@ -6,9 +6,9 @@ const postSchema = new mongoose.Schema({
   location: String,
   name: String,
   description: String,
-  comment: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}],
-  // comment: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}],
-  user_id:{
+  comment:[],
+
+  user_id: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },

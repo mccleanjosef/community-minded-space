@@ -2,8 +2,74 @@ $(document).ready(function() {
     console.log('main script is linked'); //testing if script.js is working
     console.log(sessionStorage);
 
-    // global variables
+    // global variable for modals 
     let postId = '';
+
+    // ============ Post Comment Starts ============
+    function postComment(){
+
+      let saveComs = document.querySelector('#saveComment');
+      let id = saveComs.value;
+      let userId = sessionStorage.getItem('userID');
+      let comment = document.querySelector('#commentText');
+      console.log(id);
+
+      console.log(comment.value);
+      if (!userId){
+        alert('Please login to comment')
+      } else {
+        $.ajax({
+          url: `http://${url}/createComment`,
+          type: 'POST',
+          data: {
+            text: comment.value,
+            user_id: userId,
+            post_id: id,
+          },
+          success: function(comment) {
+            alert('Comment posted');
+            console.log(comment);
+          },
+          error: function() {
+            alert('unable to post comment');
+          } // end of error
+        })//end of ajax
+      }//end of if
+    };
+    // ============ Post Comment Ends ============
+
+
+    // ============ Get Comment Starts ============
+    function getComments() {
+      let openComs = document.querySelector('#saveComment');
+      let id = openComs.value;
+
+      $.ajax({
+        url: `http://${url}/seeComments/${id}`,
+        type: 'GET',
+        success: function(commentsFromMongo) {
+
+          console.log("hello");
+          
+          console.log(commentsFromMongo);
+          let i;
+          document.getElementById('commentAppend').innerHtml = "";
+          for (i = 0; i < commentsFromMongo.length; i++) {
+            document.getElementById('commentAppend').innerHTML +=
+              `
+                <p>${commentsFromMongo[i].text}</p>
+                `;
+          }
+        },
+        error: function() {
+          console.log('error: cannot retreive comments');
+        } //error
+      }) //ajax
+    };
+    // ============ Get Comment Ends ============
+
+
+    
 
     // ============ Masonry Layout - Masonry init Starts ============
     // init Masonry
@@ -224,14 +290,15 @@ $(document).ready(function() {
                     });
                 }
 
-
+                
+                // ============ Setting Global variable Starts ============
                 // setting postId global variable for update and delete modals
                 //  on click of post dropdown
                 $('.post__post-dropdown').click(function() {
                     postId = $(this).parent().parent().parent().attr('id');
                     console.log(postId);
                 });
-
+                // ============ Setting Global variable Ends ============
 
 
                 
@@ -246,41 +313,62 @@ $(document).ready(function() {
                         dataType: 'json',
                         success:function(singleProject){
                             console.log(singleProject.name);
+
+                            console.log(singleProject._id);
+
                             $('#post-modal-content').empty().append(
 
                             `
                             <div class= "modal-post__header">
-                                <img class="modal-post__profile" src="${singleProject.profile_img}" alt="User posted picture">
-                                <p class="modal-post__username">${singleProject.username}</p>
-                                <button type="button" class="btn-close modal-post__close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              <img class="modal-post__profile" src="${singleProject.profile_img}" alt="User posted picture">
+                              <p class="modal-post__username">${singleProject.username}</p>
+                              <button type="button" class="btn-close modal-post__close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
 
                             <div class="modal-post__img-container">
-                                <img class="modal-post__image" src="${singleProject.image_url}" alt="User posted picture">
+                              <img class="modal-post__image" src="${singleProject.image_url}" alt="User posted picture">
                             </div>
 
                             <div class="modal-post__locationName-container">
-                                <p class="modal-post__text">${singleProject.location}</p>
-                                <p class="modal-post__text">${singleProject.name}</p>
+                              <p class="modal-post__text">${singleProject.location}</p>
+                              <p class="modal-post__text">${singleProject.name}</p>
                             </div>
 
                             <p class="modal-post__description">${singleProject.description}</p>
 
                             <div class="modal-post__comments-container">
-                                <div class="modal-post__comments">
-                                    <div class="modal-post__comments-top accordion-body">
-                                        <img class="#" src="" alt="User profile picture">
-                                        <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                                    </div>
 
-                                    <div class="modal-post__comments-bottom">
-                                        <input class="modal-post__input" type="text" placeholder="Add a comment">
-                                        <button class="modal-post__comments-btn"><img class="modal-post__comments-btn" src="./img/postComment.png"></button>
-                                    </div>
-                                </div>
+                            <div class="modal-post__comments">
+
+
+                              <div id="commentAppend" class="modal-post__comments-top">
+
+                              <p id="viewComments">View Comments</p>
+
+                              </div>
+
+                              <div class="modal-post__comments-bottom">
+
+                                <input id="commentText" class="modal-post__input" type="text" placeholder="Add a comment">
+
+                                <button id="saveComment" class="modal-post__comments-btn" value=${singleProject._id}><img  class="modal-post__comments-btn" src="./img/postComment.png"></button>
+
+                              </div>
                             </div>
-                            `
-                            );
+                          </div>
+                          `
+                          );
+
+                          // Post Comment Function
+                          $('#viewComments').click(function(){
+                            getComments();
+                          });
+
+                          // Post Comment Function
+                          $('#saveComment').click(function(){
+                            postComment();
+                          });
+
                         },
                         error:function(){
                             alert('Unable to view post modal');
@@ -288,6 +376,7 @@ $(document).ready(function() {
                     })
                 })
                 // ============ View Post Modal Ends ============
+
 
 
                 // ============ Update Post Starts ============
@@ -367,33 +456,6 @@ $(document).ready(function() {
     }//view
     //------- All Posts Ends ---------
 
-    
-    //Comments starts
-    // =========================================
-    //Get Comments
-    function getComments() {
-        let openComs = document.querySelector('#commentShow');
-        let id = openComs.value;
-        $.ajax({
-        url: `http://${url}/seeComments/${id}`,
-        type: 'GET',
-        success: function(commentsFromMongo) {
-            console.log(commentsFromMongo);
-            let i;
-            document.getElementById('commentCont').innerHtml = "";
-            for (i = 0; i < commentsFromMongo.length; i++) {
-            document.getElementById('commentCont').innerHTML +=
-                `
-                <div class="accordion-body">
-                <p>${commentsFromMongo[i].text}</p>
-                <h6>${commentsFromMongo[i].user_id}<h6>
-                </div>`;
-            }
-        },
-        error: function() {
-            console.log('error: cannot retreive comments');
-        } //error
-        }) //ajax
-    };
+
   
 }); //document.ready

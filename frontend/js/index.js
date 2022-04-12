@@ -194,9 +194,16 @@ $(document).ready(function() {
 
     console.log(userid);
     console.log(image_url, location, name, description);
-    if (image_url == '' || location == '' || name == '' || description == '' || !userid){
-      alert('Please login and enter all details');
-    } else {
+
+    if(!userid){
+      alert('Please Login to make a post')
+    }
+
+    else if (image_url == '' || location == '' || name == '' || description == ''){
+      alert('Please enter all details');
+    }
+
+    else {
       $.ajax({
         url: `http://${url}/addPost`,
         type: 'POST',
@@ -219,6 +226,10 @@ $(document).ready(function() {
       }) //ajax
     } //else
   }); //Add Sighting
+
+
+
+
 
 
 
