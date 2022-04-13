@@ -1,0 +1,188 @@
+#postModal{
+    padding-top: 1.7rem;
+    padding-bottom: 1.7rem;
+}
+
+.modal-post__master{
+    min-height: 90vh;
+    background: white;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding: 0 2.5%;
+}
+
+.modal-post__header{
+    @include modal-header-layout;
+    justify-content: flex-start;
+    align-items: center;
+    height: 8.7rem;
+    padding-top: 0;
+}
+
+.modal-post__profile{
+    margin-left: 1.5rem;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.modal-post__username{
+    color: $black;
+    letter-spacing: 0.06rem;
+    font-size: 1.6rem;
+    font-family: $body-font;
+    font-weight: $regular;
+    margin: 0;
+    margin-left: 1rem
+}
+
+.modal-post__close{
+    @include modal-close-icon;
+    top: 2.9rem;
+    font-size: 1.9rem;
+}
+
+.modal-post__img-container{
+    width: 100%;
+}
+
+.modal-post__image{
+    border-radius: 3rem;
+    width: 100%;
+}
+
+.modal-post__locationName-container{
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-top: 1.5rem;
+}
+
+.modal-post__text{
+    font-family: $body-font;
+    font-weight: $medium;
+    color: $white;
+    font-size: 1.2rem;
+    letter-spacing: 0.1rem;
+    background: linear-gradient(268.51deg, #78C948 0%, #1AA878 96.71%);
+    border-radius: 3rem;
+    padding: 0.4em 1em;
+    margin-right: 1rem;
+}
+
+.modal-post__description{
+    width: 100%;
+    min-height: 9.2rem;
+    background: linear-gradient(12.04deg, #1AA878 0%, #78C948 100%);
+    border-radius: 2rem;
+    letter-spacing: 0.05rem;
+    padding: 0.8em 1.5em;
+    font-size: 1.2rem;
+    color: $white;
+    outline: none;
+    border: none;
+    margin-top: 0.5rem;
+}
+
+.modal-post__comments-container{
+    width: 100%;
+    min-height: 22rem;
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.modal-post__comments{
+    width: 100%;
+    min-height: 20rem;
+    background: white;
+    border-radius: 30px;
+    box-shadow: -3px 3px 4px rgba(0, 0, 0, 0.15);
+}
+
+
+.modal-post__comments-top{
+    min-height: 15rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: scroll;
+
+    border-radius: 30px 30px 0px 0px;
+    background: linear-gradient(12.04deg, #1AA878 0%, #78C948 100%);
+    padding: 1.5rem;
+    color: $white;
+    font-size: 1.2rem;
+    font-family: $body-font;
+    font-weight: $regular;
+    letter-spacing: 0.05rem;
+}
+
+.appendContainer{
+    height: 30%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.4rem;
+    padding-left: 12%;
+    padding-right: 12%;
+    
+    &__profileContainer{
+        height: 3.4rem;
+        width: 3.4rem;
+        border-radius: 50%;
+        overflow: hidden;
+
+        &--img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    &--text{
+        color: $white;
+        font-size: 1.2rem;
+        font-family: $body-font;
+        font-weight: $regular;
+        letter-spacing: 0.05rem;
+    }
+}
+
+
+.modal-post__comments-bottom{
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 0.8rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+}
+
+.modal-post__comments-btn{
+    width: 2rem;
+    height: auto;
+    outline: none;
+    border: none;
+    background: transparent;
+}
+
+.modal-post__input{
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    margin-right: 1.5rem;
+    width: 80%;
+}
+
+.modal-post__input:focus{
+    outline: none;
+}

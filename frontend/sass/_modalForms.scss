@@ -1,0 +1,130 @@
+// All modals styling starts
+.modal{
+    padding: 0 1.7rem;
+}
+
+.modal-content{
+    border-radius: 2.3rem;
+}
+
+.close-icon{
+    @include modal-close-icon;
+}
+// All modals styling ends
+
+
+// Create Account Modal Start
+
+.createAccountModal-header{
+    @include modal-header-layout;
+
+    &--title{
+        @include modal-title;
+    }
+
+    &--closeBtn{
+        @include modal-close-icon
+    }
+}
+
+.createAccountModal-body{
+    @include modal-body-layout;
+
+    &--label{
+        @include modal-form-label;
+    }
+
+    &--input{
+        @include modal-form-input;
+    }
+}
+
+.createAccountModal-footer{
+    @include modal-footer-layout;
+
+    &--btn{
+        @include gradient-rounded-button;
+    }
+}
+
+// Create Account Modal Finished
+
+
+
+
+// Update Post Modal Start
+
+.updatePostModal-header{
+    @include modal-header-layout;
+
+    &--title{
+        @include modal-title;
+    }
+}
+
+.updatePostModal-body{
+    @include modal-body-layout;
+    height: 66vh;
+
+    &--label{
+        @include modal-form-label;
+    }
+
+    &--input{
+        @include modal-form-input;
+    }
+
+    &--inputDescription{
+        @include modal-form-description
+    }
+}
+
+.updatePostModal-footer{
+    @include modal-footer-layout;
+
+    &--btn{
+        @include gradient-rounded-button;
+    }
+}
+
+// Update Post Modal Finish
+
+
+
+// Delete Post Modal Start
+
+.deletePostModal-header{
+    @include modal-header-layout;
+    height: 13.3vh;
+
+    &--title{
+        @include modal-title;
+    }
+}
+
+.deletePostModal-body{
+    @include modal-body-layout;
+    height: 10vh;
+    align-items: center;
+
+    &--text{
+        font-size: 1.6rem;
+        font-family: $body-font;
+        font-weight: $regular;
+        color: $black;
+        text-align: center;
+    }
+}
+
+.deletePostModal-footer{
+    @include modal-footer-layout;
+    justify-content: space-evenly;
+    padding: 0 2rem;
+    padding-bottom: 5rem;
+
+    &--btn{
+        @include gradient-rounded-button;
+    }
+}
+
+// Delete Post Modal Finish

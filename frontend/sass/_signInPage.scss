@@ -1,0 +1,185 @@
+.signIn-container{
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(12.04deg, #1AA878 0%, #78C948 100%);
+}
+
+.signIn-logo{
+    height: 25%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--img{
+        height: 10.5rem;
+    }
+}
+
+.signIn-middle{
+    height: 40%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    &--img{
+        height: 7rem;
+    }
+
+    &--label{
+        color: $white;
+        padding-bottom: 0.6rem;
+        padding-left: 0.4rem;
+        letter-spacing: 0.06rem;
+        font-size: 1.6rem;
+        font-family: $body-font;
+        font-weight: $regular;
+
+        margin-right: 18rem;
+    }
+
+    &--input{
+        border: none;
+        border-radius: 0.8rem;
+        padding: 1em 1.5em;
+        width: 27.1rem;
+        margin-bottom: 1.6rem;
+        letter-spacing: 0.06rem;
+        font-size: 1.6rem;
+        font-family: $body-font;
+        font-weight: $regular;
+    }
+}
+
+.signIn-bottom{
+    height: 35%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 4rem;
+
+    &--signIn{
+        @include gradient-rounded-button;
+        width: 27.1rem;
+        padding: 0.65em;
+        filter: drop-shadow(-3px 4px 4px rgba(0, 0, 0, 0.36));
+    }
+
+    &--createAccount{
+        @include white-rounded-button;
+        font-size: 2rem;
+        border-radius: 0.8rem;
+        width: 27.1rem;
+        padding: 0.65em;
+        color: $dark-green;
+        margin-bottom: 0;
+    }
+
+    &--guest-link{
+        text-decoration: none;
+    }
+
+    &--guest{
+        color: $white;
+        font-size: 1.6rem;
+        font-family: $body-font;
+        font-weight: $regular;
+        letter-spacing: 0.05rem;
+    }
+}
+
+/* Medium Devices (Tablets) */
+@media #{$tablet} {
+    .signIn-logo{
+        height: 35%;
+
+        &--img{
+            height: 19.2rem;
+        }
+    }
+
+    .signIn-middle{
+        height: 20%;
+
+        &--label{
+            font-size: 1.8rem;
+            margin-right: 23.5rem;
+        }
+
+        &--input{
+            border-radius: 1rem;
+            width: 34.3rem;
+            font-size: 1.8rem;
+        }
+    }
+
+    .signIn-bottom{
+        height: 25%;
+        margin-top: 15rem;
+
+        &--signIn{
+            width: 34.3rem;
+        }
+
+        &--createAccount{
+            border-radius: 1rem;
+            width: 34.3rem;
+        }
+    }
+}
+
+/* Large Devices (Desktop) */
+@media #{$desktop}{
+    .signIn-logo{
+        height: 40%;
+        justify-content: flex-end;
+        padding-right: 8%;
+
+        &--img{
+            height: 19.5rem;
+        }
+    }
+
+    .signIn-middle{
+        height: 20%;
+        align-items: flex-start;
+        padding-left: 15%;
+
+        &--label{
+            font-size: 1.8rem;
+            margin-right: 23.5rem;
+        }
+
+        &--input{
+            border-radius: 1rem;
+            width: 34.3rem;
+            font-size: 1.8rem;
+        }
+    }
+
+    .signIn-bottom{
+        height: 25%;
+        margin-top: 9rem;
+        align-items: flex-start;
+        padding-left: 15%;
+
+        &--signIn{
+            width: 34.3rem;
+        }
+
+        &--createAccount{
+            border-radius: 1rem;
+            width: 34.3rem;
+        }
+
+        &--guest{
+            width: 34.3rem;
+            text-align: center;
+            letter-spacing: 0.1rem;
+        }
+    }
+}
