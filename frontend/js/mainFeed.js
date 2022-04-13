@@ -346,6 +346,7 @@ $(document).ready(function() {
                         </div>
                         `
                     );
+
                     // append items to grid
                     $grid.prepend($items)
                         // add and lay out newly prepended items
@@ -355,15 +356,21 @@ $(document).ready(function() {
                     $grid.imagesLoaded().progress(function() {
                         $grid.masonry("layout");
                     });
-                }
 
+                    // if post's username is not the signed in username, hide the post button Starts
+                    if(postsFromMongo[i].username !== sessionStorage.getItem('userName')){
+                        idPost = postsFromMongo[i]._id
+                        $('#'+idPost+' .post__btn-ctn').hide();
+                    }
+                    // if post's username is not the signed in username, hide the post button Ends
+                }
 
                 // ============ Setting Global variable Starts ============
                 // setting postId global variable for update and delete modals
                 //  on click of post dropdown
                 $('.post__post-dropdown').click(function() {
                     postId = $(this).parent().parent().parent().attr('id');
-                    console.log(postId);
+                    // console.log(postId);
                 });
                 // ============ Setting Global variable Ends ============
 
