@@ -18,7 +18,7 @@ $(document).ready(() => {
     })
     // ============ API Ends ============
 
-    // ============ Fullscren append starts ============
+    // ============ Fullscreen append starts ============
     const allPostFromDB = () => {
     $.ajax({
         url: `http://${url}/allPostsFromDB`,
@@ -30,14 +30,24 @@ $(document).ready(() => {
             $('#fullscreenInner').append(
 
             `
-            <div class="carousel-item  ${i === 0 ? 'active' : ''}" >
-              <img src="${postsFromMongo[i].image_url}" class="card-img-top fullscreen__image" alt="...">
+            <div class="carousel-item  ${i === 0 ? 'active' : ''} test" >
+
+              <div class="fullscreen__user-container">
+                <img class="fullscreen__user-image" src="${postsFromMongo[i].profile_img}" alt="Author profile image">
+                <p class="fullscreen__username">${postsFromMongo[i].username}</p>
+              </div>
+
+              <div class="fullscreen__img-container">
+                <img src="${postsFromMongo[i].image_url}" class="fullscreen__image" alt="...">
+              </div>
+          
+              
               <div class="fullscreen__body">
                 <p class="fullscreen__text">${postsFromMongo[i].location}</p>
                 <p class="fullscreen__text">${postsFromMongo[i].name}</p>
               </div>
 
-              <div class="fullscreen__description-container"
+              <div class="fullscreen__description-container">
                 <p class="fullscreen__description">${postsFromMongo[i].description}</p>
               </div>
             </div>
@@ -51,5 +61,5 @@ $(document).ready(() => {
         }//error
     })
 }
-// ============ Fullscren append ends ============
+// ============ Fullscreen append ends ============
 })
