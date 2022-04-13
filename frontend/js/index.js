@@ -1,7 +1,13 @@
 console.log('script'); //testing if script.js is working
 console.log(sessionStorage);
 
-$(document).ready(function() {
+$(document).ready(function(){
+
+  $("#alertError").hide();
+  $("#alertError2").hide();
+  $("#alertError3").hide();
+  $("#asAlertError").hide();
+  $("#asAlertError2").hide();
 
     let url; //declare url as a variable in es6
     $.ajax({
@@ -73,7 +79,6 @@ $(document).ready(function() {
           profile_img: profile_img
         },
         success: function(user) {
-          console.log(user); //remove when development is finished
 
           if (user !== 'username taken already. Please try another name'){
 
@@ -133,13 +138,19 @@ $(document).ready(function() {
   // Login User Starts
 
   $('#signInBtn').click(function(){
+
+    $("#alertError").hide();
+    $("#alertError2").hide();
+    $("#alertError3").hide();
+
     event.preventDefault();
     let username = $('#s-username').val();
     let password = $('#s-password').val();
     console.log(username, password);
 
     if (username == '' || password == '') {
-      alert('Please enter all details');
+      // alert('Please enter all details');
+      $("#alertError").show();
     } else {
       $.ajax({
         url: `http://${url}/loginUser`,
@@ -151,10 +162,16 @@ $(document).ready(function() {
         success: function(user) {
           console.log(user);
 
-          if (user == 'user not found. Please register') {
-            alert('User not found. Please Register');
-          } else if (user == 'not authorized') {
+          if (user == 'user not found. Please register'){
+
+            // alert('User not found. Please Register');
+            $("#alertError2").show();
+
+          } else if (user == 'not authorized'){
             alert('Please try with correct details');
+            $("#alertError3").show();
+
+
             $('#s-username').val('');
             $('#s-password').val('');
           } else {
@@ -196,11 +213,13 @@ $(document).ready(function() {
     console.log(image_url, location, name, description);
 
     if(!userid){
-      alert('Please Login to make a post')
+      // alert('Please Login to make a post');
+      $("#asAlertError").show();
     }
 
     else if (image_url == '' || location == '' || name == '' || description == ''){
       alert('Please enter all details');
+      $("#asAlertError2").show();
     }
 
     else {
@@ -217,8 +236,7 @@ $(document).ready(function() {
           username: username
         },
         success: function(post) {
-          console.log(post);
-          alert('post added');
+          document.location.href = 'main-feed.html';
         },
         error: function() {
           console.log('error: cannot call api');
