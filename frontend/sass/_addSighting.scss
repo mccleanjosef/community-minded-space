@@ -1,0 +1,209 @@
+
+.addSighting-container{
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(26,168,120,1) 0%, rgba(120,201,72,1) 100%);
+}
+
+.addSighting-backSection{
+    // height: 8%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 6%;
+    padding-top: 5%;
+
+    &--arrowIMG{
+        height: 1.8rem;
+    }
+
+    &--back{
+        color: white;
+        font-size: 15px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        padding-left: 1.5rem;
+        padding-top: 1.5rem;
+    }
+}
+
+.addSighting-titleSection{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2%;
+
+    &--title{
+        color: white;
+        font-size: 20px;
+        font-family: 'Laila', sans-serif;
+        letter-spacing: 0.1rem;
+    }
+}
+
+.addSighting-sightingForm{
+    @include modal-body-layout;
+    height: 70vh;
+    z-index: 5;
+
+    &--label{
+        @include modal-form-label;
+        color: $white; 
+    }
+
+    &--input{
+        @include modal-form-input;
+        border: none;
+        border-radius: 2rem;
+        padding: 0.6em 1em;
+        
+    }
+
+    &--inputDescription{
+        @include modal-form-description;
+        border: none;
+        border-radius: 2rem;
+        padding: 1em
+        
+    }
+}
+
+.addSighting-addPost{
+    @include modal-footer-layout;
+    padding: 0;
+
+    &--btn{
+        @include white-rounded-button;
+    }
+}
+
+/* Medium Devices (Tablets) */
+@media #{$tablet} {
+    .addSighting-container{
+        // height: 100vh;
+        // width: 100vw;
+        // background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(26,168,120,1) 0%, rgba(120,201,72,1) 100%);
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+    }
+
+    .addSighting-backSectionWrap{
+        width: 100%;
+    }
+
+    .addSighting-titleSection{
+        height: 12%;
+        // width: 100%;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        // padding-top: 2%;
+
+        &--title{
+            font-size: 3.2rem;
+            // font-family: 'Laila', sans-serif;
+            // letter-spacing: 0.1rem;
+        }
+    }
+
+    .addSighting-sightingForm{
+        height: 60vh;
+        width: 80%;
+
+        &--label{
+            font-size: 1.8rem
+        }
+
+        &--input{
+            font-size: 1.8rem;
+            border-radius: 2.3rem;
+        }
+
+        &--inputDescription{
+            @include modal-form-description;
+            border: none;
+            border-radius: 2rem;
+            padding: 1em
+        
+        }
+    }
+
+    .addSighting-addPost{
+        @include modal-footer-layout;
+        padding: 0;
+
+        &--btn{
+            @include white-rounded-button;
+            height: 5rem;
+        }
+    }
+}
+
+/* Large Devices (Desktop) */
+@media #{$desktop}{
+    .addSighting-container{
+        // height: 100vh;
+        // width: 100vw;
+        // background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(26,168,120,1) 0%, rgba(120,201,72,1) 100%);
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+    }
+
+    .addSighting-backSectionWrap{
+        width: 100%;
+        // height: 0;
+    }
+
+    .addSighting-titleSection{
+        height: auto;
+        // width: 100%;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        padding-top: 0%;
+        padding-bottom: 3rem;
+
+        &--title{
+            font-size: 3.2rem;
+            // font-family: 'Laila', sans-serif;
+            // letter-spacing: 0.1rem;
+        }
+    }
+
+    .addSighting-sightingForm{
+        height: 60vh;
+        width: 65%;
+
+        &--label{
+            font-size: 1.8rem
+        }
+
+        &--input{
+            font-size: 1.8rem;
+            border-radius: 2.3rem;
+        }
+
+        &--inputDescription{
+            @include modal-form-description;
+            border: none;
+            border-radius: 2rem;
+            padding: 1em
+        
+        }
+    }
+
+    .addSighting-addPost{
+        @include modal-footer-layout;
+        padding: 0;
+
+        &--btn{
+            @include white-rounded-button;
+            height: 5rem;
+        }
+    }
+}
