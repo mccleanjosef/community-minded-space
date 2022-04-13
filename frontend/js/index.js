@@ -214,8 +214,10 @@ $(document).ready(function() {
         if (!userid) {
             // alert('Please Login to make a post');
             $("#asAlertError").show();
+
+            
         } else if (image_url == '' || location == '' || name == '' || description == '') {
-            alert('Please enter all details');
+            // alert('Please enter all details');
             $("#asAlertError2").show();
         } else {
             $.ajax({

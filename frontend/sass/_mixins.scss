@@ -117,6 +117,10 @@
     font-size: 1.6rem;
     font-family: $body-font;
     font-weight: $regular;
+
+    &:focus{
+        border-color: #1AA878;
+    }
 }
 
 @mixin modal-footer-layout {
