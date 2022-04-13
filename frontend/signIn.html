@@ -1,98 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign In - Sanctuary</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Sanctuary</title>
 
-  <!-- bootstrap css -->
-  <link rel="stylesheet" href="../frontend/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="../frontend/node_modules/bootstrap/dist/css/bootstrap.min.css">
 
-  <!-- favicon link -->
-  <link rel="icon" href="./img/favicon-img.png">
+    <!-- favicon link -->
+    <link rel="icon" href="./img/favicon-img.png">
 
-  <!-- Google Fonts Roboto and Laila Bold -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Laila:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts Roboto and Laila Bold -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Laila:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
-  <!-- style css -->
-  <link rel="stylesheet" href="./css/style.css">
+    <!-- style css -->
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
 
-  <!-- Create Account modal -->
+    <!-- Create Account modal -->
 
-  <!-- Modal -->
-  <div class="modal fade sign-in-create-account-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
+    <!-- Modal -->
+    <div class="modal fade sign-in-create-account-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
 
-        <div class="createAccountModal-header">
-          <div>
-          <h5 class="createAccountModal-header--title">Create Account</h5>
+                <div class="createAccountModal-header">
+                    <div>
+                        <h5 class="createAccountModal-header--title">Create Account</h5>
+                    </div>
+                    <div class="createAccountModal-header--closeBtn">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                </div>
+
+                <div class="createAccountModal-body">
+                    <label class="createAccountModal-body--label" for="">Username</label>
+                    <input class="createAccountModal-body--input" id="c-username" type="text" name="c-username" placeholder="Username">
+                    <label class="createAccountModal-body--label" for="">Password</label>
+                    <input class="createAccountModal-body--input" id="c-password" type="password" name="c-password" placeholder="Password">
+                    <label class="createAccountModal-body--label3" for="">Profile image url</label>
+                    <input class="createAccountModal-body--input" id="c-profile_img" type="text" name="c-profile_img" placeholder="https://unsplash.com/photos/">
+                </div>
+                <div class="createAccountModal-footer">
+                    <button id="createAccount" class="createAccountModal-footer--btn" data-bs-dismiss="modal">Create</button>
+                </div>
+            </div>
         </div>
-        <div class="createAccountModal-header--closeBtn">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+
+
+
+
+    <!-- Sign In -->
+
+    <div class="signIn-container">
+        <div class="signIn-logo">
+            <img class="signIn-logo--img" src="./img/sanctuary-main-logo.svg" alt="Sanctuary Logo">
         </div>
+
+        <div id="alertError" class="alertError">
+            <h1 class="alertError--text">Please Enter All Details!</h1>
         </div>
 
-        <div class="createAccountModal-body">
-            <label class="createAccountModal-body--label" for="">Username</label>
-            <input class="createAccountModal-body--input" id="c-username" type="text" name="c-username" placeholder="Username">
-            <label class="createAccountModal-body--label" for="">Password</label>
-            <input class="createAccountModal-body--input" id="c-password" type="password" name="c-password" placeholder="Password">
-            <label class="createAccountModal-body--label3" for="">Profile image url</label>
-            <input class="createAccountModal-body--input" id="c-profile_img" type="text" name="c-profile_img" placeholder="https://unsplash.com/photos/">
+        <div id="alertError2" class="alertError">
+            <h1 class="alertError--text">User not found! Please Register</h1>
         </div>
-        <div class="createAccountModal-footer">
-          <button id="createAccount" class="createAccountModal-footer--btn" data-bs-dismiss="modal">Create</button>
+
+        <div id="alertError3" class="alertError">
+            <h1 class="alertError--text">Please try with correct details!</h1>
         </div>
-      </div>
+
+
+
+
+        <div class="signIn-middle">
+            <label class="signIn-middle--label" for="">Username</label>
+            <input class="signIn-middle--input" name="s-username" id="s-username" type="text" name="username" placeholder="Username">
+            <label class="signIn-middle--label" for="">Password</label>
+            <input class="signIn-middle--input" name="s-password" id="s-password" type="password" name="s-password" placeholder="Password">
+        </div>
+        <div class="signIn-bottom">
+            <button id="signInBtn" class="signIn-bottom--signIn">Sign In</button>
+            <button class="signIn-bottom--createAccount" data-bs-toggle="modal" data-bs-target=".sign-in-create-account-modal">Create Account</button>
+            <a href="./main-feed.html">
+                <p class="signIn-bottom--guest">Continue as guest</p>
+            </a>
+        </div>
     </div>
-  </div>
-
-
-
-
-  <!-- Sign In -->
-
-  <div class="signIn-container">
-    <div class="signIn-logo">
-      <img class="signIn-logo--img" src="./img/sanctuary-main-logo.svg" alt="Sanctuary Logo">
-    </div>
-
-    <div id="alertError" class="alertError">
-      <h1 class="alertError--text">Please Enter All Details!</h1>
-    </div>
-
-    <div id="alertError2" class="alertError">
-      <h1 class="alertError--text">User not found! Please Register</h1>
-    </div>
-
-    <div id="alertError3" class="alertError">
-      <h1 class="alertError--text">Please try with correct details!</h1>
-    </div>
-
-
-
-
-    <div class="signIn-middle">
-      <label class="signIn-middle--label" for="">Username</label>
-      <input class="signIn-middle--input" name="s-username" id="s-username" type="text" name="username" placeholder="Username">
-      <label class="signIn-middle--label" for="">Password</label>
-      <input class="signIn-middle--input" name="s-password" id="s-password" type="password" name="s-password" placeholder="Password">
-    </div>
-    <div class="signIn-bottom">
-      <button id="signInBtn" class="signIn-bottom--signIn">Sign In</button>
-      <button class="signIn-bottom--createAccount" data-bs-toggle="modal" data-bs-target=".sign-in-create-account-modal">Create Account</button>
-      <a href="./main-feed.html"><p class="signIn-bottom--guest">Continue as guest</p></a>
-    </div>
-  </div>
-
-
 
 
 
