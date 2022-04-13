@@ -47,6 +47,7 @@
 .addSighting-sightingForm{
     @include modal-body-layout;
     height: 70vh;
+    z-index: 5;
 
     &--label{
         @include modal-form-label;
@@ -78,7 +79,6 @@
         @include white-rounded-button;
     }
 }
-
 
 /* Medium Devices (Tablets) */
 @media #{$tablet} {

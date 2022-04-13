@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,7 +34,7 @@
 
     <div class="addSighting-container">
 
-         <!-- Go back section on top left of page -->
+        <!-- Go back section on top left of page -->
         <div class="addSighting-backSectionWrap">
             <a href="./main-feed.html">
                 <div class="addSighting-backSection">
@@ -42,14 +43,16 @@
                 </div>
             </a>
         </div>
-        
-
 
 
         <!-- Page Title -->
         <div class="addSighting-titleSection">
             <h1 class="addSighting-titleSection--title">Add Sighting</h1>
         </div>
+
+
+
+        
 
 
 
@@ -68,12 +71,19 @@
             <label class="addSighting-sightingForm--label" for="">Description</label>
             <textarea class="addSighting-sightingForm--inputDescription" id="as-description" type="text" name="description" placeholder="Found this little fella on my hike up Mt Victoria this afternoon...."></textarea>
 
+            <div id="asAlertError" class="asAlertError">
+                <h1 class="asAlertError--text">Please Login to make a post!</h1>
+            </div>
+
+            <div id="asAlertError2" class="asAlertError">
+                <h1 class="asAlertError--text">Please enter all details!</h1>
+            </div>
         </div>
 
-
+        
 
         <div class="addSighting-addPost">
-            <button id="add-sighting-btn" class="addSighting-addPost--btn" onclick="location.href='./main-feed.html'">Add Post</button>
+            <button id="add-sighting-btn" class="addSighting-addPost--btn">Add Post</button>
         </div>
 
 
@@ -81,7 +91,7 @@
 
 
 
-    
+
 
 
 

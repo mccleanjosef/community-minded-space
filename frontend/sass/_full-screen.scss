@@ -1,0 +1,259 @@
+.fullscreen{
+    background: linear-gradient(268.51deg, #78C948 0%, #1AA878 96.71%);
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2rem 0;
+
+    &__carousel-container{
+        width: 90%;
+        min-height: 95vh;
+        background: $white;
+        border-radius: 2rem;
+        position: relative;
+        padding: 0 1rem;
+    }
+
+    &__exit-ctn{
+        position: absolute;
+        height: 3rem;
+        top: 2rem;
+        right: 2rem;
+        display: flex;
+        align-items: center;
+        z-index: 10;
+    }
+
+    &__exit-icon{
+        height: 100%;
+        filter: invert(47%) sepia(61%) saturate(526%) hue-rotate(108deg) brightness(100%) contrast(92%);
+        &:hover, :focus{
+            filter: none;
+        }
+    }
+
+    &__exit-text{
+        color: $black;
+        letter-spacing: 0.06rem;
+        font-size: 1.6rem;
+        font-family: $body-font;
+        font-weight: $medium;
+        margin: 0;
+        margin-left: 1rem;
+    }
+
+    &__mobile-header{
+        width: 100%;
+        height: 10rem;
+        display: flex;
+        align-items: center;
+        padding-left: 5%;
+    }
+
+    &__profile-image-wrap{
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    &__profile-image{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    
+    
+    &__image-ctn{
+        width: 100%;
+        height: 100%;
+    }
+
+    &__image-wrap{
+        width: 100%;
+        height: 100%;
+        border-radius: 3rem;
+        overflow: hidden;
+    }
+
+    &__user-image{
+        width: 100%;
+        height: 100%;
+    }
+
+    &__username{
+        color: $black;
+        letter-spacing: 0.06rem;
+        font-size: 1.6rem;
+        font-family: $body-font;
+        font-weight: $regular;
+        margin: 0;
+        margin-left: 1rem
+    }
+
+    &__desktop-post-details{
+        display: flex;
+        flex-flow: row wrap;
+        padding-top: 1.5rem;
+    }
+
+    &__post-details{
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        padding-top: 1.5rem;
+    }
+
+    &__text{
+        font-family: $body-font;
+        font-weight: $medium;
+        color: $white;
+        font-size: 1.2rem;
+        letter-spacing: 0.1rem;
+        background: linear-gradient(268.51deg, #78C948 0%, #1AA878 96.71%);
+        border-radius: 3rem;
+        padding: 0.4em 1em;
+        margin-right: 1rem;
+    }
+
+    &__description{
+        width: 100%;
+        background: linear-gradient(12.04deg, #1AA878 0%, #78C948 100%);
+        border-radius: 2rem;
+        letter-spacing: 0.05rem;
+        padding: 0.8em 1.5em;
+        font-size: 1.2rem;
+        color: $white;
+        outline: none;
+        border: none;
+        margin-top: 0.5rem;
+    }
+
+    &__desktop-header{
+        display: none;
+    }
+
+    
+}
+
+.carousel-item{
+    width: 100%;
+    height: 100%;
+}
+
+/* Medium Devices (Tablets) */
+@media #{$tablet} {
+    .fullscreen{
+        align-items: center;
+
+        &__slide{
+            padding: 0 9%;
+        }
+
+        &__exit-ctn{
+            top: 3.5rem;
+            right: 3rem;
+        }
+
+        &__carousel-container{
+            min-height: 95vh;
+        }
+
+        &__description{
+            margin-bottom: 3rem;
+        }
+    }
+}
+
+/* Large Devices (Desktop) */
+@media #{$desktop}{
+    .carousel-item.active{
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-end;
+        height: 100%;
+        width: 100%;
+        align-items: center;
+    }
+
+    .fullscreen{
+        align-items: center;
+
+        &__slide{
+            width: 100%;
+            height: 100%
+        }
+
+        &__inner{
+            width: 100%;
+            height: 100%;
+        }
+
+        &__carousel-container{
+            min-height: 0;
+            height: 85vh;
+            width: 90%;
+            display: flex;
+            flex-flow: row wrap;
+            padding: 5%;
+        }
+
+        &__exit-ctn{
+            top: 0rem;
+            right: 0rem;
+        }
+
+        &__mobile-header{
+            display: none;
+        }
+
+
+        &__image-ctn{
+            width: 70%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        &__image-wrap{
+            width: auto;
+            height: auto;
+            border-radius: 3rem;
+            overflow: hidden;
+        }
+
+        &__user-image{
+            width: 100%;
+            height: 100%;
+        }
+
+
+        &__post-details{
+            width: 30%;
+            height: 80%;
+            flex-flow: column wrap;
+            justify-content: space-between;
+            padding-left: 2rem;
+        }
+
+        &__desktop-header{
+            display: block;
+            width: 100%;
+            height: 10rem;
+            display: flex;
+            align-items: center;
+        }
+    }
+    
+}
+
+
+
+
+

@@ -1,60 +1,60 @@
 $(document).ready(function() {
-  console.log('main script is linked'); //testing if script.js is working
-  console.log(sessionStorage);
+    console.log('main script is linked'); //testing if script.js is working
+    console.log(sessionStorage);
 
-  // global variable for modals 
-  let postId = '';
-
-
-  // ============ Posting comment to Mongo DB Backend Starts ============
-
-  function postComment(idPost){
-
-    // let saveComs = document.querySelector('#saveComment');
-    // let id = saveComs.value;
-    let id = idPost;
-    let userId = sessionStorage.getItem('userID');
-    let profile = sessionStorage.getItem('profileImg');
-
-    let comment = document.querySelector('#commentText');
-    // console.log(id);
-
-    console.log(comment.value);
-    if (!userId){
-      alert('Please login to comment')
-    } else {
-      $.ajax({
-        url: `http://${url}/createComment`,
-        type: 'POST',
-        data: {
-          text: comment.value,
-          user_id: userId,
-          profile_img: profile,
-          post_id: id,
-        },
-        success: function(comment) {
-          // alert('Comment posted');
-          // console.log(comment);
-
-          // if successful update comment container Starts
-          $.ajax({
-            url: `http://${url}/seeComments/${id}`,
-            type: 'GET',
-            success: function(commentsFromMongo) {
-              console.log("hello");
-              console.log(commentsFromMongo);
-              let i;
-              // document.getElementById('commentAppend').innerHtml = "";
-
-              $('#commentAppend').empty().append(
-                ``
-              );
+    // global variable for modals 
+    let postId = '';
 
 
-              for (i = 0; i < commentsFromMongo.length; i++) {
+    // ============ Posting comment to Mongo DB Backend Starts ============
 
-                $('#commentAppend').append(
-                  `
+    function postComment(idPost) {
+
+        // let saveComs = document.querySelector('#saveComment');
+        // let id = saveComs.value;
+        let id = idPost;
+        let userId = sessionStorage.getItem('userID');
+        let profile = sessionStorage.getItem('profileImg');
+
+        let comment = document.querySelector('#commentText');
+        // console.log(id);
+
+        console.log(comment.value);
+        if (!userId) {
+            alert('Please login to comment')
+        } else {
+            $.ajax({
+                url: `http://${url}/createComment`,
+                type: 'POST',
+                data: {
+                    text: comment.value,
+                    user_id: userId,
+                    profile_img: profile,
+                    post_id: id,
+                },
+                success: function(comment) {
+                    // alert('Comment posted');
+                    // console.log(comment);
+
+                    // if successful update comment container Starts
+                    $.ajax({
+                        url: `http://${url}/seeComments/${id}`,
+                        type: 'GET',
+                        success: function(commentsFromMongo) {
+                            console.log("hello");
+                            console.log(commentsFromMongo);
+                            let i;
+                            // document.getElementById('commentAppend').innerHtml = "";
+
+                            $('#commentAppend').empty().append(
+                                ``
+                            );
+
+
+                            for (i = 0; i < commentsFromMongo.length; i++) {
+
+                                $('#commentAppend').append(
+                                    `
                   <div class="appendContainer">
 
                   <div class="appendContainer__profileContainer">
@@ -69,50 +69,50 @@ $(document).ready(function() {
 
                   </div>
                     `
+                                );
+                            }
+                        },
+                        error: function() {
+                            console.log('error: cannot retreive comments');
+                        } //error
+                    }) //ajax
+                    // if successful update comment container Ends
+
+                },
+                error: function() {
+                    alert('unable to post comment');
+                } // end of error
+            }) //end of ajax
+        } //end of if
+    };
+
+    // ============ Posting comment to Mongo DB Backend Ends ============
+
+
+    // ============ Get Comment Starts ============
+    function getComments(post_Id) {
+        // let openComs = document.querySelector('#saveComment');
+        // let id = openComs.value;
+        let id = post_Id;
+
+        $.ajax({
+            url: `http://${url}/seeComments/${id}`,
+            type: 'GET',
+            success: function(commentsFromMongo) {
+                console.log("hello");
+                console.log(commentsFromMongo);
+                let i;
+                // document.getElementById('commentAppend').innerHtml = "";
+
+                $('#commentAppend').empty().append(
+                    ``
                 );
-              }
-            },
-            error: function() {
-              console.log('error: cannot retreive comments');
-            } //error
-          }) //ajax
-          // if successful update comment container Ends
-
-        },
-        error: function() {
-          alert('unable to post comment');
-        } // end of error
-      })//end of ajax
-    }//end of if
-  };
-
-  // ============ Posting comment to Mongo DB Backend Ends ============
 
 
-  // ============ Get Comment Starts ============
-  function getComments(post_Id) {
-    // let openComs = document.querySelector('#saveComment');
-    // let id = openComs.value;
-    let id = post_Id;
+                for (i = 0; i < commentsFromMongo.length; i++) {
 
-    $.ajax({
-      url: `http://${url}/seeComments/${id}`,
-      type: 'GET',
-      success: function(commentsFromMongo) {
-        console.log("hello");
-        console.log(commentsFromMongo);
-        let i;
-        // document.getElementById('commentAppend').innerHtml = "";
-
-        $('#commentAppend').empty().append(
-          ``
-        );
-
-
-        for (i = 0; i < commentsFromMongo.length; i++) {
-
-          $('#commentAppend').append(
-            `
+                    $('#commentAppend').append(
+                        `
             <div class="appendContainer">
 
             <div class="appendContainer__profileContainer">
@@ -127,15 +127,15 @@ $(document).ready(function() {
 
             </div>
               `
-          );
-        }
-      },
-      error: function() {
-        console.log('error: cannot retreive comments');
-      } //error
-    }) //ajax
-  }
-  // ============ Get Comment Ends ============
+                    );
+                }
+            },
+            error: function() {
+                console.log('error: cannot retreive comments');
+            } //error
+        }) //ajax
+    }
+    // ============ Get Comment Ends ============
 
 
     // ============ Masonry Layout - Masonry init Starts ============
@@ -154,37 +154,37 @@ $(document).ready(function() {
     });
     // ============ Masonry Layout - Masonry init Ends ============
 
-    
+
 
 
     // ============ API Starts ============
     let url; //declare url as a variable in es6
     $.ajax({
-    url: 'config.json',
-    type: 'GET',
-    dataType: 'json',
-    success: function(configData) {
-        console.log(configData.SERVER_URL, configData.SERVER_PORT);
-        url = `${configData.SERVER_URL}:${configData.SERVER_PORT}`;
-        // console.log(url);
-        allPosts(url);
-    },
-    error: function(error) {
-        console.log(error);
-    }
+        url: 'config.json',
+        type: 'GET',
+        dataType: 'json',
+        success: function(configData) {
+            console.log(configData.SERVER_URL, configData.SERVER_PORT);
+            url = `${configData.SERVER_URL}:${configData.SERVER_PORT}`;
+            // console.log(url);
+            allPosts(url);
+        },
+        error: function(error) {
+            console.log(error);
+        }
     })
     // ============ API Ends ============
-    
+
 
     // ============ Account dropdown arrow Starts ============
     // hide and showing arrow icons based on if dropdown menu is visible
     $('.header__up-icon').hide();
-    $(window).click(function(){
-        if($('.header__dropdown-menu').is(':visible')){
+    $(window).click(function() {
+        if ($('.header__dropdown-menu').is(':visible')) {
             $('.header__down-icon').hide();
             $('.header__up-icon').show();
 
-        } else{
+        } else {
             $('.header__down-icon').show();
             $('.header__up-icon').hide();
         }
@@ -194,11 +194,11 @@ $(document).ready(function() {
 
     // ============ User Account Profile Img and Dropdown options Starts ============
     // based on if signed in
-    if(sessionStorage.getItem('userName') == null){
+    if (sessionStorage.getItem('userName') == null) {
         $('#signOutBtn').hide();
 
-    } else{
-        $('#signInBtn').hide();
+    } else {
+        $('#toSignInBtn').hide();
         $('#createAccountBtn').hide();
 
         // append user profile image from session storage
@@ -218,7 +218,7 @@ $(document).ready(function() {
         console.log(sessionStorage);
 
         // go to sign in page
-        location.href='./signIn.html'
+        location.href = './signIn.html'
     })
     // ============ Log Out User Ends ============
 
@@ -234,83 +234,83 @@ $(document).ready(function() {
         console.log(username, password, profile_img);
 
         if (username == '' || password == '' || profile_img == '') {
-          alert('Please enter all details');
+            alert('Please enter all details');
 
         } else {
-          $.ajax({
-            url: `http://${url}/registerUser`,
-            type: 'POST',
-            data: {
-              username: username,
-              password: password,
-              profile_img: profile_img
-            },
-            success: function(user) {
-              console.log(user); //remove when development is finished
-
-              if (user !== 'username taken already. Please try another name'){
-
-                // if register is successful - log user in Starts
-                let username = $('#c-username').val();
-                let password = $('#c-password').val();
-                console.log(username, password); //remove when development is finished
-
-                $.ajax({
-                  url: `http://${url}/loginUser`,
-                  type: 'POST',
-                  data: {
+            $.ajax({
+                url: `http://${url}/registerUser`,
+                type: 'POST',
+                data: {
                     username: username,
-                    password: password
-                  },
-                  success: function(user) {
-                    console.log(user);
+                    password: password,
+                    profile_img: profile_img
+                },
+                success: function(user) {
+                    console.log(user); //remove when development is finished
 
-                    sessionStorage.setItem('userID', user['_id']);
-                    sessionStorage.setItem('userName', user['username']);
-                    sessionStorage.setItem('profileImg', user['profile_img']);
-                    console.log(sessionStorage);
-                    // alert('Welcome')
+                    if (user !== 'username taken already. Please try another name') {
 
-                    location.reload();
+                        // if register is successful - log user in Starts
+                        let username = $('#c-username').val();
+                        let password = $('#c-password').val();
+                        console.log(username, password); //remove when development is finished
 
-                  }, //success
-                  error: function() {
+                        $.ajax({
+                            url: `http://${url}/loginUser`,
+                            type: 'POST',
+                            data: {
+                                username: username,
+                                password: password
+                            },
+                            success: function(user) {
+                                console.log(user);
+
+                                sessionStorage.setItem('userID', user['_id']);
+                                sessionStorage.setItem('userName', user['username']);
+                                sessionStorage.setItem('profileImg', user['profile_img']);
+                                console.log(sessionStorage);
+                                // alert('Welcome')
+
+                                location.reload();
+
+                            }, //success
+                            error: function() {
+                                console.log('error: cannot call api');
+                                alert('Unable to login - unable to call api');
+                            } //error
+                        }) //end of ajax
+
+                    } else {
+                        alert('username taken already. Please try another name');
+                        $('#r-username').val('');
+                        $('#c-password').val('');
+                        $('#c-profile_img').val('');
+                    } //else
+                    // if register is successful - log user in Ends
+
+                }, //success
+                error: function() {
                     console.log('error: cannot call api');
-                    alert('Unable to login - unable to call api');
-                  } //error
-                }) //end of ajax
-
-              } else {
-                alert('username taken already. Please try another name');
-                $('#r-username').val('');
-                $('#c-password').val('');
-                $('#c-profile_img').val('');
-              } //else
-              // if register is successful - log user in Ends
-
-            }, //success
-            error: function() {
-              console.log('error: cannot call api');
-            } //error
-          }) //ajax post
+                } //error
+            }) //ajax post
         } //if
-      }) //r-submit click
+    }) //r-submit click
     // ============ User Registration Ends ============
-    
+
 
 
     //============ All Posts Starts ============
     // Getting all posts once main-feed is ready
-    function allPosts(url){
+    function allPosts(url) {
         $.ajax({
             url: `http://${url}/allPostsFromDB`,
             type: 'GET',
             dataType: 'json',
-            success:function(postsFromMongo){
+            success: function(postsFromMongo) {
                 console.log(postsFromMongo);
 
                 let i;
-                for(i = 0; i < postsFromMongo.length; i++){
+                for (i = 0; i < postsFromMongo.length; i++) {
                     // create new item elements
                     var $items = $(
                         `
@@ -346,10 +346,10 @@ $(document).ready(function() {
                         </div>
                         `
                     );
-                     // append items to grid
-                    $grid.prepend( $items )
-                    // add and lay out newly prepended items
-                    .masonry( 'prepended', $items );
+                    // append items to grid
+                    $grid.prepend($items)
+                        // add and lay out newly prepended items
+                        .masonry('prepended', $items);
 
                     // layout Masonry after each image loads
                     $grid.imagesLoaded().progress(function() {
@@ -357,7 +357,7 @@ $(document).ready(function() {
                     });
                 }
 
-                
+
                 // ============ Setting Global variable Starts ============
                 // setting postId global variable for update and delete modals
                 //  on click of post dropdown
@@ -368,24 +368,24 @@ $(document).ready(function() {
                 // ============ Setting Global variable Ends ============
 
 
-                
+
                 // ============ View Post Modal Starts ============
-                $('.post__bottom').click(function () {
-                  let id = $(this).parent().attr('id');
-                  console.log(id);
+                $('.post__bottom').click(function() {
+                    let id = $(this).parent().attr('id');
+                    console.log(id);
 
-                  $.ajax({
-                      url: `http://${url}/allPostsFromDB/${id}`,
-                      type: 'GET',
-                      dataType: 'json',
-                      success:function(singleProject){
-                          // console.log(singleProject.name);
+                    $.ajax({
+                        url: `http://${url}/allPostsFromDB/${id}`,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(singleProject) {
+                            // console.log(singleProject.name);
 
-                          // console.log(singleProject._id);
+                            // console.log(singleProject._id);
 
-                          $('#post-modal-content').empty().append(
+                            $('#post-modal-content').empty().append(
 
-                          `
+                                `
                           <div class= "modal-post__header">
                             <img class="modal-post__profile" src="${singleProject.profile_img}" alt="User posted picture">
                             <p class="modal-post__username">${singleProject.username}</p>
@@ -426,21 +426,21 @@ $(document).ready(function() {
                           </div>
                         </div>
                         `
-                        );
+                            );
 
-                        // Post Comment Function
-                        getComments(id);
+                            // Post Comment Function
+                            getComments(id);
 
-                        // Post Comment Function
-                        $('#saveComment').click(function(){
-                          postComment(id);
-                        });
+                            // Post Comment Function
+                            $('#saveComment').click(function() {
+                                postComment(id);
+                            });
 
-                      },
-                      error:function(){
-                          alert('Unable to view post modal');
-                      }//error
-                  })
+                        },
+                        error: function() {
+                            alert('Unable to view post modal');
+                        } //error
+                    })
                 })
                 // ============ View Post Modal Ends ============
 
@@ -486,13 +486,13 @@ $(document).ready(function() {
                 });
                 // ============ Update Post Ends ============
 
-                
+
                 // ============ Delete Post Starts ============
 
                 $('#deletePost').click(function() {
                     event.preventDefault();
                     console.log(postId);
-                
+
                     let id = postId;
                     $.ajax({
                         url: `http://${url}/deletePost/${id}`,
@@ -503,26 +503,26 @@ $(document).ready(function() {
 
                             location.reload();
                         },
-                        
+
                         error: function() {
                             console.log('error: cannot delete');
                         }
-                    
+
                     }); // end of ajax
-                
+
                 });
-                
+
                 // ============ Delete Post Ends ============
 
 
-            },//success
-            error:function(){
+            }, //success
+            error: function() {
                 alert('Unable to update');
-            }//error
-        })//ajax
-    }//view
+            } //error
+        }) //ajax
+    } //view
     //------- All Posts Ends ---------
 
 
-  
+
 }); //document.ready

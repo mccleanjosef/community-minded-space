@@ -1,165 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Main Feed - Sanctuary</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Feed - Sanctuary</title>
 
-  <!-- favicon link -->
-  <link rel="icon" href="./img/favicon-img.png">
+    <!-- favicon link -->
+    <link rel="icon" href="./img/favicon-img.png">
 
-  <!-- bootstrap css -->
-  <link rel="stylesheet" href="../frontend/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="../frontend/node_modules/bootstrap/dist/css/bootstrap.min.css">
 
-  <!-- font-awesome cdn -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- font-awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <!-- Google Fonts Roboto and Laila Bold -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Laila:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts Roboto and Laila Bold -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Laila:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
-  <!-- style css -->
-  <link rel="stylesheet" href="./css/style.css">
+    <!-- style css -->
+    <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body id="mainFeedBody">
 
-  <!-- View POST MODAL -->
-  <div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div id="post-modal-content" class="modal-content modal-post__master">
+    <!-- View POST MODAL -->
+    <div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div id="post-modal-content" class="modal-content modal-post__master">
 
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <!-- Update Post Modal -->
-  <div class="modal fade main-feed-update-post-modal" id="updatePostModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="updatePostModal-header">
-          <h5 class="updatePostModal-header--title">Update</h5>
-          <button type="button" class="btn-close close-icon" data-bs-dismiss="modal" aria-label="Close"></button>
+    <!-- Update Post Modal -->
+    <div class="modal fade main-feed-update-post-modal" id="updatePostModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="updatePostModal-header">
+                    <h5 class="updatePostModal-header--title">Update</h5>
+                    <button type="button" class="btn-close close-icon" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form class="updatePostModal-body">
+                    <label class="updatePostModal-body--label" for="">Image url</label>
+                    <input class="updatePostModal-body--input" id="updatePostImage" type="text" name="imageURL" placeholder="https://unsplash.com/photos/...">
+                    <label class="updatePostModal-body--label" for="">Location</label>
+                    <input class="updatePostModal-body--input" id="updatePostLocation" type="text" name="location" placeholder="Wellington">
+                    <label class="updatePostModal-body-label" for="">Name</label>
+                    <input class="updatePostModal-body--input" id="updatePostName" type="text" name="name" placeholder="Pīwakawaka">
+                    <label class="updatePostModal-body--label" for="">Description</label>
+                    <textarea class="updatePostModal-body--inputDescription" id="updatePostDescription" type="text" name="description" placeholder="Found this little fella on my hike"></textarea>
+                </form>
+                <div class="updatePostModal-footer">
+                    <button class="updatePostModal-footer--btn" id="updatePostSubmitBtn" data-bs-dismiss="modal">Update</button>
+                </div>
+            </div>
         </div>
-        <form class="updatePostModal-body">
-          <label class="updatePostModal-body--label" for="">Image url</label>
-          <input class="updatePostModal-body--input" id="updatePostImage" type="text" name="imageURL" placeholder="https://unsplash.com/photos/...">
-          <label class="updatePostModal-body--label" for="">Location</label>
-          <input class="updatePostModal-body--input" id="updatePostLocation" type="text" name="location" placeholder="Wellington">
-          <label class="updatePostModal-body-label" for="">Name</label>
-          <input class="updatePostModal-body--input" id="updatePostName" type="text" name="name" placeholder="Pīwakawaka">
-          <label class="updatePostModal-body--label" for="">Description</label>
-          <textarea class="updatePostModal-body--inputDescription" id="updatePostDescription" type="text" name="description" placeholder="Found this little fella on my hike"></textarea>
-        </form>
-        <div class="updatePostModal-footer">
-          <button class="updatePostModal-footer--btn" id="updatePostSubmitBtn" data-bs-dismiss="modal">Update</button>
-        </div>
-      </div>
     </div>
-  </div>
 
-  <!-- Delete Post Modal -->
-  <div class="modal fade main-feed-delete-post-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="deletePostModal-header">
-          <h5 class="deletePostModal-header--title">Delete</h5>
-          <button type="button" class="btn-close close-icon" data-bs-dismiss="modal" aria-label="Close"></button>
+
+    <!-- Delete Post Modal -->
+    <div class="modal fade main-feed-delete-post-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="deletePostModal-header">
+                    <h5 class="deletePostModal-header--title">Delete</h5>
+                    <button type="button" class="btn-close close-icon" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="deletePostModal-body">
+                    <p class="deletePostModal-body--text">Are you sure you want to delete?</p>
+                </div>
+                <div class="deletePostModal-footer">
+                    <button id="deletePost" class="deletePostModal-footer--btn" data-bs-dismiss="modal">Yes</button>
+                    <button class="deletePostModal-footer--btn" data-bs-dismiss="modal" aria-label="Close">No</button>
+                </div>
+            </div>
         </div>
-        <div class="deletePostModal-body">
-          <p class="deletePostModal-body--text">Are you sure you want to delete?</p>
-        </div>
-        <div class="deletePostModal-footer">
-          <button id="deletePost" class="deletePostModal-footer--btn" data-bs-dismiss="modal">Yes</button>
-          <button class="deletePostModal-footer--btn" data-bs-dismiss="modal" aria-label="Close">No</button>
-        </div>
-      </div>
     </div>
-  </div>
 
-  <!-- Create Account modal -->
-  <div class="modal fade main-feed-create-account-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="createAccountModal-header">
-          <h5 class="createAccountModal-header--title">Create Account</h5>
-          <button type="button" class="btn-close close-icon" data-bs-dismiss="modal" aria-label="Close"></button>
+    <!-- Create Account modal -->
+    <div class="modal fade main-feed-create-account-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="createAccountModal-header">
+                    <h5 class="createAccountModal-header--title">Create Account</h5>
+                    <button type="button" class="btn-close close-icon" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="createAccountModal-body">
+                    <label class="createAccountModal-body--label" for="">Username</label>
+                    <input class="createAccountModal-body--input" id="c-username" type="text" name="c-username" placeholder="Username">
+                    <label class="createAccountModal-body--label" for="">Password</label>
+                    <input class="createAccountModal-body--input" id="c-password" type="password" name="c-password" placeholder="Password">
+                    <label class="createAccountModal-body--label" for="">Profile image url</label>
+                    <input class="createAccountModal-body--input" id="c-profile_img" type="text" name="c-profile_img" placeholder="https://unsplash.com/photos/">
+                </div>
+                <div class="createAccountModal-footer">
+                    <button id="createAccount" class="createAccountModal-footer--btn" data-bs-dismiss="modal">Create</button>
+                </div>
+            </div>
         </div>
-        <div class="createAccountModal-body">
-            <label class="createAccountModal-body--label" for="">Username</label>
-            <input class="createAccountModal-body--input" id="c-username" type="text" name="c-username" placeholder="Username">
-            <label class="createAccountModal-body--label" for="">Password</label>
-            <input class="createAccountModal-body--input" id="c-password" type="password" name="c-password" placeholder="Password">
-            <label class="createAccountModal-body--label" for="">Profile image url</label>
-            <input class="createAccountModal-body--input" id="c-profile_img" type="text" name="c-profile_img" placeholder="https://unsplash.com/photos/">
-        </div>
-        <div class="createAccountModal-footer">
-          <button id="createAccount" class="createAccountModal-footer--btn" data-bs-dismiss="modal">Create</button>
-        </div>
-      </div>
     </div>
-  </div>
-  
-  <header class="header">
-      <a class="header__desktop-button-wrap" href="./addSighting.html">
-        <button class="header__desktop-button">
-          <i class="fa-solid fa-plus"></i>
-        </button>
-      </a>
-      <a href="./main-feed.html"><img class="header__logo" src="./img/sanctuary-logo-right-heavy.svg" alt="Sanctuary Logo"></a>
-      <div class="btn-group">
-        <button type="button" class="btn dropdown-toggle header__account-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-          <div class="header__profile-icon-wrap">
-            <img class="header__profile-icon" src="./img/profile-icon.svg" alt="Signed Out Profile Icon">
-          </div>
-          <i class="fa-solid fa-chevron-down header__down-icon"></i>
-          <i class="fa-solid fa-chevron-up header__up-icon"></i>
-        </button>
-        <ul class="dropdown-menu dropdown-menu-end header__dropdown-menu">
-          <a href="./signIn.html"><li><button class="dropdown-item header__dropdown-item" id="signInBtn" type="button">Sign In</button></li></a>
-          <a href=""></a><li><button class="dropdown-item header__dropdown-item" type="button">Display Mode</button></li>
-          <a href="./get-involved.html"><li><button class="dropdown-item header__dropdown-item" type="button">Get Involved</button></li></a>
-          <li><button class="dropdown-item header__dropdown-item" id="createAccountBtn" type="button" data-bs-toggle="modal" data-bs-target=".main-feed-create-account-modal">Create Account</button></li>
-          <li><button class="dropdown-item header__dropdown-item" id="signOutBtn" type="button">Sign Out</button></li>
-        </ul>
-      </div>
-  </header>
+
+    <header class="header">
+        <a class="header__desktop-button-wrap" href="./addSighting.html">
+            <button class="header__desktop-button">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+        </a>
+        <a href="./main-feed.html"><img class="header__logo" src="./img/sanctuary-logo-right-heavy.svg" alt="Sanctuary Logo"></a>
+        <div class="btn-group">
+            <button type="button" class="btn dropdown-toggle header__account-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="header__profile-icon-wrap">
+                    <img class="header__profile-icon" src="./img/profile-icon.svg" alt="Signed Out Profile Icon">
+                </div>
+                <i class="fa-solid fa-chevron-down header__down-icon"></i>
+                <i class="fa-solid fa-chevron-up header__up-icon"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end header__dropdown-menu">
+                <a href="./signIn.html">
+                    <li><button class="dropdown-item header__dropdown-item" id="toSignInBtn" type="button">Sign In</button></li>
+                </a>
+                <a href="./full-screen.html">
+                    <li><button id="fullscreen" class="dropdown-item header__dropdown-item" type="button">Display Mode</button></li>
+                </a>
+                <a href="./get-involved.html">
+                    <li><button class="dropdown-item header__dropdown-item" type="button">Get Involved</button></li>
+                </a>
+                <li><button class="dropdown-item header__dropdown-item" id="createAccountBtn" type="button" data-bs-toggle="modal" data-bs-target=".main-feed-create-account-modal">Create Account</button></li>
+                <li><button class="dropdown-item header__dropdown-item" id="signOutBtn" type="button">Sign Out</button></li>
+            </ul>
+        </div>
+    </header>
 
 
-  <div class="posts-wrap">
-    <div class="grid" id="postContainer">
-      
+    <div class="posts-wrap">
+        <div class="grid" id="postContainer">
+
+        </div>
     </div>
-  </div>
 
 
 
-  <div class="add-post">
-      <a href="./addSighting.html">
-        <button class="add-post__button">
-          <i class="fa-solid fa-plus"></i>
-        </button>
-      </a>
-  </div>
+    <div class="add-post">
+        <a href="./addSighting.html">
+            <button class="add-post__button">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+        </a>
+    </div>
 
 
-  <!-- jQuery js -->
-  <script src="../frontend/node_modules/jquery/dist/jquery.min.js"></script>
+    <!-- jQuery js -->
+    <script src="../frontend/node_modules/jquery/dist/jquery.min.js"></script>
 
-  <!-- bootstrap js -->
-  <script src="../frontend/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="../frontend/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- popper js -->
-  <script src="./node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
+    <!-- popper js -->
+    <script src="./node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
 
-  <!-- Masonry js -->
-  <script src="./node_modules/masonry-layout/dist/masonry.pkgd.min.js"></script>
+    <!-- Masonry js -->
+    <script src="./node_modules/masonry-layout/dist/masonry.pkgd.min.js"></script>
 
-  <!-- imagesLoaded js -->
-  <script src="./node_modules/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <!-- imagesLoaded js -->
+    <script src="./node_modules/imagesloaded/imagesloaded.pkgd.min.js"></script>
 
-  <!-- frontend mainFeed js -->
-  <script src="./js/mainFeed.js"></script>
+    <!-- frontend mainFeed js -->
+    <script src="./js/mainFeed.js"></script>
+    <script src="./js/index.js"></script>
 </body>
+
 </html>
