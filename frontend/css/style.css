@@ -863,7 +863,7 @@ a, a:link, a:after, a:visited, a:hover, a:active {
     padding-top: 8rem;
   }
 }
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 400px) {
   .logo-zip {
     padding-top: 8rem;
   }
@@ -929,25 +929,15 @@ footer {
 
 .arrow-back {
   position: relative;
-  top: 0;
+  top: 20px;
   color: white;
-  padding-left: 2rem;
   font-family: "Roboto";
   font-size: 16px;
   transform: translateY(-270%);
   display: flex;
+  padding-left: 4rem;
 }
 
-@media screen and (min-width: 834px) {
-  .arrow-back {
-    display: none;
-  }
-}
-@media screen and (min-width: 400px) {
-  .arrow-back {
-    display: show;
-  }
-}
 #mainFeedBody {
   background: linear-gradient(12.04deg, #1AA878 0%, #78C948 100%);
   display: flex;
