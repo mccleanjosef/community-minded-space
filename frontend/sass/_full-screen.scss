@@ -3,80 +3,125 @@
     width: 100vw;
     min-height: 100vh;
     display: flex;
-    flex-flow: column;
-    align-items: center;
+    flex-flow: row wrap;
+    align-items: flex-start;
     justify-content: center;
+    padding: 2rem 0;
 
-    &__ld-container{
-        width: 100%;
-        display: flex;
+    &__carousel-container{
+        width: 90%;
+        min-height: 95vh;
+        background: $white;
+        border-radius: 2rem;
+        position: relative;
+        padding: 0 1rem;
     }
 
-    &__image{
-        border-radius: 30px;
-        margin-bottom: 2rem;
-        max-height: 350px;
-        width: 100%;
-    }
-
-    &__body{
+    &__exit-ctn{
+        position: absolute;
+        height: 3rem;
+        top: 2rem;
+        right: 2rem;
         display: flex;
         align-items: center;
-        margin-bottom: 0.5rem;
+        z-index: 10;
+    }
+
+    &__exit-icon{
+        height: 100%;
+        filter: invert(47%) sepia(61%) saturate(526%) hue-rotate(108deg) brightness(100%) contrast(92%);
+        &:hover, :focus{
+            filter: none;
+        }
+    }
+
+    &__exit-text{
+        color: $black;
+        letter-spacing: 0.06rem;
+        font-size: 1.6rem;
+        font-family: $body-font;
+        font-weight: $medium;
+        margin: 0;
+        margin-left: 1rem;
+    }
+
+    &__mobile-header{
+        width: 100%;
+        height: 10rem;
+        display: flex;
+        align-items: center;
+        padding-left: 5%;
+    }
+
+    &__profile-image-wrap{
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    &__user-image{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 3rem;
+    }
+
+    &__username{
+        color: $black;
+        letter-spacing: 0.06rem;
+        font-size: 1.6rem;
+        font-family: $body-font;
+        font-weight: $regular;
+        margin: 0;
+        margin-left: 1rem
+    }
+
+    &__desktop-post-detail{
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        padding-top: 1.5rem;
+    }
+
+    &__post-details{
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        padding-top: 1.5rem;
     }
 
     &__text{
         font-family: $body-font;
         font-weight: $medium;
-        color: black;
+        color: $white;
         font-size: 1.2rem;
         letter-spacing: 0.1rem;
-        background: white;
+        background: linear-gradient(268.51deg, #78C948 0%, #1AA878 96.71%);
         border-radius: 3rem;
         padding: 0.4em 1em;
-        margin-left: 1rem;
-    }
-
-    &__description-container{
-        background: white;
-        width: 100%;
-        padding: 1.5rem;
-        border-radius: 30px;
-        min-height: 20rem;
+        margin-right: 1rem;
     }
 
     &__description{
-        font-family: $body-font;
-        font-weight: $medium;
-    }
-
-    &__carousel-container{
-        width: 32rem;
-        min-height: 90%;
-    }
-
-    &__user-container{
-        display: flex;
-        align-items: center;
-        width: 50%;
-        margin-bottom: 2rem;
-    }
-
-    &__username{
-        font-family: $body-font;
-        font-weight: $regular;
-        font-size: 2.5rem;
+        width: 100%;
+        background: linear-gradient(12.04deg, #1AA878 0%, #78C948 100%);
+        border-radius: 2rem;
+        letter-spacing: 0.05rem;
+        padding: 0.8em 1.5em;
+        font-size: 1.2rem;
         color: $white;
+        outline: none;
+        border: none;
+        margin-top: 0.5rem;
     }
 
-    &__user-image{
-        height: 5rem;
-        width: 5rem;
-        border-radius: 50%;
-        margin-right: 1rem;
-        overflow: hidden;
-        margin-right: 1.5rem;
+    &__desktop-header{
+        display: none;
     }
+
+    
 }
 
 .carousel-item{
@@ -84,103 +129,119 @@
     height: 100%;
 }
 
-@media #{$desktop}{
+/* Medium Devices (Tablets) */
+@media #{$tablet} {
     .fullscreen{
-        background: linear-gradient(268.51deg, #78C948 0%, #1AA878 96.71%);
-        width: 100vw;
-        min-height: 100vh;
-        display: flex;
-        flex-flow: column;
-        align-items: center;
-        justify-content: center;
+        padding: 3rem 0;
 
         &__slide{
-            width: 50%;
+            padding: 0 9%;
+        }
+
+        &__exit-ctn{
+            top: 3.5rem;
+            right: 3rem;
+        }
+    }
+}
+
+/* Large Devices (Desktop) */
+@media #{$desktop}{
+    .carousel-item.active{
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-end;
+        height: 100%;
+        width: 100%;
+    }
+
+    .fullscreen{
+        // background: linear-gradient(268.51deg, #78C948 0%, #1AA878 96.71%);
+        // width: 100vw;
+        // min-height: 100vh;
+        // display: flex;
+        // flex-flow: row wrap;
+        align-items: center;
+        // justify-content: center;
+        // padding: 2rem 0;
+        // padding: 3rem 0;
+
+        &__slide{
+            width: 100%;
+            height: 100%
+        }
+
+        &__inner{
+            width: 100%;
+            height: 100%;
+        }
+
+        &__carousel-container{
+            min-height: 0;
+            height: 85vh;
+            width: 90%;
+            // min-height: 95vh;
+            // background: $white;
+            // border-radius: 2rem;
+            // position: relative;
+            // padding: 0 1rem;
+            display: flex;
+            flex-flow: row wrap;
+            padding: 5%;
+        }
+
+        &__exit-ctn{
+            top: 0rem;
+            right: 0rem;
+        }
+
+        &__mobile-header{
+            // width: 100%;
+            // height: 10rem;
+            // display: flex;
+            // align-items: center;
+            // padding-left: 5%;
+            display: none;
+        }
+
+        &__image-wrap{
+            width: 70%;
             height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-
-        &__inner{
-            display: flex !important;
-            flex-flow: row !important;
-        }
-    
-        &__ld-container{
-            width: 100%;
-            display: flex;
-        }
-    
-        &__image{
-            border-radius: 30px;
-            margin-bottom: 2rem;
-            width: 100%;
-        }
-    
-        &__body{
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-    
-        &__text{
-            font-family: $body-font;
-            font-weight: $medium;
-            color: black;
-            font-size: 1.2rem;
-            letter-spacing: 0.1rem;
-            background: white;
             border-radius: 3rem;
-            padding: 0.4em 1em;
-            margin-left: 1rem;
+            padding: 1rem;
+            overflow: hidden;
         }
-    
-        &__description-container{
-            background: white;
+
+        &__user-image{
+            // width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;  
+        }
+
+        &__post-details{
+            width: 30%;
+            height: 100%;
+            // display: flex;
+            flex-flow: column wrap;
+            // justify-content: flex-end;
+            justify-content: space-between;
+            // padding-top: 1.5rem;
+            padding-left: 2rem;
+        }
+
+        &__desktop-header{
+            display: block;
             width: 100%;
-            padding: 1.5rem;
-            border-radius: 30px;
-            min-height: 20rem;
-        }
-    
-        &__description{
-            font-family: $body-font;
-            font-weight: $medium;
-        }
-    
-        &__carousel-container{
-            width: 90vw;
-            height: 90vh;
-            display: flex;
-        }
-    
-        &__user-container{
+            height: 10rem;
             display: flex;
             align-items: center;
-            width: 50%;
-            margin-bottom: 2rem;
         }
-    
-        &__username{
-            font-family: $body-font;
-            font-weight: $regular;
-            font-size: 2.5rem;
-            color: $white;
-        }
-    
-        &__user-image{
-            height: 5rem;
-            width: 5rem;
-            border-radius: 50%;
-            margin-right: 1rem;
-            overflow: hidden;
-            margin-right: 1.5rem;
-        }
-
-
     }
-
+    
 }
 
 

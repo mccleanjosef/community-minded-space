@@ -47,17 +47,6 @@ app.get('/allPostsFromDB', (req, res) => {
 
 
 
-// get all User Info
-
-app.get('/allUsersFromDB', (req, res) => {
-  User.find().then(result => {
-    res.send(result);
-  })
-});
-
-
-
-
 // Adding a post to the Database
 
 app.post('/addPost',(req,res)=>{
@@ -182,30 +171,28 @@ app.get('/seeComments/:id', (req, res) => {
 
 
 
-// Creating a comment (Have to be logged in)
+//--Post Comment--
 
-app.post('/createComment', (req, res)=>{
-
+app.post('/createComment', (req,res) => {
   const newComment = new Comment({
     _id: new mongoose.Types.ObjectId,
     text: req.body.text,
-    // time: new Date(),
     user_id: req.body.user_id,
+    profile_img: req.body.profile_img,
     post_id: req.body.post_id
-  }); // End of Const
-
-  newComment.save()
-  .then(result => {
-    Post.updateOne({
-      _id: req.body.post_id
-    }
-    ).then(result => {
-      res.send(newComment);
-    }).catch(err => {
-      res.send(err);
-    });
   });
-}); // End of post
+  newComment.save()
+    .then(result =>{
+      Post.findByIdAndUpdate(
+        newComment.post_id ,
+        { $push: { comment: newComment }}
+      ).then(result => {
+        res.send(newComment);
+      }).catch(err => {
+        res.send(err);
+      });
+    });
+});
 
 
 
@@ -250,68 +237,4 @@ app.get('/allPostsFromDB/:id', (req, res) => {
     res.send(post);
      }
    });
-})
-
-//Comments begins
-// =========================================
-
-// Create Comment
-app.post('/createComment', (req, res) => {
-  const newComment = new Comment({
-    _id: new mongoose.Types.ObjectId,
-    text: req.body.text,
-    time: new Date(),
-    post_id: req.body.user_id,
-  });
-  newComment.save()
-    .then(result => {
-      Product.findByIdAndUpdate(
-         newComment.post_id ,
-         { $push: { comment: newComment }}
-      ).then(result => {
-        res.send(newComment);
-      }).catch(err => {
-        res.send(err);
-      });
-    }).catch(err => {
-      res.send(err);
-    });
-});
-
-//Delete comment
-app.delete('/deleteComment/:id', (req, res) => {
-  Comment.findOne({
-    _id: req.params.id
-  }, (err, comment) => {
-    if (comment && comment['user_id'] == req.body.user_id) {
-      Product.updateOne({
-          _id: comment.product_id
-        }
-      ).then(result => {
-        Comment.deleteOne({
-          _id: req.params.id
-        }, err => {
-          res.send('deleted');
-        });
-      }).catch(err => {
-        res.send(err);
-      });
-    } else {
-      res.send('not found / unauthorised');
-    }
-  });
-});
-
-// Get one Comment from Product Array
-app.get('/seeComments/:id', (req, res) => {
-  const id= req.params.id;
-  Product.findById(id, function (err, product) {
-    if (err){
-        console.log(err);
-    }
-    else{
-        console.log("Result : ", product);
-        res.send(product.comment)
-    }
-  });
 })

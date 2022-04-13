@@ -23,18 +23,22 @@
     <!-- style css -->
     <link rel="stylesheet" href="./css/style.css">
 </head>
-<body id="test" class="fullscreen">
+<body class="fullscreen">
 
-    <div class="fullscreen__carousel-container">
-        <div id="carouselExampleSlidesOnly" class="carousel slide fullscreen__slide" data-bs-ride="carousel">
-            <div id="fullscreenInner" class="carousel-inner fullscreen__inner">
-                
+  <div class="fullscreen__carousel-container">
+    <div id="carouselExampleSlidesOnly" class="carousel slide fullscreen__slide" data-bs-ride="carousel">
+      <a href="./main-feed.html">
+        <div class="fullscreen__exit-ctn">
+          <img class="fullscreen__exit-icon" src="./img/noun-fullscreen-exit-1394890.svg" alt="Exit Display Mode icon">
+          <p class="fullscreen__exit-text">Exit</p>
+        </div>
+      </a>
+      <div id="fullscreenInner" class="carousel-inner fullscreen__inner">
+          
 
-            </div>
-          </div>
+      </div>
     </div>
-  
-
+  </div>
 
   <!-- jQuery js -->
   <script src="../frontend/node_modules/jquery/dist/jquery.min.js"></script>
@@ -42,16 +46,7 @@
   <!-- bootstrap js -->
   <script src="../frontend/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- popper js -->
-  <script src="./node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
-
-  <!-- Masonry js -->
-  <script src="./node_modules/masonry-layout/dist/masonry.pkgd.min.js"></script>
-
-  <!-- imagesLoaded js -->
-  <script src="./node_modules/imagesloaded/imagesloaded.pkgd.min.js"></script>
-
-  <!-- frontend mainFeed js -->
+  <!-- frontend full-screen js -->
   <script src="./js/full-screen.js"></script>
 </body>
 </html>

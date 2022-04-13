@@ -30,14 +30,14 @@ $(document).ready(function() {
       <div class="landing-section">
       <div class="landing-section--topSecond">
       <h1 class="landing-section--h1">Discover a new world of wildlife</h1>
-      <p class="landing-section--p">Join the community documenting wildlife observations that support the research and conservation worldwide</p>
+      <p class="landing-section--p">Join the community documenting wildlife observations that support the research and conservation across New Zealand</p>
       </div>
       <div class="landing-section--bottom">
       <a href="signIn.html"><button id="index-btn" class="landing-section--button">Get Started</button></a>
-          <div class="landing-section--navigation-circles">
-              <div class="landing-section--navigation-circles__circle2"></div>
-              <div class="landing-section--navigation-circles__circle1"></div>
-          </div>
+        <div class="landing-section--navigation-circles__second">
+          <div class="landing-section--navigation-circles__circle2"></div>
+          <div class="landing-section--navigation-circles__circle1"></div>
+        </div>
       </div>
       </div>
       </div>
@@ -194,9 +194,16 @@ $(document).ready(function() {
 
     console.log(userid);
     console.log(image_url, location, name, description);
-    if (image_url == '' || location == '' || name == '' || description == '' || !userid){
-      alert('Please login and enter all details');
-    } else {
+
+    if(!userid){
+      alert('Please Login to make a post')
+    }
+
+    else if (image_url == '' || location == '' || name == '' || description == ''){
+      alert('Please enter all details');
+    }
+
+    else {
       $.ajax({
         url: `http://${url}/addPost`,
         type: 'POST',
@@ -257,6 +264,10 @@ $(document).ready(function() {
 })
 
 // ============ Carousel ends ============
+
+
+
+
 
 }); //document.ready
 
