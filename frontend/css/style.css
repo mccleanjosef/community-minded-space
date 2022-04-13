@@ -280,20 +280,17 @@ a, a:link, a:after, a:visited, a:hover, a:active {
 }
 
 .asAlertError {
-  height: 70vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  position: absolute;
+  width: 100%;
+  padding-top: 3rem;
+  z-index: 0;
 }
 .asAlertError--text {
+  text-align: center;
   color: white;
   letter-spacing: 0.06rem;
   font-size: 1.4rem;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  margin-bottom: 4rem;
 }
 
 .signIn-middle {
@@ -531,6 +528,7 @@ a, a:link, a:after, a:visited, a:hover, a:active {
   align-items: flex-start;
   padding: 0 11%;
   height: 70vh;
+  z-index: 5;
 }
 .addSighting-sightingForm--label {
   color: #000000;
@@ -573,6 +571,9 @@ a, a:link, a:after, a:visited, a:hover, a:active {
   border: none;
   border-radius: 2rem;
   padding: 1em;
+}
+.addSighting-sightingForm--inputDescription:focus {
+  border-color: #1AA878;
 }
 
 .addSighting-addPost {
@@ -643,6 +644,9 @@ a, a:link, a:after, a:visited, a:hover, a:active {
     border: none;
     border-radius: 2rem;
     padding: 1em;
+  }
+  .addSighting-sightingForm--inputDescription:focus {
+    border-color: #1AA878;
   }
 
   .addSighting-addPost {
@@ -716,6 +720,9 @@ a, a:link, a:after, a:visited, a:hover, a:active {
     border: none;
     border-radius: 2rem;
     padding: 1em;
+  }
+  .addSighting-sightingForm--inputDescription:focus {
+    border-color: #1AA878;
   }
 
   .addSighting-addPost {
@@ -1279,6 +1286,7 @@ footer {
   font-size: 1.6rem;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
+  margin-bottom: 3rem;
 }
 .createAccountModal-body--input:focus {
   border-color: #1AA878;
@@ -1362,6 +1370,9 @@ footer {
   font-size: 1.6rem;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
+}
+.updatePostModal-body--inputDescription:focus {
+  border-color: #1AA878;
 }
 
 .updatePostModal-footer {

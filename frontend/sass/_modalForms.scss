@@ -36,6 +36,7 @@
 
     &--input{
         @include modal-form-input;
+        margin-bottom: 3rem;
     }
 }
 
@@ -75,7 +76,7 @@
     }
 
     &--inputDescription{
-        @include modal-form-description
+        @include modal-form-description;
     }
 }
 

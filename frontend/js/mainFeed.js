@@ -198,7 +198,7 @@ $(document).ready(function() {
         $('#signOutBtn').hide();
 
     } else {
-        $('#signInBtn').hide();
+        $('#toSignInBtn').hide();
         $('#createAccountBtn').hide();
 
         // append user profile image from session storage
