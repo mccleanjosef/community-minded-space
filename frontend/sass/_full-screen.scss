@@ -60,12 +60,30 @@
         overflow: hidden;
     }
 
-    &__user-image{
+    &__profile-image{
         width: 100%;
         height: 100%;
         object-fit: cover;
         object-position: center;
+    }
+
+    
+    
+    &__image-ctn{
+        width: 100%;
+        height: 100%;
+    }
+
+    &__image-wrap{
+        width: 100%;
+        height: 100%;
         border-radius: 3rem;
+        overflow: hidden;
+    }
+
+    &__user-image{
+        width: 100%;
+        height: 100%;
     }
 
     &__username{
@@ -78,8 +96,7 @@
         margin-left: 1rem
     }
 
-    &__desktop-post-detail{
-        width: 100%;
+    &__desktop-post-details{
         display: flex;
         flex-flow: row wrap;
         padding-top: 1.5rem;
@@ -132,7 +149,7 @@
 /* Medium Devices (Tablets) */
 @media #{$tablet} {
     .fullscreen{
-        padding: 3rem 0;
+        align-items: center;
 
         &__slide{
             padding: 0 9%;
@@ -141,6 +158,14 @@
         &__exit-ctn{
             top: 3.5rem;
             right: 3rem;
+        }
+
+        &__carousel-container{
+            min-height: 95vh;
+        }
+
+        &__description{
+            margin-bottom: 3rem;
         }
     }
 }
@@ -153,18 +178,11 @@
         justify-content: flex-end;
         height: 100%;
         width: 100%;
+        align-items: center;
     }
 
     .fullscreen{
-        // background: linear-gradient(268.51deg, #78C948 0%, #1AA878 96.71%);
-        // width: 100vw;
-        // min-height: 100vh;
-        // display: flex;
-        // flex-flow: row wrap;
         align-items: center;
-        // justify-content: center;
-        // padding: 2rem 0;
-        // padding: 3rem 0;
 
         &__slide{
             width: 100%;
@@ -180,11 +198,6 @@
             min-height: 0;
             height: 85vh;
             width: 90%;
-            // min-height: 95vh;
-            // background: $white;
-            // border-radius: 2rem;
-            // position: relative;
-            // padding: 0 1rem;
             display: flex;
             flex-flow: row wrap;
             padding: 5%;
@@ -196,40 +209,36 @@
         }
 
         &__mobile-header{
-            // width: 100%;
-            // height: 10rem;
-            // display: flex;
-            // align-items: center;
-            // padding-left: 5%;
             display: none;
         }
 
-        &__image-wrap{
+
+        &__image-ctn{
             width: 70%;
             height: 100%;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+        }
+
+        &__image-wrap{
+            width: auto;
+            height: auto;
             border-radius: 3rem;
-            padding: 1rem;
             overflow: hidden;
         }
 
         &__user-image{
-            // width: 100%;
+            width: 100%;
             height: 100%;
-            object-fit: cover;
-            object-position: center;  
         }
+
 
         &__post-details{
             width: 30%;
-            height: 100%;
-            // display: flex;
+            height: 80%;
             flex-flow: column wrap;
-            // justify-content: flex-end;
             justify-content: space-between;
-            // padding-top: 1.5rem;
             padding-left: 2rem;
         }
 

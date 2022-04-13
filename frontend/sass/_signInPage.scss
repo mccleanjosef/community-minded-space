@@ -16,6 +16,48 @@
     }
 }
 
+
+.alertError{
+    height: 10vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    
+    &--text{
+        color: white;
+        letter-spacing: 0.06rem;
+        font-size: 1.4rem;
+        font-family: $body-font;
+        font-weight: $regular;
+        margin-bottom: 4rem;
+    }
+}
+
+.asAlertError{
+    height: 70vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: absolute;
+    
+    &--text{
+        color: white;
+        letter-spacing: 0.06rem;
+        font-size: 1.4rem;
+        font-family: $body-font;
+        font-weight: $regular;
+        margin-bottom: 4rem;
+    }
+}
+
+
+
+
+
+
 .signIn-middle{
     height: 40%;
     width: 100%;
@@ -36,7 +78,6 @@
         font-size: 1.6rem;
         font-family: $body-font;
         font-weight: $regular;
-
         margin-right: 18rem;
     }
 
@@ -93,6 +134,7 @@
 }
 
 /* Medium Devices (Tablets) */
+
 @media #{$tablet} {
     .signIn-logo{
         height: 35%;
@@ -101,6 +143,15 @@
             height: 19.2rem;
         }
     }
+
+    .alertError{
+        display: none !important;
+    }
+    
+    .asAlertError{
+        display: none !important;
+    }
+
 
     .signIn-middle{
         height: 20%;
@@ -143,6 +194,16 @@
             height: 19.5rem;
         }
     }
+
+
+    .alertError{
+        display: none !important;;
+    }
+    
+    .asAlertError{
+        display: none !important;;
+    }
+
 
     .signIn-middle{
         height: 20%;

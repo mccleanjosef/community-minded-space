@@ -3,29 +3,35 @@ console.log(sessionStorage);
 
 $(document).ready(function() {
 
+    $("#alertError").hide();
+    $("#alertError2").hide();
+    $("#alertError3").hide();
+    $("#asAlertError").hide();
+    $("#asAlertError2").hide();
+
     let url; //declare url as a variable in es6
     $.ajax({
-      url: 'config.json',
-      type: 'GET',
-      dataType: 'json',
-      success: function(configData) {
-        console.log(configData.SERVER_URL, configData.SERVER_PORT);
-        url = `${configData.SERVER_URL}:${configData.SERVER_PORT}`;
-        console.log(url);
-      },
-      error: function(error) {
-        console.log(error);
-      }
+        url: 'config.json',
+        type: 'GET',
+        dataType: 'json',
+        success: function(configData) {
+            console.log(configData.SERVER_URL, configData.SERVER_PORT);
+            url = `${configData.SERVER_URL}:${configData.SERVER_PORT}`;
+            console.log(url);
+        },
+        error: function(error) {
+            console.log(error);
+        }
     });
 
 
-    
-  // Appending Intro next page on App start
 
-  $('#index-btn').click(function(){
+    // Appending Intro next page on App start
 
-    $('#landing-page').empty().append(
-      `
+    $('#index-btn').click(function() {
+
+        $('#landing-page').empty().append(
+            `
       <div class="landing-background-second">
       <div class="landing-section">
       <div class="landing-section--topSecond">
@@ -42,208 +48,215 @@ $(document).ready(function() {
       </div>
       </div>
       `
-    );
-  });
-  // ============ Appending Intro into App Ends ============
+        );
+    });
+    // ============ Appending Intro into App Ends ============
 
-  // Appending Intro next page on App finished
+    // Appending Intro next page on App finished
 
 
 
-  // User Registration Starts
+    // User Registration Starts
 
-  $('#createAccount').click(function() {
-    event.preventDefault() //this prevents code breaking when no data is found
+    $('#createAccount').click(function() {
+        event.preventDefault() //this prevents code breaking when no data is found
 
-    let username = $('#c-username').val();
-    let password = $('#c-password').val();
-    let profile_img = $('#c-profile_img').val();
-    console.log(username, password, profile_img);
+        let username = $('#c-username').val();
+        let password = $('#c-password').val();
+        let profile_img = $('#c-profile_img').val();
+        console.log(username, password, profile_img);
 
-    if (username == '' || password == '' || profile_img == '') {
-      alert('Please enter all details');
+        if (username == '' || password == '' || profile_img == '') {
+            alert('Please enter all details');
 
-    } else {
-      $.ajax({
-        url: `http://${url}/registerUser`,
-        type: 'POST',
-        data: {
-          username: username,
-          password: password,
-          profile_img: profile_img
-        },
-        success: function(user) {
-          console.log(user); //remove when development is finished
-
-          if (user !== 'username taken already. Please try another name'){
-
-            // if register is successful - log user in Starts
-            let username = $('#c-username').val();
-            let password = $('#c-password').val();
-            console.log(username, password); //remove when development is finished
-
+        } else {
             $.ajax({
-              url: `http://${url}/loginUser`,
-              type: 'POST',
-              data: {
-                username: username,
-                password: password
-              },
-              success: function(user) {
-                console.log(user);
+                url: `http://${url}/registerUser`,
+                type: 'POST',
+                data: {
+                    username: username,
+                    password: password,
+                    profile_img: profile_img
+                },
+                success: function(user) {
 
-                sessionStorage.setItem('userID', user['_id']);
-                sessionStorage.setItem('userName', user['username']);
-                sessionStorage.setItem('profileImg', user['profile_img']);
-                console.log(sessionStorage);
-                // document.location.href = 'main-feed.html';
-                // alert('Welcome')
+                    if (user !== 'username taken already. Please try another name') {
 
-                // go to main-feed
-                location.href='./main-feed.html'
+                        // if register is successful - log user in Starts
+                        let username = $('#c-username').val();
+                        let password = $('#c-password').val();
+                        console.log(username, password); //remove when development is finished
 
-              }, //success
-              error: function() {
-                console.log('error: cannot call api');
-                alert('Unable to login - unable to call api');
-              } //error
+                        $.ajax({
+                            url: `http://${url}/loginUser`,
+                            type: 'POST',
+                            data: {
+                                username: username,
+                                password: password
+                            },
+                            success: function(user) {
+                                console.log(user);
+
+                                sessionStorage.setItem('userID', user['_id']);
+                                sessionStorage.setItem('userName', user['username']);
+                                sessionStorage.setItem('profileImg', user['profile_img']);
+                                console.log(sessionStorage);
+                                // document.location.href = 'main-feed.html';
+                                // alert('Welcome')
+
+                                // go to main-feed
+                                location.href = './main-feed.html'
+
+                            }, //success
+                            error: function() {
+                                console.log('error: cannot call api');
+                                alert('Unable to login - unable to call api');
+                            } //error
+                        }) //end of ajax
+
+                    } else {
+                        alert('username taken already. Please try another name');
+                        $('#r-username').val('');
+                        $('#c-password').val('');
+                        $('#c-profile_img').val('');
+                    } //else
+                    // if register is successful - log user in Ends
+
+                }, //success
+                error: function() {
+                    console.log('error: cannot call api');
+                } //error
+            }) //ajax post
+        } //if
+    }) //r-submit click
+
+    // User Registration Finished
+
+
+
+    // Login User Starts
+
+    $('#signInBtn').click(function() {
+
+        $("#alertError").hide();
+        $("#alertError2").hide();
+        $("#alertError3").hide();
+
+        event.preventDefault();
+        let username = $('#s-username').val();
+        let password = $('#s-password').val();
+        console.log(username, password);
+
+        if (username == '' || password == '') {
+            // alert('Please enter all details');
+            $("#alertError").show();
+        } else {
+            $.ajax({
+                url: `http://${url}/loginUser`,
+                type: 'POST',
+                data: {
+                    username: username,
+                    password: password
+                },
+                success: function(user) {
+                    console.log(user);
+
+                    if (user == 'user not found. Please register') {
+
+                        // alert('User not found. Please Register');
+                        $("#alertError2").show();
+
+                    } else if (user == 'not authorized') {
+                        alert('Please try with correct details');
+                        $("#alertError3").show();
+
+
+                        $('#s-username').val('');
+                        $('#s-password').val('');
+                    } else {
+                        sessionStorage.setItem('userID', user['_id']);
+                        sessionStorage.setItem('userName', user['username']);
+                        sessionStorage.setItem('profileImg', user['profile_img']);
+                        console.log(sessionStorage);
+                        document.location.href = 'main-feed.html';
+                        // alert('Welcome back! :)')
+                    } // end of ifs
+                }, //success
+                error: function() {
+                    console.log('error: cannot call api');
+                    alert('Unable to login - unable to call api');
+                } //error
             }) //end of ajax
+        } //end of else
+    }); //end of login click function
 
-          } else {
-            alert('username taken already. Please try another name');
-            $('#r-username').val('');
-            $('#c-password').val('');
-            $('#c-profile_img').val('');
-          } //else
-          // if register is successful - log user in Ends
-
-        }, //success
-        error: function() {
-          console.log('error: cannot call api');
-        } //error
-      }) //ajax post
-    } //if
-  }) //r-submit click
-
-  // User Registration Finished
+    // Login User Finished
 
 
 
 
-  // Login User Starts
 
-  $('#signInBtn').click(function(){
-    event.preventDefault();
-    let username = $('#s-username').val();
-    let password = $('#s-password').val();
-    console.log(username, password);
+    // Add Sighting Start
 
-    if (username == '' || password == '') {
-      alert('Please enter all details');
-    } else {
-      $.ajax({
-        url: `http://${url}/loginUser`,
-        type: 'POST',
-        data: {
-          username: username,
-          password: password
-        },
-        success: function(user) {
-          console.log(user);
+    $('#add-sighting-btn').click(function() {
+        event.preventDefault();
+        let image_url = $('#as-image_url').val();
+        let location = $('#as-location').val();
+        let name = $('#as-name').val();
+        let description = $('#as-description').val();
+        let userid = sessionStorage.getItem('userID');
+        let user_image = sessionStorage.getItem('profileImg');
+        let username = sessionStorage.getItem('userName');
 
-          if (user == 'user not found. Please register') {
-            alert('User not found. Please Register');
-          } else if (user == 'not authorized') {
-            alert('Please try with correct details');
-            $('#s-username').val('');
-            $('#s-password').val('');
-          } else {
-            sessionStorage.setItem('userID', user['_id']);
-            sessionStorage.setItem('userName', user['username']);
-            sessionStorage.setItem('profileImg', user['profile_img']);
-            console.log(sessionStorage);
-            document.location.href = 'main-feed.html';
-            // alert('Welcome back! :)')
-          } // end of ifs
-        }, //success
-        error: function() {
-          console.log('error: cannot call api');
-          alert('Unable to login - unable to call api');
-        } //error
-      }) //end of ajax
-    } //end of else
-  }); //end of login click function
-  
-  // Login User Finished
-    
+        console.log(userid);
+        console.log(image_url, location, name, description);
 
-  
+        if (!userid) {
+            // alert('Please Login to make a post');
+            $("#asAlertError").show();
+        } else if (image_url == '' || location == '' || name == '' || description == '') {
+            alert('Please enter all details');
+            $("#asAlertError2").show();
+        } else {
+            $.ajax({
+                url: `http://${url}/addPost`,
+                type: 'POST',
+                data: {
+                    image_url: image_url,
+                    location: location,
+                    name: name,
+                    description: description,
+                    profile_img: user_image,
+                    user_id: userid,
+                    username: username
+                },
+                success: function(post) {
+                    document.location.href = 'main-feed.html';
+                },
+                error: function() {
+                    console.log('error: cannot call api');
+                } //error
+            }) //ajax
+        } //else
+    }); //Add Sighting
 
+    // ============ Carousel starts ============
+    $('#fullscreen').click(function() {
+        event.preventDefault();
+        console.log("hello")
+        $.ajax({
+            url: `http://${url}/allPostsFromDB`,
+            type: 'GET',
+            dataType: 'json',
+            success: function(postsFromMongo) {
+                console.log(postsFromMongo.length);
+                document.location.href = 'full-screen.html';
+                let i;
+                for (i = 0; i < postsFromMongo.length; i++) {
+                    console.log(i)
+                    $('#fullscreenInner').append(
 
-  // Add Sighting Start
-
-  $('#add-sighting-btn').click(function(){
-    event.preventDefault();
-    let image_url = $('#as-image_url').val();
-    let location = $('#as-location').val();
-    let name = $('#as-name').val();
-    let description = $('#as-description').val();
-    let userid = sessionStorage.getItem('userID');
-    let user_image = sessionStorage.getItem('profileImg');
-    let username = sessionStorage.getItem('userName');
-
-    console.log(userid);
-    console.log(image_url, location, name, description);
-
-    if(!userid){
-      alert('Please Login to make a post')
-    }
-
-    else if (image_url == '' || location == '' || name == '' || description == ''){
-      alert('Please enter all details');
-    }
-
-    else {
-      $.ajax({
-        url: `http://${url}/addPost`,
-        type: 'POST',
-        data: {
-          image_url: image_url,
-          location: location,
-          name: name,
-          description: description,
-          profile_img: user_image,
-          user_id: userid,
-          username: username
-        },
-        success: function(post) {
-          console.log(post);
-          alert('post added');
-        },
-        error: function() {
-          console.log('error: cannot call api');
-        } //error
-      }) //ajax
-    } //else
-  }); //Add Sighting
-
-  // ============ Carousel starts ============
-  $('#fullscreen').click(function () {
-   event.preventDefault();
-    console.log("hello")
-    $.ajax({
-        url: `http://${url}/allPostsFromDB`,
-        type: 'GET',
-        dataType: 'json',
-        success:function(postsFromMongo){
-            console.log(postsFromMongo.length);
-            document.location.href = 'full-screen.html';
-            let i;
-            for(i=0; i < postsFromMongo.length; i++){
-              console.log(i)
-            $('#fullscreenInner').append(
-
-            `
+                        `
             <div class="card caurosel-item" style="width: 18rem;">
               <img src="..." class="card-img-top" alt="...">
               <div class="card-body">
@@ -254,24 +267,19 @@ $(document).ready(function() {
             </div>
           
             `
-            );
-          }
-        },
-        error:function(){
-            alert('Unable to view fullscreen');
-        }//error
+                    );
+                }
+            },
+            error: function() {
+                alert('Unable to view fullscreen');
+            } //error
+        })
     })
-})
 
-// ============ Carousel ends ============
+    // ============ Carousel ends ============
 
 
 
 
 
 }); //document.ready
-
-
-
-
-
