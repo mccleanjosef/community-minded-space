@@ -227,8 +227,43 @@ $(document).ready(function() {
     } //else
   }); //Add Sighting
 
+  // ============ Carousel starts ============
+  $('#fullscreen').click(function () {
+   event.preventDefault();
+    console.log("hello")
+    $.ajax({
+        url: `http://${url}/allPostsFromDB`,
+        type: 'GET',
+        dataType: 'json',
+        success:function(postsFromMongo){
+            console.log(postsFromMongo.length);
+            document.location.href = 'full-screen.html';
+            let i;
+            for(i=0; i < postsFromMongo.length; i++){
+              console.log(i)
+            $('#fullscreenInner').append(
 
+            `
+            <div class="card caurosel-item" style="width: 18rem;">
+              <img src="..." class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          
+            `
+            );
+          }
+        },
+        error:function(){
+            alert('Unable to view fullscreen');
+        }//error
+    })
+})
 
+// ============ Carousel ends ============
 
 
 
