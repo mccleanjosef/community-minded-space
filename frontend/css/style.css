@@ -1126,12 +1126,14 @@ footer {
   font-weight: 400;
   font-size: 1.2rem;
   color: rgb(139, 139, 139);
+  cursor: pointer;
 }
 .post__speech {
   position: absolute;
   bottom: 50%;
   right: 5%;
   width: 1.9rem;
+  cursor: pointer;
 }
 
 .add-post {
